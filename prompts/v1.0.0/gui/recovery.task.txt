@@ -1,0 +1,33 @@
+Phase: RECOVERY
+
+Original task (verbatim; final goal and required values):
+{{ORIGINAL_TASK}}
+
+A user takeover and return occurred while the original task was being
+executed. The Planner has supplied the remaining objective below.
+
+Current recovery objective (execute this now):
+{{REMAINING_OBJECTIVE}}
+
+Observable completion conditions:
+{{OBSERVABLE_COMPLETION_CONDITIONS}}
+
+Execution capability metadata:
+- User-selected initial App package: {{INITIAL_APP_PACKAGE}}
+- Task-authorized App package names: {{AUTHORIZED_APP_PACKAGES_JSON}}
+
+Execute the remaining objective while preserving every original-task
+requirement and required value. Use the latest supplied screenshot and only
+this recovery phase's own conversation history. Do not reconstruct or import
+the pre-takeover conversation, previous phase feedback, internal diagnostics,
+or the user's intervening actions. The selected App metadata does not impose
+a scripted starting screen or task entry point.
+
+Assess the observable conditions yourself against the visible state, then
+use the supplied finish tool when the phase should end. finish(completed)
+means you judge the ORIGINAL task complete; finishing only part of the
+remaining objective is not original-task completion. Use finish(unable) when
+you cannot continue or establish completion with the authorized capabilities.
+Do not output condition_updates or completion_check fields or wait for
+program-maintained condition statuses. Independent result review determines
+task success. Do not reset the remaining shared GUI budget.

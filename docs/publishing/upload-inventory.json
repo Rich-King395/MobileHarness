@@ -1,0 +1,2306 @@
+{
+  "schema_version": "1.0.0",
+  "status": "LOCAL_PREPARATION_REVIEW_REQUIRED",
+  "uploaded": false,
+  "project_git_initialized_by_tool": false,
+  "phone_accessed": false,
+  "apk_or_signing_changed": false,
+  "ignored_probe_count": 23,
+  "kept_probe_count": 16,
+  "frozen_reference_checks": 59,
+  "candidate_file_count": 310,
+  "review_file_count": 64,
+  "categories": {
+    "android_source_tests_and_project": 158,
+    "data_and_runtime_contracts": 9,
+    "generated_upload_inventory": 3,
+    "handoff_material_review_required": 2,
+    "maintenance_or_analysis_tool": 32,
+    "method_or_historical_documentation": 44,
+    "publishing_preparation": 2,
+    "repository_configuration": 3,
+    "user_documentation": 3,
+    "versioned_prompts": 54
+  },
+  "local_only_pruned_directories": [
+    ".agents/",
+    ".git/",
+    "android-app/.gradle/",
+    "android-app/.kotlin/",
+    "android-app/app/build/",
+    "android-app/build/",
+    "android-app/fixture/build/",
+    "baselines/",
+    "docs/acceptance/results/",
+    "docs/local-archive/",
+    "docs/previews/",
+    "tools/__pycache__/"
+  ],
+  "additional_ignored_files": [
+    "android-app/local.properties"
+  ],
+  "secret_scan": {
+    "scope": "NON_IGNORED_UTF8_TEXT_CANDIDATES_ONLY",
+    "potential_matches": [],
+    "complete_secret_detection_claimed": false
+  },
+  "source_repository": "https://github.com/Rich-King395/MobileHarness",
+  "root_license": "Apache-2.0",
+  "public_release_prerequisites": [
+    "RELEASE_ID_SIGNING_AND_DEVICE_ACCEPTANCE",
+    "THIRD_PARTY_BINARY_NOTICES_REVIEW"
+  ],
+  "original_android_readme_preserved": true,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "category": "repository_configuration",
+      "sha256": "60b9793724d1e6378c019fe1f3982d22b768a06caf1b26c275adf94e0d404840",
+      "bytes": 145
+    },
+    {
+      "path": ".gitignore",
+      "category": "repository_configuration",
+      "sha256": "adea5bed3f475c6ed9b7cdeb98d7f06dd42f06bfaf918b2508ac5d3887cb5101",
+      "bytes": 1393
+    },
+    {
+      "path": "HandoffHarness_APK_Handoff/HANDOFF_ANDROID_APK.md",
+      "category": "handoff_material_review_required",
+      "sha256": "7c39aa900ff166caf736360afa6564a8b03f2e69cba6b151495d84ff6ecdce3e",
+      "bytes": 9513
+    },
+    {
+      "path": "HandoffHarness_APK_Handoff/HANDOFF_ANDROID_APK_PROMPTS.md",
+      "category": "handoff_material_review_required",
+      "sha256": "ff191ced2444459ed3e99ee6591e65c5c6ad280b87b695f50187e88c9dfb4598",
+      "bytes": 15730
+    },
+    {
+      "path": "LICENSE",
+      "category": "repository_configuration",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "bytes": 11357
+    },
+    {
+      "path": "README.en.md",
+      "category": "user_documentation",
+      "sha256": "809b3adddbe0f849b754f951589c989465979dafffd764b64af2e17d542c5a4f",
+      "bytes": 4317
+    },
+    {
+      "path": "README.md",
+      "category": "user_documentation",
+      "sha256": "e4bc6034d8632cc5ed78da52fd93ee816eb894112d2b14ea08bbf5e09093a10c",
+      "bytes": 3754
+    },
+    {
+      "path": "android-app/.gitignore",
+      "category": "android_source_tests_and_project",
+      "sha256": "703238443066325af08e3868d1e4b571a633baf68fcc93e323f0066999a97e1b",
+      "bytes": 225
+    },
+    {
+      "path": "android-app/README.md",
+      "category": "user_documentation",
+      "sha256": "acdebc242e0d59b2495c7c9e7e3eba132c6d5190ee219e0fe18caf1063782f14",
+      "bytes": 700
+    },
+    {
+      "path": "android-app/app/.gitignore",
+      "category": "android_source_tests_and_project",
+      "sha256": "5c3174b74edc6f2b9e0743594b8bd3c7f31e4f4405758cc9872b3fe1de1d28b4",
+      "bytes": 6
+    },
+    {
+      "path": "android-app/app/build.gradle.kts",
+      "category": "android_source_tests_and_project",
+      "sha256": "10e1285cfbef1745132999f9151938aa701cc4f406a1d7a81e240b4964c21f9d",
+      "bytes": 3057
+    },
+    {
+      "path": "android-app/app/src/androidTest/java/org/mobileharness/app/LivePhonePortTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "4937f1e5343fc8886ca3bfaf66cdd24af7841ca10dc481ca35928a60c6bb8648",
+      "bytes": 22442
+    },
+    {
+      "path": "android-app/app/src/androidTest/java/org/mobileharness/app/LiveServiceTestRunner.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "d4c07a9a2ea637012dc3f6d66f9aacea1d2247a070f2962975d3abe4e933cae3",
+      "bytes": 401
+    },
+    {
+      "path": "android-app/app/src/androidTest/java/org/mobileharness/app/PrivateStorageTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "b3da6063527f6a7d9a1add32c94a9d4a1bee6692dc8fc1b33ca3ed0ba92a6237",
+      "bytes": 9741
+    },
+    {
+      "path": "android-app/app/src/debug/AndroidManifest.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "8a3f647d346b55abc32406c13bf8740f41ecb9fe2985c16e1c7648cb20862846",
+      "bytes": 5805
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugActionRecoveryVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "8a898db2a958deaa6d6fb2545c66c020d56eabb9a7dfb628e78d034b39e76372",
+      "bytes": 3298
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugArgbLocalizationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "b569b4f23510bdd85f9f6578dec3834f925d679f5349666365656ed2a48e7068",
+      "bytes": 21634
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugAuditDeterministicActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "7ade2b1003e100af4ad27181470ffba5b776ba9ee220565e5a2dc0f5f7e21068",
+      "bytes": 2992
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugAutoStartVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "dc7a8172922b6a7ae773d1d3decb791bfe31b70cf688d3be5dabf2ec3a8bdb13",
+      "bytes": 3079
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugAutomaticRecoveryVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "c84777fae4aa90484df51ca788f1a79f0e32a24924beac5566859657e25aa1bc",
+      "bytes": 4085
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugCalculatorCalibrationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "6c12db73ed6715c0947834b04beecdc4fd1989b38db56f2a4ad221e748f59e4e",
+      "bytes": 13356
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugCalculatorVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "d99e8168e14c7011581448003bad7c277ac9950304b6d27339afbd480861fcfc",
+      "bytes": 4505
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugCalculatorWorkflowActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "80c3f3605ca7c958d47b351a47f173e9e54d42c8dfa1fec78ac456c8cea82313",
+      "bytes": 5232
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugFixtureGroundingVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "1c39b379f17fad2f574abcf1ce62a26974e240becec1bbe3caa2b8095a764180",
+      "bytes": 5844
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugHarnessAcceptanceActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "d7a19ae16e7d0dab46267ccca47e9e345b9bed289ecd9f22cfd43d7cf06bed3c",
+      "bytes": 4959
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugLocalizationVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "0da32790c469ee6215f73eb41fed42b56eefd573ed6ba5d44f526e84706dad15",
+      "bytes": 3031
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugNotificationDeterministicActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "3cfde8f9fd65dd4cd26914770137eedc522618f23ec744b06fec763b569bc4e8",
+      "bytes": 4265
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugOverlayCompactVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "1983b743c2c8cc815567c5d7798e3c805945ab705409c4d6848d0e2f1238a731",
+      "bytes": 3222
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugOverlayInteractionActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "efc88b1185e1a63d875c0459e210a390678cfa69b271ecb862cf524e8ea14374",
+      "bytes": 2850
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugOverlayReadinessReceiver.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "f00d717ae2550682f4e0d37dee52ba5f4cbcad16fadc1ccecd4eab9bcbdd642a",
+      "bytes": 4340
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugOverlayVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "d25e59a2641f62b5ebf1c3c97924f2b2a80a4a7d480a6528c90cb0d7f5c7fe3f",
+      "bytes": 4395
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugProfileLibraryVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "cd2409e313224258054dd450897c5ec998794a4ecaaf85bff002ae891eea4351",
+      "bytes": 2805
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugRecordUiActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "71dee5d98b1e533559dbcb4684014073b3d1b4d5e4feb1a51a8c31fccc5cd391",
+      "bytes": 8477
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugRemoteVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "293d4b86634906a88c16dd47663dee1463484db65eadd07589728716a52fb59e",
+      "bytes": 5899
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugTaskRecordsVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "bc247942e5711a0b7f575a5d260d734f7a9a02172f67e0460d2994a40fed6011",
+      "bytes": 3334
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugTlsVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "b0e4c3e0cb0d04eb8a79f140e2c1701714eddfadfc70d53196896581e2cd85d7",
+      "bytes": 3158
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "2e948a343c8e37be95008384862c481319b07bd8a095b7e3a145c7401463fa53",
+      "bytes": 4457
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/DebugWorkflowVerificationActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "863ae4f72eb80217940c36700a72716d99daefbc452e65a3d1fcb5a3ec007107",
+      "bytes": 5009
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/ActionRecoveryVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "9c8e77cb20c9847a8e5879bcd993e9b3b442cadd9eaaf708a0609915476675e9",
+      "bytes": 14907
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/ArgbDifferenceAnalyzer.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "aeb53dfb3dcbdfa71819398379a47d94a1a9b824e94f85150df01f3ab6ec7b57",
+      "bytes": 10526
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/ArgbRoundTripProbe.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "e09355be666ffe4b910bda341f00c84dcec23206d6ff70552b68bbc9aa3e7495",
+      "bytes": 12635
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/AutoStartVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "59c02dce426bb18e36bc5451ff667d3fc9dca772133135ab23be7fd7c04a196b",
+      "bytes": 18159
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/AutomaticRecoveryVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "a2d1aea60acb95ef113f3f95ce8a3bf2fb695b47049f1e4bfa29ce0a2e173334",
+      "bytes": 28927
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/CalculatorFidelityEvidence.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "a7e3ab660c874f262b865c9cdce96b08b9918a38b63f420264ee569647297d81",
+      "bytes": 5260
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/CalculatorPointVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "a46c50a8d326f13120274c111baf545dfcd7bea9d2de6d75c09ad5f2a3edac73",
+      "bytes": 19036
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/CalculatorStableRasterProbe.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "e57e9935d263b8fdaf86dd7ba7674a35191af712ce822e156c7bcb9958a5655b",
+      "bytes": 9201
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/CalculatorWorkflowVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "3e8471e8c0c9cdd7f00f79b3161f61f681b86180d98a800839a19437a2ecac25",
+      "bytes": 39003
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/DeviceVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "01d2f35b278df70dda8fcd817cf847d3c70b0a1c69f132eed03a4f7e6d1ad5ce",
+      "bytes": 30039
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/FixtureGroundingVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "7e53f1117fdee72ef3c8c579c1cd2ca2460173a22c21103965ebeef750ae351c",
+      "bytes": 62749
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/FullWorkflowVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "5af359a08da614df28f852f37add62340f8c08cf13f552d48e318cebe7e1cb70",
+      "bytes": 35684
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/HarnessDeviceControlCases.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "1b557ecb7b990d12c8b22716ca871fa5ac541c41f70b527940712c4b7396e07f",
+      "bytes": 15009
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/HarnessDevicePlanningCases.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "645648a0e808ed2a3d04f7c3fb09af05ad7582f892260db721369ca9d1c5aca9",
+      "bytes": 13726
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/LocalizationVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "bdfe330fe2abae18cda3baa1407c380a07a9b12a0a5776f4c0522620126e8515",
+      "bytes": 8924
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/MinimalAuditDeterministicVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "dd871d67667aadab0fdadc89ec128ef6961c32b9a77967563627a38df468cb23",
+      "bytes": 26240
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/NotificationDeterministicVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "8a70b85b027405fa560fd9e0c8cfec58f379622f35720a561a0f92c31796c90f",
+      "bytes": 16237
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/OverlayCaptureVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "f48c34a5d04a03d1ab3aa30b5a189a4c65dbd9c292a73da7fd7418fc561660e6",
+      "bytes": 20221
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/OverlayCompactVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "bc0f72890e691d0e56fd77a38480c205b95890d56506064c78ed811c42257510",
+      "bytes": 18748
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/OverlayInteractionVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "56654e4510521911de44b89c34731fa5359dcc82a07d5fd62855c574c784ec7a",
+      "bytes": 18285
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/ProfileLibraryVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "a52b81bf6579a4816deaafc7a4d226de97c0170a0a0f15d3c21ec6b99222b5cc",
+      "bytes": 11371
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/RemoteModelVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "2085477f86a90a68a17c2a02eb4056c68215addab48b8703485edad7453dcbe9",
+      "bytes": 15582
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/TaskRecordsVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "2dc6376804a76ef943975b5c8ea650b37f9e2315c8cf306d0be06381265e4acf",
+      "bytes": 29548
+    },
+    {
+      "path": "android-app/app/src/debug/java/org/mobileharness/app/verification/TlsVerification.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "3b4c572a886bfe373f23caa4679e1a019726be9208717e7b1b94d476398cecc5",
+      "bytes": 13057
+    },
+    {
+      "path": "android-app/app/src/main/AndroidManifest.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "4cdf2a49f41767cab1da236dceb19860e94dbecab258af3515b9819537d059a3",
+      "bytes": 2153
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/HarnessApplication.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "cd668d8b9a788f7f35a810be074cdf131d1241016821ceb7a4c107f06857915b",
+      "bytes": 1782
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/MainActivity.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "357c6ed965e4c40959496308fba0fe0bf2dd658b9faa5f666ccc98ea9ca3bf17",
+      "bytes": 72425
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/core/Contracts.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "1c7d27232131c635ac31c71133b73ba64e3e79d103d8286b1be7447dff8ec9f7",
+      "bytes": 4559
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/core/Coordinator.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "3afedf8786fcc51905a16a70ef21247c5d9520936a730473231896b290b27962",
+      "bytes": 44211
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/core/ExecutionFailureReason.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "8a5fe2dee07b8d1e832e1160dc287f7eb9a6a8ba7ec96ee451f1adaa43bbfdff",
+      "bytes": 3091
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/core/PhoneBridge.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "3ea7f51a02e156b09d2f3fe9d52ab94299efc86832cbc77bb5e7e78c7ec2b8e9",
+      "bytes": 3211
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/model/ModelRequestAssembler.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "612a3150f86e476789f3fb5f5e969913da579df6e84ab7c8b62ab6a0b0c7a554",
+      "bytes": 10788
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/model/PromptBundles.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "416555aa9f6712eeb6ea6750b42149765f8f70f34c23cbb3b210ed56b18df08f",
+      "bytes": 753
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/model/ProtocolDiagnostics.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "654a94bcb57c5b5007368abed874d671463b2e50100c128829eaeaa8e3c49d2d",
+      "bytes": 2810
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/model/QwenGateway.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "5c7d520c6dc477c718fca1e3209167d96703ac6f3e1bac8df8f961e1ccff194c",
+      "bytes": 12597
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/model/QwenProtocol.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "265b417846fd4e6ec9d4b110e08d38fe6d1cc6023f9f4a16008bebc388cd89a9",
+      "bytes": 18448
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/platform/ControlReceiver.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "9382369c5a361b0e24fdd6f142b66be7909092825f617f3ee873bffc679f75f5",
+      "bytes": 1799
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/platform/ForegroundStabilityGate.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "2fd92a8965195d320317cbc5e697edabb83fb7a4c7ce45cd6dae9486ba1310c0",
+      "bytes": 1027
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/platform/HarnessAccessibilityService.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "25810f05b3c4613d8b5f282aa45300c58c876678d6765090aea9ccd541481a82",
+      "bytes": 47499
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/platform/OverlayControlIcon.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "cd2eab80be6daedcdd2c4de8bc05afbe7b2d4130e108dbf8a2e63c0f5814e86f",
+      "bytes": 3183
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/platform/OverlayControlPanel.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "bc3df4c7be60bb621878eb797f2a0dfef20685604f889a80ea2c08dc8813f80a",
+      "bytes": 21454
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/platform/OverlayGeometry.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "59b36ac23dc4bdf700744ea6d096e0ed0cab923e9a01c9eb97546c7d7dd454cd",
+      "bytes": 2606
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/platform/PlatformDiagnosticObserver.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "48534acf0408e87f8af69da2b6b466a0d3986813905308e14111292a7c149eff",
+      "bytes": 595
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/storage/AuthorizedAppsStore.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "fb6fbb87d56cae6370ae41fcf033a8a732ce0a7c48aa79536837773573808da0",
+      "bytes": 4317
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/storage/ExperimentAnalysis.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "1e981def1f99cc42f57b16a77bdfb693fdaf20da3d139e61384f1797aea684a0",
+      "bytes": 16409
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/storage/ExperimentStatistics.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "59fbe2e6959db984078b5eef686c40a1f2ec1d911397a4cdbf72851076c7fde7",
+      "bytes": 6413
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/storage/LocalTaskRecordStore.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "a79fea6a990ad1df09e2e5623840e821b3717e34d6ceff3d7a63dcefac2dcdda",
+      "bytes": 8889
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/storage/MinimalAudit.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "247dbb2c0a1719f81dd828e449de307b40b730bb62d82853a4ef3854d83777cb",
+      "bytes": 18976
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/storage/ProfileStore.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "eaad71946c5fdf9cb317fa150fefcc05a5909e9d7c179bf4f78ebba17cd39b4d",
+      "bytes": 12743
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/ui/AppLanguage.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "fd92fc63726016b86b711eccc275b370f3678cf0965a5257e4384537ef67d087",
+      "bytes": 5232
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/ui/AppStrings.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "6f6aabbd37fd538a25fdebcebc8a10895618287d375555d81cae049561a55802",
+      "bytes": 6542
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/ui/ExperimentAnalysisPanel.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "0e0d1eb283b62f74191415ff0de384f5281486ccabf5c89b734e645fd9160395",
+      "bytes": 7124
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/ui/ExperimentRecordCard.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "83ea7c73cb71fd1c30aa4331119f5878408ac5d88a47c745687995dee68334e9",
+      "bytes": 15022
+    },
+    {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/ui/UiMessages.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "7e74dd76f1d847c219904400f9868114b9f5fdc4a5af1461c72676a9e9dd1b13",
+      "bytes": 3002
+    },
+    {
+      "path": "android-app/app/src/main/kotlin/org/mobileharness/app/ui/theme/Color.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "e0f3a21dd2045a73749c7442aeb35e71a31cea9cf98eb50157b80b38f7f70eec",
+      "bytes": 12275
+    },
+    {
+      "path": "android-app/app/src/main/kotlin/org/mobileharness/app/ui/theme/Theme.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "180befacc822b4c6388eb415ad84f58c50fdd5483fe50e1cc01eff482d79aebd",
+      "bytes": 3408
+    },
+    {
+      "path": "android-app/app/src/main/kotlin/org/mobileharness/app/ui/theme/Type.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "839589b8b5c4777ba7cdcf8ec53d86eb0d0b75b90e00149b7feabca04459361b",
+      "bytes": 1002
+    },
+    {
+      "path": "android-app/app/src/main/res/drawable/ic_language.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "56650da2d5f513d5685c90b2b779a4e1664fb303deca19c2bfde19ae58414c5b",
+      "bytes": 508
+    },
+    {
+      "path": "android-app/app/src/main/res/drawable/ic_launcher_background.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "ed423c73a6f40a4d2909f0901e60527b3a807cd59e1b5593bcaae1808b1c6321",
+      "bytes": 5606
+    },
+    {
+      "path": "android-app/app/src/main/res/drawable/ic_launcher_foreground.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "01d1a6a6c1234eb7fe270d097eb283d72b9c95ae5118886f1b6573aad280f1f7",
+      "bytes": 1702
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "88f7653499ef524126ea5018a99baf9cc3269e7e584d6205dfdd76db39f39cc0",
+      "bytes": 343
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "88f7653499ef524126ea5018a99baf9cc3269e7e584d6205dfdd76db39f39cc0",
+      "bytes": 343
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-hdpi/ic_launcher.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "dd00996198640ed28fbc09cdcd7a3807cf8707f3eb255b659634da3ca6a6ff01",
+      "bytes": 1404
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "1ed73f5341a69d3b41c7e02e126803f50cc8c3284adf4bbb737f0c93577aef07",
+      "bytes": 2898
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-mdpi/ic_launcher.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "846219e6f72fe9a6c104ca8919cbee36a101e7d2ff8da9da67b689a5888f060d",
+      "bytes": 982
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "4e2c58b91de01130e6479e00cbbaaf6e77cd961dd2c8e303cf13cd077fa92632",
+      "bytes": 1772
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-xhdpi/ic_launcher.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "398340dad816fc9a6338cb151a8cf1e45b926f9bfb70628b24c4bd2523cc94d4",
+      "bytes": 1900
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "91b490aef86574901137f0a252272e1f1add99c1ad709e0696ed68929b88d261",
+      "bytes": 3918
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "58ae87fa0c5b5d1562d27fd648d2c061553fe20e3ed570bde588162d01ea7a27",
+      "bytes": 2884
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "3009fad079f5772f30ecd767f98924367fbe0f81c30048d672d4fda2d5ca7d12",
+      "bytes": 5914
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "f98fef5bc3bfe5b65692c40ad1cbae2bec4faf9f1b249c397626740db71b62d8",
+      "bytes": 3844
+    },
+    {
+      "path": "android-app/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp",
+      "category": "android_source_tests_and_project",
+      "sha256": "5faf033745c8c882c43bb1b372d4e4a5890caec63d9892a2e756c954108b85dc",
+      "bytes": 7778
+    },
+    {
+      "path": "android-app/app/src/main/res/values-zh/experiment_analysis_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "280bd40ad92718c23e91d19d68a4152147b8175752bda3cf946424aa2a44b984",
+      "bytes": 4324
+    },
+    {
+      "path": "android-app/app/src/main/res/values-zh/language_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "9643897cab6aecbe4bffdea3d441801911bedc5e4899a90bf23b21cda900134e",
+      "bytes": 467
+    },
+    {
+      "path": "android-app/app/src/main/res/values-zh/main_ui_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "aaa5d908b9f969e0c4be64bf3b23ee9f4103cf9366d35177b825a35c4fec74af",
+      "bytes": 10822
+    },
+    {
+      "path": "android-app/app/src/main/res/values-zh/platform_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "151eb131b46d9c796ff01292ed2fb826d71f4c8ed5ba02b3c1ec0aa6e1d55d12",
+      "bytes": 3273
+    },
+    {
+      "path": "android-app/app/src/main/res/values-zh/record_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "99b9d6081e115169ca083c1f2f3248b8f3b258caa453f4a3a901edd38da82056",
+      "bytes": 2966
+    },
+    {
+      "path": "android-app/app/src/main/res/values-zh/runtime_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "1454f0db941d39a626887ea36c04727c44bd5cb8c9d441bd0ab67f87538b3005",
+      "bytes": 4744
+    },
+    {
+      "path": "android-app/app/src/main/res/values/experiment_analysis_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "e332a20920ecbe9c494a500d1c3e0ba4cf76853f00d524466d44e39d68910f53",
+      "bytes": 4243
+    },
+    {
+      "path": "android-app/app/src/main/res/values/language_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "8eea3e32c081910bea44b181edd4c23bc13a292ed974c3189b74c4c55841babf",
+      "bytes": 485
+    },
+    {
+      "path": "android-app/app/src/main/res/values/main_ui_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "842551913e63e9bee4a0077c6745515e0d20dd95b6fdd2cd4e935d20b17e7677",
+      "bytes": 11243
+    },
+    {
+      "path": "android-app/app/src/main/res/values/platform_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "cba23891d823afccf37f34d73eee9c6816c2a06bf291b20ec3094c479d47ef6e",
+      "bytes": 3328
+    },
+    {
+      "path": "android-app/app/src/main/res/values/record_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "a41be41591584057f2b91c7b365ada6849431331160e64149017939acc81bc37",
+      "bytes": 3003
+    },
+    {
+      "path": "android-app/app/src/main/res/values/runtime_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "3dd12c66fda710c3d215ca91b1685358f6ce5f1f802c7212797443a9a3ee2cc9",
+      "bytes": 4980
+    },
+    {
+      "path": "android-app/app/src/main/res/values/strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "e3f4892833e6146ef4c19811f4f1486c4c67ac3e5c76e78fba51a73122a723e3",
+      "bytes": 97
+    },
+    {
+      "path": "android-app/app/src/main/res/values/themes.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "fff5bc1c8965601c22f94d3106e41f4cdb46b1684292057242f1c8bc9a77b694",
+      "bytes": 155
+    },
+    {
+      "path": "android-app/app/src/main/res/xml/accessibility_service.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "c2dcc2fd1dd00f062d7e539463a2ba41db18574e084895e76eb0cff439bf896d",
+      "bytes": 481
+    },
+    {
+      "path": "android-app/app/src/main/res/xml/backup_rules.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "f3e864f6856a75a8d52d8de359041e941ff09a8999ad24fb0af31889ca22ecf1",
+      "bytes": 339
+    },
+    {
+      "path": "android-app/app/src/main/res/xml/data_extraction_rules.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "a132681a28929e20b78ebf13cc9cd43ab45b75e1fff4b1a68124531a11f5e42a",
+      "bytes": 730
+    },
+    {
+      "path": "android-app/app/src/main/res/xml/locales_config.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "aa9e2bc336bd530564213e291b84869dad7c76ca5497bb8e038406460d7e240d",
+      "bytes": 202
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/CoordinatorActionRecoveryTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "4c3056848bcaa608f0ae00bbb8fce256823c05b6c45a7819f9d25e0904ec518f",
+      "bytes": 20466
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/CoordinatorAuditFailureTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "fe0fdfbd9f3ffd31e00bb6887c6f03a757c4eb213328e3f2d9790b605ebb4357",
+      "bytes": 14742
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/CoordinatorAutomaticRecoveryTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "d8ac1a44f8c74c6625cd8a9d04569a7a33dadcf17a65c073810f782f882cfe38",
+      "bytes": 29468
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/CoordinatorLifecycleStabilityTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "d79e7d37cfa5a6e603c96812072f3e67538118987c3bc03cb8c9cbb72cdc6d7f",
+      "bytes": 14112
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/CoordinatorRecoveryHarnessAcceptanceTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "3003041416f1e3faf898486536f84037713aecbe90f92acaa911cf8bb3108074",
+      "bytes": 25819
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/CoordinatorTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "07db2d6297743756c5d17bef16979f26e5fece3200b7439a039d3b49cf6bebfd",
+      "bytes": 30348
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/HarnessBudgetAcceptanceTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "cbd65a1b684c91a5dce4fb6778d79d72c677635fb4a80445b2902652ff30f009",
+      "bytes": 28854
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/HarnessControlTerminalAcceptanceTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "9c794bb224057ed397c43fe9c10bb294351ca6dd67e39c9e225bf6e29979a7f2",
+      "bytes": 15449
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/HarnessInformationAcceptanceTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "a15c1ef9b30a352c20ce9357e7b6f228ebd113c17be367f22bcf979cc3097754",
+      "bytes": 37295
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/HttpStatusTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "0996bf7f4dde38969b679db226d2ba54f043b51b456f302cf338f2d0c3bd90ed",
+      "bytes": 5327
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/core/PhoneBridgeTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "31217a042cd95b5c1f8059f6a992ec7a1bd714151d19ed70af74812806a66b7d",
+      "bytes": 5145
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/model/AssemblerPreflightBoundsTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "2cf9423a86002df5586e9f2dd69ee6e6644229eb0a6c73417bba7305f523f3d6",
+      "bytes": 8519
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/model/AutomaticStartAssemblyTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "ff990fda11d3cf41ca863c9fd6b1c2d3515c377a3c34c652dde09e1548834f91",
+      "bytes": 13267
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/model/ExecutionFailureFeedbackTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "d50cd4aef43a655e82b9650c52a634aa387548cdcd6bb1c59d52c29fe3bbf30b",
+      "bytes": 4281
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/model/GuiEnvelopeCompatibilityTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "36e49baaaf514a8d268f589c59124213f149fd5d853c1a2a0a032180b2fc9e7b",
+      "bytes": 9424
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/model/ProtocolDiagnosticsTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "24077f615cb7eb0a30d23715b229548ba567c4628f2c8bf928201d3c235f560e",
+      "bytes": 16773
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/model/QwenGatewayTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "789351364e420d19be70229461f26cfc5f237828047961773a0004eeef53199e",
+      "bytes": 22337
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/model/TransportReasonTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "505fffb3d726c494e7dec774be882a359f71c19e45d3b299aa0ff1d884978a99",
+      "bytes": 2576
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/platform/ForegroundStabilityGateTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "19d27475375f2ed01f0e9fe31fdceee862f6a20a1d0b80c60baf4c17e8a5be3c",
+      "bytes": 2110
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/platform/OverlayGeometryTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "9cdb04c2e6f74d8fad3c67762cbccd795479c28cf0172926b6ef9561f91a3449",
+      "bytes": 3026
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/storage/ExperimentAnalysisTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "9d9ce94aae40bb9f3956f6dca49f9ee211bae33ea2dabb7066c9091c9975507e",
+      "bytes": 15661
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/storage/ExperimentStatisticsTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "d9687f8635ad53157806ac191450a057e009e2a6c2060b2ee0d6293a595ea9f8",
+      "bytes": 14010
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/verification/ArgbDifferenceAnalyzerTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "adccc9a33582bd10148b050e997a0fb2e29739b588c14596ae501ba92dcd2ed6",
+      "bytes": 8325
+    },
+    {
+      "path": "android-app/build.gradle.kts",
+      "category": "android_source_tests_and_project",
+      "sha256": "9242039e113016d6e81f10847a80d802be3da9498e8cec2fd77c16c7fc4899fd",
+      "bytes": 149
+    },
+    {
+      "path": "android-app/build.ps1",
+      "category": "android_source_tests_and_project",
+      "sha256": "9f601f7c543952d95a737c396d27522fd3c03d70a405b39723d7a3169dc17e8e",
+      "bytes": 798
+    },
+    {
+      "path": "android-app/fixture/README.md",
+      "category": "android_source_tests_and_project",
+      "sha256": "4850035d9ee3f8527657bbb171866b213b6925586097f19991c65a807c4d28bc",
+      "bytes": 2408
+    },
+    {
+      "path": "android-app/fixture/build.gradle.kts",
+      "category": "android_source_tests_and_project",
+      "sha256": "8097336873c501178d5f48eeff7d8a71fa3a085968904bca9e90d8e560cfcf7f",
+      "bytes": 528
+    },
+    {
+      "path": "android-app/fixture/src/main/AndroidManifest.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "6316577cddc351ba76d160abee11280a27b02ef941a1975217f514062415aa2b",
+      "bytes": 1018
+    },
+    {
+      "path": "android-app/fixture/src/main/java/org/mobileharness/fixture/MainActivity.java",
+      "category": "android_source_tests_and_project",
+      "sha256": "a04bb2337a7b0b9b3b5a130389c88096d9ab749130f97f26e193510aa00990b2",
+      "bytes": 5086
+    },
+    {
+      "path": "android-app/fixture/src/main/res/layout/activity_fixture.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "daa6232442b85e1ba01ad499c1d09315fddefc26b70ffb5c5a0c69cbb4edcf23",
+      "bytes": 3656
+    },
+    {
+      "path": "android-app/fixture/src/main/res/values/ids.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "65683752f8858ef169791c2116787bcaf937868f15e6f6cf1dbeb49eaa893c8b",
+      "bytes": 784
+    },
+    {
+      "path": "android-app/fixture/src/main/res/values/strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "0712e95d05b1e87fb760af6fd34a25809e9b222a6d57eb2c649ad17bcc78a296",
+      "bytes": 914
+    },
+    {
+      "path": "android-app/gradle.properties",
+      "category": "android_source_tests_and_project",
+      "sha256": "3e2a08f6ddaea24aac70dfce7f069eb0aa3edee3103d6cc3479653552e949c75",
+      "bytes": 1662
+    },
+    {
+      "path": "android-app/gradle/wrapper/gradle-wrapper.jar",
+      "category": "android_source_tests_and_project",
+      "sha256": "497c8c2a7e5031f6aa847f88104aa80a93532ec32ee17bdb8d1d2f67a194a9c7",
+      "bytes": 48462
+    },
+    {
+      "path": "android-app/gradle/wrapper/gradle-wrapper.properties",
+      "category": "android_source_tests_and_project",
+      "sha256": "c629b14195c2b627ef184fba4416f5dfce6f69c8b088230965bf3f77b8a1a7b4",
+      "bytes": 368
+    },
+    {
+      "path": "android-app/gradlew",
+      "category": "android_source_tests_and_project",
+      "sha256": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59",
+      "bytes": 8656
+    },
+    {
+      "path": "android-app/gradlew.bat",
+      "category": "android_source_tests_and_project",
+      "sha256": "d539676c48b596afda64c963ec8f7ee56c7b3fe7e3b81d1dbe2d1a1e3dd9e9f8",
+      "bytes": 2848
+    },
+    {
+      "path": "android-app/settings.gradle.kts",
+      "category": "android_source_tests_and_project",
+      "sha256": "04470f113993875bff3dad8d1bd79eb1340d8d5f07a0e047b6d08eb0f115833a",
+      "bytes": 654
+    },
+    {
+      "path": "docs/AUTOMATIC_START_AND_PROFILE_LIBRARY_0.3.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "90e6e1e09724b779b17b6349657adb5bf76920a5aae1cfb7cc09acaffdf448ff",
+      "bytes": 4501
+    },
+    {
+      "path": "docs/CURRENT_BASELINE.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "b186af0bd4353f99055aeb9c3772de7e9062725ca014eef5a83d8592e1a1f520",
+      "bytes": 6986
+    },
+    {
+      "path": "docs/DATA_AND_LOGGING_BOUNDARIES.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "5a70fc8c508de43a2833054ae51d29053a120c9509b18066fb4b7a6af7668d9b",
+      "bytes": 13914
+    },
+    {
+      "path": "docs/DEVELOPMENT_STATUS.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "bb8180879be291ddf11b136bf018007ea19a030114f778d15b9fb561c1a38bae",
+      "bytes": 25225
+    },
+    {
+      "path": "docs/EXECUTION_FEEDBACK_0.5.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "d09cd9b09c9a87437cf4219c6a0200927cf8fa879af5bc2b46c0e9c08afa8d7d",
+      "bytes": 8194
+    },
+    {
+      "path": "docs/EXPERIMENT_ANALYSIS_0.9.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "63ba377383944227f939675a55e9a41a698a21811a32db11d2a58ab5f36a1be4",
+      "bytes": 7680
+    },
+    {
+      "path": "docs/EXPERIMENT_RECORDS_0.7.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "4424dc8241e62347258838414ef6e2197244e6addb9fef157b43af89326a030e",
+      "bytes": 4342
+    },
+    {
+      "path": "docs/INTERACTION_AND_RUNTIME_STATES.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "090e0a82a4a75c6bebf6be21c163ba9cc99a99938a80f37d5911a57d6e03280d",
+      "bytes": 15164
+    },
+    {
+      "path": "docs/MODEL_ADAPTER_1.3.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "f22ae89d70fe7bc18074942fcf9c58f6ba66d4c4fb2409fa71fb5c31d7ede667",
+      "bytes": 2934
+    },
+    {
+      "path": "docs/MODEL_ADAPTER_AND_PROMPT_VERSIONS.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "b8ed7dd7c4d3dd86be2ede409f6e99caed195fb017e8e20056f5854e36115568",
+      "bytes": 16498
+    },
+    {
+      "path": "docs/MODEL_ADAPTER_AND_PROMPT_VERSIONS_v1.1.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "53b2ba6e05c5955e4c6278875a101cf3ffcd30a33f46b77e1fe2f50d439696b3",
+      "bytes": 4780
+    },
+    {
+      "path": "docs/TECHNICAL_BASELINE.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "16604e1a6f2bd6e605ae33f32f36b33e0653c0f9061cd019e5a4f863de290a0f",
+      "bytes": 10206
+    },
+    {
+      "path": "docs/UX_ITERATION_0.1.3.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "ca624e5c85cf935037598cb59d80cd431e93226f69b37598cfe6a7310e9a80f3",
+      "bytes": 2868
+    },
+    {
+      "path": "docs/UX_ITERATION_0.2.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "7c8cd366d59709c390a149fb9623f405d1d7d76af7af07fd445a62fbcafbad1b",
+      "bytes": 3339
+    },
+    {
+      "path": "docs/UX_REVIEW_TASK_AND_OVERLAY_2026-11-02.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "e8dc1138ff3954b0b8688496b4f330b13e28b22009611755b3748c08db956a9e",
+      "bytes": 6757
+    },
+    {
+      "path": "docs/VERIFICATION_SCOPE_AND_ATTRIBUTION.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "4eda8b04ae36547cbc370a50cdaad7c75e289629bb503d6c8762432b40526624",
+      "bytes": 5010
+    },
+    {
+      "path": "docs/acceptance/ACTION_FAILURE_RECOVERY_0.5.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "0bed57dac90fff8a217fbe762651c060a75397b40acda640655e88b6b3c5792c",
+      "bytes": 6976
+    },
+    {
+      "path": "docs/acceptance/ARGB_LOCALIZATION_0.3.5.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "c702f1618c8bb1fafcd47072dcea0fd487dd1eb2848c4da012e34f3ffa0c3e0c",
+      "bytes": 8687
+    },
+    {
+      "path": "docs/acceptance/AUTOMATIC_START_AND_LIBRARY_0.3.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "7a19833062981f14ae5a7372c97a2e004870826f03fc3db25e3c9ed7e8453d70",
+      "bytes": 4935
+    },
+    {
+      "path": "docs/acceptance/BUDGET_AND_PLANNING.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "af099590b82d3b838c1aac961516c4df8916dcb558c6c32a0b2146bcc6088694",
+      "bytes": 14157
+    },
+    {
+      "path": "docs/acceptance/CALCULATOR_DIAGNOSTIC_0.1.3.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "f10c9936724ce05edbf97d9455461152710a4f202f5844e8f1e28fad8d0d04ed",
+      "bytes": 4491
+    },
+    {
+      "path": "docs/acceptance/CALCULATOR_FIDELITY_0.3.4.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "83b2981c26ce302903e7a609144a9c73a5b5c57e5408027e97a93df2debdeef3",
+      "bytes": 7450
+    },
+    {
+      "path": "docs/acceptance/COMPACT_OVERLAY_0.5.1.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "42d75b5af93daacbbf7c9b9cc0327cad50c47bffd385b5af89fe4c4afe795735",
+      "bytes": 6391
+    },
+    {
+      "path": "docs/acceptance/DEVICE_SMOKE_0.1.1.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "5b382d60f1f36007086f59b1f91c0b9c86dd2073a5c1cb9208dbd522102df962",
+      "bytes": 4877
+    },
+    {
+      "path": "docs/acceptance/DISCONNECTED_USER_REPORT.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "63462a1e71c291f64fed507ae354439d02567c85edd37e46a20d81e71ff68abb",
+      "bytes": 1067
+    },
+    {
+      "path": "docs/acceptance/HANDOFF_SMOKE_0.1.2.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "692747de48a4cd48efe98e596796dcbfca543229216cc9ace177aaf133c49781",
+      "bytes": 5332
+    },
+    {
+      "path": "docs/acceptance/HARNESS_DETERMINISTIC_0.3.3.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "29eef8987bbc732b7ba086f4e7ccddbe0829b9192dfdb4c1d6b8177e7de43bd5",
+      "bytes": 10384
+    },
+    {
+      "path": "docs/acceptance/HARNESS_DETERMINISTIC_MATRIX.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "a2cc07e65a146018c023ecd16e80d24dc5a119f228b782b0a42891f5840d8d8d",
+      "bytes": 34451
+    },
+    {
+      "path": "docs/acceptance/HISTORY_AND_INFORMATION.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "2279d16f0843e6947fcbe799c98b6155c1ccbf7848854d5d962d27fd1a301745",
+      "bytes": 17350
+    },
+    {
+      "path": "docs/acceptance/LOCALIZATION_0.6.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "6026f01d8e632f59d871da0596674e1cd2804ca777f533ddb6595b103c021e17",
+      "bytes": 6649
+    },
+    {
+      "path": "docs/acceptance/MULTIROUND_0.3.2.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "e8da0f71c6c17cfa1c0a9ff0566c623cc8dfecc5b9b6bfcb08431275e1f8a304",
+      "bytes": 6260
+    },
+    {
+      "path": "docs/acceptance/README.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "03c5b634718da31f7f3016f2ec92c1982062a0aa9d16178ff8bf49c80580e951",
+      "bytes": 15832
+    },
+    {
+      "path": "docs/acceptance/REAL_APP_CALCULATOR_0.3.3.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "7fcbdb81c5f0e8f708caba583850839369a275ff60808a0428c41684b4caaa31",
+      "bytes": 4336
+    },
+    {
+      "path": "docs/acceptance/REAL_TASK_0.3.1.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "bc7d818ecf8d6a731f2027e5ae3e69809df5729fa222ad00837a3219fbe51f2f",
+      "bytes": 7816
+    },
+    {
+      "path": "docs/acceptance/RELIABILITY_DIAGNOSTIC_0.3.2.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "be8def1ebfc0e05d494551fffab9ba4a98c2f499dce4c246d49836467e4bbe0b",
+      "bytes": 11961
+    },
+    {
+      "path": "docs/acceptance/REMOTE_SMOKE_0.1.2.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "842ec886f63f597639cfc1389b76ba672d7a5bf385baddc2c35f8dab504e2706",
+      "bytes": 4531
+    },
+    {
+      "path": "docs/acceptance/SAFE_TASK_SMOKE_0.1.2.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "dabb002b63d18446bfe521c974c8ced77f27c2abbec2ee523d2930d9fb2b7124",
+      "bytes": 3627
+    },
+    {
+      "path": "docs/acceptance/STABILITY_0.8.2.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "af9e2abee047c5e7e039f66b69e47e2ea60d6435359b43ba5f88defb1ba2ad89",
+      "bytes": 10618
+    },
+    {
+      "path": "docs/acceptance/TAKEOVER_AND_LATE_RESULTS.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "6cf5ffa0376ee44244dc385bfcfd717eb883cc1284c2cfb7175e85c14f243d18",
+      "bytes": 20338
+    },
+    {
+      "path": "docs/acceptance/TASK_RECORDS_0.7.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "880e97c5762474b69e60cc43074fb7a51b282cfa1d69ddb0039497caa7847ec6",
+      "bytes": 3918
+    },
+    {
+      "path": "docs/acceptance/THREE_APP_SMOKE_0.3.4.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "4079fad47055f9617d7c16eb95af94eb224d0e186716608ed46f62bfc2dd215d",
+      "bytes": 5884
+    },
+    {
+      "path": "docs/acceptance/UI_AND_OVERLAY_0.2.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "3173f214de0df6dafb6c683d7b598b3afa24b92367735840cfd140ddc6ca1fce",
+      "bytes": 5117
+    },
+    {
+      "path": "docs/acceptance/UI_AND_OVERLAY_0.4.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "770b5743e784771ec4543d0e4e68d5827b5ab6996eae5898bcb47bfd282cae83",
+      "bytes": 6978
+    },
+    {
+      "path": "docs/acceptance/YOUTUBE_PAUSE_DIAGNOSTIC_0.4.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "8d4fca6389846e7d3f8fe2094191d0a79e1bf74d2b198046a3f8e2aeb5a1412b",
+      "bytes": 4312
+    },
+    {
+      "path": "docs/data-contracts/README.v1.1.md",
+      "category": "data_and_runtime_contracts",
+      "sha256": "109bea3a50694dcdb8c3ac81662fd3661225f2ce80360ccd78cb13474230f185",
+      "bytes": 2384
+    },
+    {
+      "path": "docs/data-contracts/README.v1.2.md",
+      "category": "data_and_runtime_contracts",
+      "sha256": "006bb6552246bd8200bba8ffe6a6e07374075f5db62bb6e8b5e4f6a87934d628",
+      "bytes": 1513
+    },
+    {
+      "path": "docs/data-contracts/local-task-record.v1.schema.json",
+      "category": "data_and_runtime_contracts",
+      "sha256": "6fbe5cbd2ebaac36474ed128b00190a19294a45a44e399028c67fc20ada43ebc",
+      "bytes": 777
+    },
+    {
+      "path": "docs/data-contracts/minimal-event.examples.json",
+      "category": "data_and_runtime_contracts",
+      "sha256": "da04f1ed859bb84aeb1d06bc3fe01e5c75ce5109051e7a44c6c0033bfcaca746",
+      "bytes": 59844
+    },
+    {
+      "path": "docs/data-contracts/minimal-event.schema.json",
+      "category": "data_and_runtime_contracts",
+      "sha256": "f6c44d90974673f3a507ed083c835cacf76b7cbe1dc300b60f6014b9a89000bd",
+      "bytes": 18305
+    },
+    {
+      "path": "docs/data-contracts/minimal-event.v1.1.schema.json",
+      "category": "data_and_runtime_contracts",
+      "sha256": "2c6a53620c310e9d7f9b42e0cddab48a86be3ef7ed38d572e7c18ae3f6af9781",
+      "bytes": 21835
+    },
+    {
+      "path": "docs/data-contracts/minimal-event.v1.2.schema.json",
+      "category": "data_and_runtime_contracts",
+      "sha256": "778cfab5df7f634e12b246aed49f1b9c33005746f8b282c0ac26804db6311ff0",
+      "bytes": 23899
+    },
+    {
+      "path": "docs/data-contracts/minimal-event.v1.3.schema.json",
+      "category": "data_and_runtime_contracts",
+      "sha256": "d69d78d102f1b8877d2325db4c4bdc4f8755077c01a9624d8efb9e23a3cb0850",
+      "bytes": 28120
+    },
+    {
+      "path": "docs/publishing/REVIEW_FILES.txt",
+      "category": "generated_upload_inventory",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "path": "docs/publishing/SIGNING_AND_CHANNELS.md",
+      "category": "publishing_preparation",
+      "sha256": "d2216d30b56252ee1b97c3d281c0fcefec0c7440ea511c60ca6ee6561da70dc9",
+      "bytes": 9512
+    },
+    {
+      "path": "docs/publishing/UPLOAD_FILES.txt",
+      "category": "generated_upload_inventory",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "path": "docs/publishing/UPLOAD_SCOPE.md",
+      "category": "publishing_preparation",
+      "sha256": "3d6394e0b986110b3eaf25a0fe0e3d509b65d4b2b031eda710c536adbdccf802",
+      "bytes": 5729
+    },
+    {
+      "path": "docs/publishing/upload-inventory.json",
+      "category": "generated_upload_inventory",
+      "sha256": null,
+      "bytes": null
+    },
+    {
+      "path": "docs/runtime-policies/automatic-recovery.v1.2.json",
+      "category": "data_and_runtime_contracts",
+      "sha256": "4797c58832f5caad7e2ab88bf1a86a72d5d73a71c302795c7c0927d0b2543955",
+      "bytes": 3137
+    },
+    {
+      "path": "prompts/v1.0.0/CHANGELOG.md",
+      "category": "versioned_prompts",
+      "sha256": "331b1f91c0940f0980510715ed82275842d740acc35b612597cd08cfb151773a",
+      "bytes": 3030
+    },
+    {
+      "path": "prompts/v1.0.0/VALIDATION.md",
+      "category": "versioned_prompts",
+      "sha256": "cbbbd209272b2e8ec8314a6c3e8688477b33c8378d948e828c0265f1a4bb4052",
+      "bytes": 1853
+    },
+    {
+      "path": "prompts/v1.0.0/examples/gui.outputs.json",
+      "category": "versioned_prompts",
+      "sha256": "d70ab2afd234fd6510d2e2a49626f9fcde6b05bdab74b54e6a2e22c382e14192",
+      "bytes": 4760
+    },
+    {
+      "path": "prompts/v1.0.0/examples/planner.first.input.json",
+      "category": "versioned_prompts",
+      "sha256": "ad1d801af7ce9ca6c918a5e28d64f828f6d47f86e80940d61c9b9b8416b2a2b9",
+      "bytes": 926
+    },
+    {
+      "path": "prompts/v1.0.0/examples/planner.outputs.json",
+      "category": "versioned_prompts",
+      "sha256": "caab6bb5c532165cfb9e4d52abe6d90107f5290a272e9370dfd1e7cb02365b2f",
+      "bytes": 3759
+    },
+    {
+      "path": "prompts/v1.0.0/examples/planner.second.input.json",
+      "category": "versioned_prompts",
+      "sha256": "e1cc651c1b14b7bf40adcc206e11d227d796af2b2ae3304ccb39f2bc0b3cef1d",
+      "bytes": 1464
+    },
+    {
+      "path": "prompts/v1.0.0/gui-observation.template.txt",
+      "category": "versioned_prompts",
+      "sha256": "02832c439913153c9f1ca9c2d4704bb8efc533500aaf6803e7d8d251d4c09ccb",
+      "bytes": 381
+    },
+    {
+      "path": "prompts/v1.0.0/gui/confirm.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "9adc4eefe4a2876226ecb7a86258fe43866e9596cb33d34373019341bf21fda2",
+      "bytes": 1667
+    },
+    {
+      "path": "prompts/v1.0.0/gui/control.returned.txt",
+      "category": "versioned_prompts",
+      "sha256": "4dfad18eeb1b4ca43dd7759af011ef07926134959a6eb6d3ba8a892e3c096562",
+      "bytes": 593
+    },
+    {
+      "path": "prompts/v1.0.0/gui/original.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "3c5c390039a79b726615efc0ede392a816924d3a7c6595f94a04b09bb54cc083",
+      "bytes": 909
+    },
+    {
+      "path": "prompts/v1.0.0/gui/recovery.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "ef6ab3526e30efc1fb3b46a3d7d4f630bbe50ed7a2818ff3bc9dd228f7e26995",
+      "bytes": 1545
+    },
+    {
+      "path": "prompts/v1.0.0/gui/system.txt",
+      "category": "versioned_prompts",
+      "sha256": "456615df39b3d58e7031190bddfce2a11bcafbb7c06798965150cf3f254d5654",
+      "bytes": 5741
+    },
+    {
+      "path": "prompts/v1.0.0/gui/tools.execution.json",
+      "category": "versioned_prompts",
+      "sha256": "8b9d172b1cebaa3008d29191fadfbcd911d2573965a84a33c6a6b6396a1b5a9f",
+      "bytes": 10278
+    },
+    {
+      "path": "prompts/v1.0.0/gui/tools.observation.json",
+      "category": "versioned_prompts",
+      "sha256": "3e773a2a2f4576abd2041cd3874ede9e6b6c1b081a6ee28f8a67ed83043fbef9",
+      "bytes": 2431
+    },
+    {
+      "path": "prompts/v1.0.0/gui/verify.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "3b54ccc63645cee29a6ea92f8432373351e6a4a9c53c73da84e7446214123671",
+      "bytes": 1651
+    },
+    {
+      "path": "prompts/v1.0.0/image.content-part.template.json",
+      "category": "versioned_prompts",
+      "sha256": "cd6f389e165225af5fac5cb4362c229a77bc5ee8b5fa42be1fd745e9ce407b62",
+      "bytes": 103
+    },
+    {
+      "path": "prompts/v1.0.0/manifest.json",
+      "category": "versioned_prompts",
+      "sha256": "faef79795ed6c1bbf33953372980a9d823a1cb78dfa56daea9a254c345a01f73",
+      "bytes": 5000
+    },
+    {
+      "path": "prompts/v1.0.0/planner/first.schema.json",
+      "category": "versioned_prompts",
+      "sha256": "c03b91eab0a5dabfc6136258580101ec52419f0a55ef6177e89caf309c14be1d",
+      "bytes": 1842
+    },
+    {
+      "path": "prompts/v1.0.0/planner/first.system.txt",
+      "category": "versioned_prompts",
+      "sha256": "5bf0d433e61b248f912647bfaca175dd07a37439a1298beeeeebb74dfc34fd6d",
+      "bytes": 5837
+    },
+    {
+      "path": "prompts/v1.0.0/planner/second.schema.json",
+      "category": "versioned_prompts",
+      "sha256": "02577387f7cd836d59b8866d364221a71af9d6b2d85d53b4caaed857c3767f5b",
+      "bytes": 1973
+    },
+    {
+      "path": "prompts/v1.0.0/planner/second.system.txt",
+      "category": "versioned_prompts",
+      "sha256": "1f6e84d5a557b393198305a11f227f0e1975415145958e354d56db4a35e5542c",
+      "bytes": 5491
+    },
+    {
+      "path": "prompts/v1.0.0/request-profiles.json",
+      "category": "versioned_prompts",
+      "sha256": "1e5436f4ae0c98d215496fd6b28502e1a0a3483f0be6fd448c2791cdd3906289",
+      "bytes": 2719
+    },
+    {
+      "path": "prompts/v1.1.0/CHANGELOG.md",
+      "category": "versioned_prompts",
+      "sha256": "910749c105a0b0513106d0d861eb079e9a5bce432478ec6721eb77e3edf9aafa",
+      "bytes": 1729
+    },
+    {
+      "path": "prompts/v1.1.0/VALIDATION.md",
+      "category": "versioned_prompts",
+      "sha256": "8bbdd0afada22b0727405d303b2df444e08cda193460a2135dd64485b805ce03",
+      "bytes": 2122
+    },
+    {
+      "path": "prompts/v1.1.0/examples/gui.outputs.json",
+      "category": "versioned_prompts",
+      "sha256": "d70ab2afd234fd6510d2e2a49626f9fcde6b05bdab74b54e6a2e22c382e14192",
+      "bytes": 4760
+    },
+    {
+      "path": "prompts/v1.1.0/examples/planner.first.input.json",
+      "category": "versioned_prompts",
+      "sha256": "ad1d801af7ce9ca6c918a5e28d64f828f6d47f86e80940d61c9b9b8416b2a2b9",
+      "bytes": 926
+    },
+    {
+      "path": "prompts/v1.1.0/examples/planner.first.no-pre-handoff.input.json",
+      "category": "versioned_prompts",
+      "sha256": "ae9ef3c00f16969884a6889203b90950c2ef68e4d4c984a043d8e72054add00a",
+      "bytes": 808
+    },
+    {
+      "path": "prompts/v1.1.0/examples/planner.outputs.json",
+      "category": "versioned_prompts",
+      "sha256": "caab6bb5c532165cfb9e4d52abe6d90107f5290a272e9370dfd1e7cb02365b2f",
+      "bytes": 3759
+    },
+    {
+      "path": "prompts/v1.1.0/examples/planner.second.input.json",
+      "category": "versioned_prompts",
+      "sha256": "969e39eedb61034e9dcce7b06d932bec3be398802142f269005e737c8b9d5d57",
+      "bytes": 1390
+    },
+    {
+      "path": "prompts/v1.1.0/gui-observation.template.txt",
+      "category": "versioned_prompts",
+      "sha256": "08cc1e4cb24109f93c9e6a2bf65f53601b2a7e1a0bb6856209a0e6819c625d57",
+      "bytes": 388
+    },
+    {
+      "path": "prompts/v1.1.0/gui/confirm.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "2fd87b75014a7f51a6d35483e4bd2aee7340d56c6f8fdb126327174e211d641b",
+      "bytes": 1749
+    },
+    {
+      "path": "prompts/v1.1.0/gui/control.returned.txt",
+      "category": "versioned_prompts",
+      "sha256": "a6055b736ecd07f7c8365fce69446984da104dfd092e00ff2a9f7b19e2721bfb",
+      "bytes": 665
+    },
+    {
+      "path": "prompts/v1.1.0/gui/original.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "e63b4e1471bd957ce295a490f03e8954a9da803e52c4dd8ed1964f69c13732e1",
+      "bytes": 986
+    },
+    {
+      "path": "prompts/v1.1.0/gui/recovery.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "16443004f5972405621964b5ae141833619c9b620276be25c57c03b9dbf0087c",
+      "bytes": 1601
+    },
+    {
+      "path": "prompts/v1.1.0/gui/system.txt",
+      "category": "versioned_prompts",
+      "sha256": "749fb134104bba8dc281cd0627806cd9dc8d82ca840625a34c8dda13f701dee6",
+      "bytes": 6006
+    },
+    {
+      "path": "prompts/v1.1.0/gui/tools.execution.json",
+      "category": "versioned_prompts",
+      "sha256": "8b9d172b1cebaa3008d29191fadfbcd911d2573965a84a33c6a6b6396a1b5a9f",
+      "bytes": 10278
+    },
+    {
+      "path": "prompts/v1.1.0/gui/tools.observation.json",
+      "category": "versioned_prompts",
+      "sha256": "3e773a2a2f4576abd2041cd3874ede9e6b6c1b081a6ee28f8a67ed83043fbef9",
+      "bytes": 2431
+    },
+    {
+      "path": "prompts/v1.1.0/gui/verify.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "8fb679bd09ecab57d5fc10744638ea8b67f3a680aaf7ddc54aae711752318597",
+      "bytes": 1733
+    },
+    {
+      "path": "prompts/v1.1.0/image.content-part.template.json",
+      "category": "versioned_prompts",
+      "sha256": "cd6f389e165225af5fac5cb4362c229a77bc5ee8b5fa42be1fd745e9ce407b62",
+      "bytes": 103
+    },
+    {
+      "path": "prompts/v1.1.0/manifest.json",
+      "category": "versioned_prompts",
+      "sha256": "0434d82c2f01bc4bd39b93df1b65ef176c25031760ef86d9b6ec8988f4c294ad",
+      "bytes": 6312
+    },
+    {
+      "path": "prompts/v1.1.0/planner/first.schema.json",
+      "category": "versioned_prompts",
+      "sha256": "c03b91eab0a5dabfc6136258580101ec52419f0a55ef6177e89caf309c14be1d",
+      "bytes": 1842
+    },
+    {
+      "path": "prompts/v1.1.0/planner/first.system.txt",
+      "category": "versioned_prompts",
+      "sha256": "d9521175377a78a5da17472c2ecd99c189a693cd9eb974b455c7576209b7dc5c",
+      "bytes": 6291
+    },
+    {
+      "path": "prompts/v1.1.0/planner/second.schema.json",
+      "category": "versioned_prompts",
+      "sha256": "02577387f7cd836d59b8866d364221a71af9d6b2d85d53b4caaed857c3767f5b",
+      "bytes": 1973
+    },
+    {
+      "path": "prompts/v1.1.0/planner/second.system.txt",
+      "category": "versioned_prompts",
+      "sha256": "8c14a891b00b8544aeab68016f66b4f7e101888d8d9b90b6a7bd3b5a312f4fbf",
+      "bytes": 5934
+    },
+    {
+      "path": "prompts/v1.1.0/request-profiles.json",
+      "category": "versioned_prompts",
+      "sha256": "82df2cc368f014bc2d1dae498bcd15962bef6308e374617ad4e68dbbbcd0ee45",
+      "bytes": 3869
+    },
+    {
+      "path": "prompts/v1.2.0/CHANGELOG.md",
+      "category": "versioned_prompts",
+      "sha256": "071d85e2075e35f51166bc2863143f53dcb0856ae91439a411383943e0d61430",
+      "bytes": 1801
+    },
+    {
+      "path": "prompts/v1.2.0/VALIDATION.md",
+      "category": "versioned_prompts",
+      "sha256": "09454faeb924187fa72e86fa07651d407b843232e9220eedf7b4cfa890ff3ec6",
+      "bytes": 1128
+    },
+    {
+      "path": "prompts/v1.2.0/gui/confirm.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "46dd01b373d2eaacc1b1029e4c2bae433a04a39a914c61efcb6a1316a9e08cb2",
+      "bytes": 1947
+    },
+    {
+      "path": "prompts/v1.2.0/gui/original.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "6fae29f020001e43f5d4673373e8a386a774bfcea50ccabfceb34d1e0356037b",
+      "bytes": 1176
+    },
+    {
+      "path": "prompts/v1.2.0/gui/recovery.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "3de0b8059c862794ac52890d74729cf639b8addf4b7e530ed804e52d5a401446",
+      "bytes": 1807
+    },
+    {
+      "path": "prompts/v1.2.0/gui/system.txt",
+      "category": "versioned_prompts",
+      "sha256": "0ec9550b356730d06bb88bd7aadb9ce1fede3ea8aac49d4036fe4c0948b3af59",
+      "bytes": 6710
+    },
+    {
+      "path": "prompts/v1.2.0/gui/verify.task.txt",
+      "category": "versioned_prompts",
+      "sha256": "853b8ab1a6e2467d515b65a0fe26f7b1d6de79b942949e26cd29dfbfee100029",
+      "bytes": 1931
+    },
+    {
+      "path": "prompts/v1.2.0/manifest.json",
+      "category": "versioned_prompts",
+      "sha256": "be0723200c4159ae7f4b53b6bdccc78e82eb7ef5b6ce716beef4fae4ac6d003c",
+      "bytes": 4641
+    },
+    {
+      "path": "prompts/v1.2.0/request-profiles.json",
+      "category": "versioned_prompts",
+      "sha256": "d89d4f35956362a9cba30629ac09e37fb61da38e55b6aaa21036f4fe4a2ed653",
+      "bytes": 4022
+    },
+    {
+      "path": "tools/Invoke-FinalState050.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "4dfe639ad3cd6dfa85901ee96de2993b70c51006ec99327792f921d4582ba53c",
+      "bytes": 4925
+    },
+    {
+      "path": "tools/Invoke-FinalState051.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "34e691730af48a46fc138a6bda272157b8edb5bd2622e4158c9bd492a18ff990",
+      "bytes": 4796
+    },
+    {
+      "path": "tools/Invoke-FinalState060.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "c5d65956d40f163a819d9099b63454f58f5794baf20f32d27630d05e7081c637",
+      "bytes": 4862
+    },
+    {
+      "path": "tools/Invoke-FinalState070.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "ebfb66201cdc693137726e245b93ad32978fabfffbc1ce9562d123d0ada60f65",
+      "bytes": 4856
+    },
+    {
+      "path": "tools/Invoke-FinalState082.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "470b4664eff0d8d27506d46fd323a2e93cdd0bf62b7c608cc80e087dcf460d07",
+      "bytes": 4718
+    },
+    {
+      "path": "tools/Invoke-FinalState090.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "da74d7b0e865ef0ef686b38bdaf9374f4c525d85beb56efaa7865336865ca4e8",
+      "bytes": 4813
+    },
+    {
+      "path": "tools/Invoke-LocalizationUi060.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "6508bdeb46f937704cc4910a34af71143ae78a28873847a0dc1efb0c589dd512",
+      "bytes": 8128
+    },
+    {
+      "path": "tools/Invoke-Multiround032.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "44896344b7cbec047e406b34352ee2e0c23afdf93da2d4313fcafc3d4064e7ff",
+      "bytes": 6017
+    },
+    {
+      "path": "tools/Invoke-OverlayInteraction040.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "744e9240c3f81b12a0a8046fb78d3b6b113ced853e2d9f4fcbf0ee64d5a11a3a",
+      "bytes": 5751
+    },
+    {
+      "path": "tools/Invoke-RecordUi070.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "ef8ef541e738bc9dca6cdf5b83d3e3783a6dd06664e65f180b32636a766bc962",
+      "bytes": 6479
+    },
+    {
+      "path": "tools/Invoke-ThreeAppSmoke034.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "990eaf62d5b1d9d022e7bed7e2d2cc51fcee9cec8161849d01a1cea9ba0c2d39",
+      "bytes": 16876
+    },
+    {
+      "path": "tools/Invoke-UiLayout040.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "f3baaa1ece1e47bb839ccb3b6dcfaf4a5d2e4f4ca15ea8e5b8b530cb40b55cf2",
+      "bytes": 8785
+    },
+    {
+      "path": "tools/Invoke-UiScale040.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "bc62008e01fc96c80555dcf8932bc4318bf1e7229873d1df8b333e7ab233f579",
+      "bytes": 6873
+    },
+    {
+      "path": "tools/analyze_experiment_csv.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "b95ad0b4909abf00d20502ea87fa6d9db7997f402c5b33253601f33f680b3aa3",
+      "bytes": 11322
+    },
+    {
+      "path": "tools/collect_experiment_analysis090.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "8a119cc0eb3bb060450b8428cc5e0ab66d562b25bc3bc06b4ce53d19035da524",
+      "bytes": 7257
+    },
+    {
+      "path": "tools/freeze_baseline081.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "3e4ee6b27df6af21669c3fb5601aed0e6b5292ebe7aae6f96e28b994b326fbfb",
+      "bytes": 8981
+    },
+    {
+      "path": "tools/prepare_github_inventory.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "e699c7a9eb15f71df7c742093ce42c2f869c51115cb8507a8046380bf7e4722b",
+      "bytes": 12338
+    },
+    {
+      "path": "tools/run_stability_acceptance.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "b7e86cbec97866498e9b06f41bce532c0635d83517b8548afae8b105b962c504",
+      "bytes": 6395
+    },
+    {
+      "path": "tools/summarize_argb_localization035.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "5f4deabc0fd4f4d13dbb834020a189f6ffaeb853c98bc72cd259c56b4459bcc1",
+      "bytes": 5760
+    },
+    {
+      "path": "tools/summarize_calculator_fidelity034.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "d29c76f3fadb3ba553e036a94625a1f883d6d1237e58f437b7cf48a2f7745713",
+      "bytes": 5675
+    },
+    {
+      "path": "tools/summarize_multiround032.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "a7e912444fd1002214eb0249f97b6e2f629902bc7de647bf36324cfcde58cfef",
+      "bytes": 28160
+    },
+    {
+      "path": "tools/summarize_real_handoff040.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "57062c29ab6cbb4a96bab93e318dd58ca3ca225a16fb6a39c79d09f1a4f25af2",
+      "bytes": 22420
+    },
+    {
+      "path": "tools/summarize_stability082.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "69907790d895851485c3ea63260be126d55e64fd870505e7551bf8e725209f2d",
+      "bytes": 21757
+    },
+    {
+      "path": "tools/summarize_three_app_smoke034.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "b7d9ff58bc2211d7382221805108c848d13d83f49dfbb1f45516a00844322664",
+      "bytes": 4887
+    },
+    {
+      "path": "tools/tests/test_analyze_experiment_csv.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "61a239c846222e9deb18f6eff8a312b5d6f5db970dad416a5675eb2145f8c314",
+      "bytes": 7658
+    },
+    {
+      "path": "tools/verify_automatic_recovery080.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "4ba3bd0a3b56f926888d91a4ba129e2aa4caf19067ab0a46dffa207e3b582fb1",
+      "bytes": 5899
+    },
+    {
+      "path": "tools/verify_baseline.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "1d353629c2f4fe53a2276ad6c6418e82f5e0cdd0d948a3fd5ccfa54feb5934e1",
+      "bytes": 6195
+    },
+    {
+      "path": "tools/verify_execution_feedback_schema050.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "092910cb163999e7560ce40f63921d80e3c2c288a8d9e81b8162a5dbf685b926",
+      "bytes": 6273
+    },
+    {
+      "path": "tools/verify_experiment_ui090.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "9e4d0e8662830431d4f2ef425c780defc6566deb79016705cccd282a5f781545",
+      "bytes": 9846
+    },
+    {
+      "path": "tools/verify_harness_deterministic033.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "eb102696f8c75a5d48b0addd525bbb0cd1bad21a030e8db8ec16de530e4296bf",
+      "bytes": 5090
+    },
+    {
+      "path": "tools/verify_localization060.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "130982cb634fbfd1a601a60443628f56aefbdb0f96d445945d613aef1106941b",
+      "bytes": 6894
+    },
+    {
+      "path": "tools/verify_task_records070.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "5710620c1c2088c40435772ef88be9267317df3f8609a0cb750b9a0ef867d4ae",
+      "bytes": 4103
+    }
+  ],
+  "review": [
+    {
+      "path": "HandoffHarness_APK_Handoff/HANDOFF_ANDROID_APK.md",
+      "reasons": [
+        "HANDOFF_CONTENT_AND_PUBLICATION_RIGHTS_REVIEW"
+      ]
+    },
+    {
+      "path": "HandoffHarness_APK_Handoff/HANDOFF_ANDROID_APK_PROMPTS.md",
+      "reasons": [
+        "HANDOFF_CONTENT_AND_PUBLICATION_RIGHTS_REVIEW"
+      ]
+    },
+    {
+      "path": "android-app/build.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "docs/AUTOMATIC_START_AND_PROFILE_LIBRARY_0.3.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/CURRENT_BASELINE.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/DATA_AND_LOGGING_BOUNDARIES.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/DEVELOPMENT_STATUS.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/EXECUTION_FEEDBACK_0.5.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/EXPERIMENT_ANALYSIS_0.9.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW",
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "docs/EXPERIMENT_RECORDS_0.7.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/INTERACTION_AND_RUNTIME_STATES.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/MODEL_ADAPTER_1.3.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/MODEL_ADAPTER_AND_PROMPT_VERSIONS.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/MODEL_ADAPTER_AND_PROMPT_VERSIONS_v1.1.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/TECHNICAL_BASELINE.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW",
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "docs/UX_ITERATION_0.1.3.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/UX_ITERATION_0.2.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/UX_REVIEW_TASK_AND_OVERLAY_2026-11-02.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/VERIFICATION_SCOPE_AND_ATTRIBUTION.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/ACTION_FAILURE_RECOVERY_0.5.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/ARGB_LOCALIZATION_0.3.5.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/AUTOMATIC_START_AND_LIBRARY_0.3.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/BUDGET_AND_PLANNING.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/CALCULATOR_DIAGNOSTIC_0.1.3.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/CALCULATOR_FIDELITY_0.3.4.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/COMPACT_OVERLAY_0.5.1.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/DEVICE_SMOKE_0.1.1.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/DISCONNECTED_USER_REPORT.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/HANDOFF_SMOKE_0.1.2.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/HARNESS_DETERMINISTIC_0.3.3.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW",
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "docs/acceptance/HARNESS_DETERMINISTIC_MATRIX.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/HISTORY_AND_INFORMATION.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/LOCALIZATION_0.6.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/MULTIROUND_0.3.2.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/README.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/REAL_APP_CALCULATOR_0.3.3.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/REAL_TASK_0.3.1.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/RELIABILITY_DIAGNOSTIC_0.3.2.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/REMOTE_SMOKE_0.1.2.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/SAFE_TASK_SMOKE_0.1.2.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/STABILITY_0.8.2.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW",
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "docs/acceptance/TAKEOVER_AND_LATE_RESULTS.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/TASK_RECORDS_0.7.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/THREE_APP_SMOKE_0.3.4.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/UI_AND_OVERLAY_0.2.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/UI_AND_OVERLAY_0.4.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/acceptance/YOUTUBE_PAUSE_DIAGNOSTIC_0.4.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "prompts/v1.0.0/VALIDATION.md",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "prompts/v1.1.0/VALIDATION.md",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-FinalState050.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-FinalState051.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-FinalState060.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-FinalState070.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-FinalState082.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-FinalState090.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-LocalizationUi060.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-Multiround032.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-OverlayInteraction040.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-RecordUi070.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-ThreeAppSmoke034.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-UiLayout040.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Invoke-UiScale040.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/run_stability_acceptance.py",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/verify_experiment_ui090.py",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    }
+  ]
+}

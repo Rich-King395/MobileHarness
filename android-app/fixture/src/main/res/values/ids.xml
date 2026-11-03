@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fixture_row_01" type="id" />
+    <item name="fixture_row_02" type="id" />
+    <item name="fixture_row_03" type="id" />
+    <item name="fixture_row_04" type="id" />
+    <item name="fixture_row_05" type="id" />
+    <item name="fixture_row_06" type="id" />
+    <item name="fixture_row_07" type="id" />
+    <item name="fixture_row_08" type="id" />
+    <item name="fixture_row_09" type="id" />
+    <item name="fixture_row_10" type="id" />
+    <item name="fixture_row_11" type="id" />
+    <item name="fixture_row_12" type="id" />
+    <item name="fixture_row_13" type="id" />
+    <item name="fixture_row_14" type="id" />
+    <item name="fixture_row_15" type="id" />
+    <item name="fixture_row_16" type="id" />
+</resources>

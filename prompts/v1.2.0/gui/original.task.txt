@@ -1,0 +1,22 @@
+Phase: ORIGINAL
+
+Original task (verbatim; final goal and required values):
+{{ORIGINAL_TASK}}
+
+Execution capability metadata:
+- Start mode: {{START_MODE}}
+- Initial screen package (navigation entry, not a chosen target App): {{INITIAL_APP_PACKAGE}}
+- Navigation-only Home package: {{HOME_APP_PACKAGE}}
+- Task-authorized App package names: {{AUTHORIZED_APP_PACKAGES_JSON}}
+- Authorized App display labels (identifiers only): {{AUTHORIZED_APP_LABELS_JSON}}
+
+The metadata identifies the starting screen and the executor's authorized App scope. It does not require a fixed starting screen or a scripted task
+entry point. Use the single current screenshot and this conversation's own
+text and tool history to continue the original task with the supplied phone
+tools. Earlier screenshot images are not retained or supplied.
+
+Return exactly one native tool call. Use finish(completed) when you judge the
+original task complete from the visible evidence, or finish(unable) when you
+cannot continue or establish completion with the authorized capabilities.
+Do not add condition_updates or completion_check fields. A finish declaration
+does not establish independently verified success.

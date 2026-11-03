@@ -1,0 +1,158 @@
+{
+  "description": "Synthetic protocol fixtures only; valid does not mean task success or authorized real execution.",
+  "cases": [
+    {
+      "id": "execution_single_tap",
+      "phase": "ORIGINAL",
+      "valid": true,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {"id": "call_1", "type": "function", "function": {"name": "tap", "arguments": "{\"x\":500,\"y\":500}"}}
+        ]
+      }
+    },
+    {
+      "id": "execution_clear_focused_field",
+      "phase": "RECOVERY",
+      "valid": true,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_2", "type": "function", "function": {"name": "input_text", "arguments": "{\"text\":\"\"}"}}
+        ]
+      }
+    },
+    {
+      "id": "verify_wait",
+      "phase": "VERIFY",
+      "valid": true,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_3", "type": "function", "function": {"name": "wait", "arguments": "{\"duration_ms\":1000}"}}
+        ]
+      }
+    },
+    {
+      "id": "confirm_unable",
+      "phase": "CONFIRM",
+      "valid": true,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_4", "type": "function", "function": {"name": "finish", "arguments": "{\"outcome\":\"unable\",\"message\":\"当前画面无法确认保存状态。\"}"}}
+        ]
+      }
+    },
+    {
+      "id": "readonly_tap_forbidden",
+      "phase": "VERIFY",
+      "valid": false,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_5", "type": "function", "function": {"name": "tap", "arguments": "{\"x\":500,\"y\":500}"}}
+        ]
+      }
+    },
+    {
+      "id": "two_calls_execute_neither",
+      "phase": "ORIGINAL",
+      "valid": false,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_6", "type": "function", "function": {"name": "tap", "arguments": "{\"x\":500,\"y\":500}"}},
+          {"id": "call_7", "type": "function", "function": {"name": "press_key", "arguments": "{\"key\":\"back\"}"}}
+        ]
+      }
+    },
+    {
+      "id": "plain_stop_is_not_finish",
+      "phase": "ORIGINAL",
+      "valid": false,
+      "finish_reason": "stop",
+      "message": {"role": "assistant", "content": "done"}
+    },
+    {
+      "id": "truncated_call_never_executes",
+      "phase": "ORIGINAL",
+      "valid": false,
+      "finish_reason": "length",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_8", "type": "function", "function": {"name": "tap", "arguments": "{\"x\":500,\"y\":500}"}}
+        ]
+      }
+    },
+    {
+      "id": "coordinate_1000_forbidden",
+      "phase": "ORIGINAL",
+      "valid": false,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_9", "type": "function", "function": {"name": "tap", "arguments": "{\"x\":1000,\"y\":500}"}}
+        ]
+      }
+    },
+    {
+      "id": "coordinate_fraction_forbidden",
+      "phase": "ORIGINAL",
+      "valid": false,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_10", "type": "function", "function": {"name": "tap", "arguments": "{\"x\":500.5,\"y\":500}"}}
+        ]
+      }
+    },
+    {
+      "id": "extra_condition_updates_forbidden",
+      "phase": "RECOVERY",
+      "valid": false,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_11", "type": "function", "function": {"name": "finish", "arguments": "{\"outcome\":\"completed\",\"message\":\"当前可见要求已满足。\",\"condition_updates\":[]}"}}
+        ]
+      }
+    },
+    {
+      "id": "unknown_tool_forbidden",
+      "phase": "ORIGINAL",
+      "valid": false,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_12", "type": "function", "function": {"name": "adb_shell", "arguments": "{\"command\":\"input tap 500 500\"}"}}
+        ]
+      }
+    },
+    {
+      "id": "duplicate_argument_key_forbidden",
+      "phase": "ORIGINAL",
+      "valid": false,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "tool_calls": [
+          {"id": "call_13", "type": "function", "function": {"name": "tap", "arguments": "{\"x\":100,\"x\":900,\"y\":500}"}}
+        ]
+      }
+    }
+  ]
+}

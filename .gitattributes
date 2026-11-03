@@ -1,0 +1,3 @@
+# Preserve exact bytes, including the frozen prompt/specification hashes.
+# Newline normalization must be an explicit, versioned change.
+* -text

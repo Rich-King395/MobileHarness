@@ -1,0 +1,1059 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mobileharness:data-contracts:minimal-event:1.3.0",
+  "title": "MobileHarness minimal content-free event v1.3.0",
+  "description": "Closed metadata-only event contract. UUIDs identify local random session/configuration records and must not encode content. No task text, screenshots, screenshot hashes, frame identifiers, request/reply bodies, action arguments, app identities, service URLs or keys are allowed. elapsed_ms and duration_ms are relative durations only. No absolute timestamps.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.3.0"
+    },
+    "session_id": {
+      "$ref": "#/$defs/localUuid"
+    },
+    "seq": {
+      "$ref": "#/$defs/positiveInteger",
+      "description": "Monotonically increasing event sequence within this local session; continuity is checked by the eventual runtime."
+    },
+    "elapsed_ms": {
+      "$ref": "#/$defs/nonnegativeInteger",
+      "description": "Milliseconds relative to the task's monotonic start, never wall-clock time."
+    },
+    "event": {
+      "type": "string",
+      "enum": [
+        "session_started",
+        "control",
+        "model_call",
+        "action",
+        "planner_decision",
+        "error",
+        "session_ended",
+        "task_assessment",
+        "recovery"
+      ]
+    },
+    "data": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "session_id",
+    "seq",
+    "elapsed_ms",
+    "event",
+    "data"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "properties": {
+        "event": {
+          "const": "session_started"
+        },
+        "data": {
+          "$ref": "#/$defs/session_started"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event": {
+          "const": "control"
+        },
+        "data": {
+          "$ref": "#/$defs/control"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event": {
+          "const": "model_call"
+        },
+        "data": {
+          "$ref": "#/$defs/model_call"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event": {
+          "const": "action"
+        },
+        "data": {
+          "$ref": "#/$defs/action"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event": {
+          "const": "planner_decision"
+        },
+        "data": {
+          "$ref": "#/$defs/planner_decision"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event": {
+          "const": "error"
+        },
+        "data": {
+          "$ref": "#/$defs/error"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event": {
+          "const": "session_ended"
+        },
+        "data": {
+          "$ref": "#/$defs/session_ended"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event": {
+          "const": "task_assessment"
+        },
+        "data": {
+          "$ref": "#/$defs/task_assessment"
+        }
+      }
+    },
+    {
+      "properties": {
+        "event": {
+          "const": "recovery"
+        },
+        "data": {
+          "$ref": "#/$defs/recovery"
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "nonnegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "positiveInteger": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "localUuid": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "description": "Locally generated random UUIDv4, independent of device identifiers, task content and account/service names."
+    },
+    "stableVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)[.](0|[1-9][0-9]*)[.](0|[1-9][0-9]*)$"
+    },
+    "session_started": {
+      "type": "object",
+      "properties": {
+        "harness_enabled": {
+          "type": "boolean"
+        },
+        "gui_budget": {
+          "$ref": "#/$defs/positiveInteger"
+        },
+        "prompt_bundle_version": {
+          "$ref": "#/$defs/stableVersion"
+        },
+        "adapter_version": {
+          "type": "string",
+          "enum": [
+            "1.1.0",
+            "1.4.0"
+          ]
+        },
+        "bundle_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$",
+          "description": "SHA-256 of the versioned prompt bundle manifest only. Never use this field for a screenshot, task, reply or user-content hash."
+        },
+        "gui_profile_id": {
+          "$ref": "#/$defs/localUuid"
+        },
+        "planner_profile_id": {
+          "$ref": "#/$defs/localUuid"
+        },
+        "execution_policy_version": {
+          "const": "1.2.0",
+          "description": "Bounded automatic technical recovery. Each new GUI request consumes the shared budget; failed native actions are never replayed. Planner call limits remain unchanged."
+        }
+      },
+      "required": [
+        "harness_enabled",
+        "gui_budget",
+        "prompt_bundle_version",
+        "adapter_version",
+        "execution_policy_version",
+        "bundle_manifest_sha256",
+        "gui_profile_id",
+        "planner_profile_id"
+      ],
+      "additionalProperties": false,
+      "description": "Configuration references are opaque local UUIDs, including a local Planner profile reference when Harness is disabled. No service URL, free-form model name, app package, account or credential is recorded."
+    },
+    "control": {
+      "type": "object",
+      "properties": {
+        "transition": {
+          "type": "string",
+          "enum": [
+            "takeover_requested",
+            "manual_granted",
+            "return_requested",
+            "return_committed",
+            "stop_requested",
+            "pause_unconfirmed",
+            "retry_requested"
+          ]
+        }
+      },
+      "required": [
+        "transition"
+      ],
+      "additionalProperties": false
+    },
+    "model_call": {
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": [
+            "GUI",
+            "PLANNER"
+          ]
+        },
+        "phase": {
+          "type": "string",
+          "enum": [
+            "ORIGINAL",
+            "VERIFY",
+            "CONFIRM",
+            "RECOVERY",
+            "PLANNING"
+          ]
+        },
+        "call_index": {
+          "$ref": "#/$defs/positiveInteger"
+        },
+        "gui_steps_used": {
+          "$ref": "#/$defs/nonnegativeInteger"
+        },
+        "planner_calls_used": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "duration_ms": {
+          "$ref": "#/$defs/nonnegativeInteger",
+          "description": "Zero on started; elapsed duration of this actual attempt on a terminal record, never an absolute timestamp."
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "started",
+            "succeeded",
+            "transport_error",
+            "api_error",
+            "invalid_output",
+            "cancelled",
+            "late_discarded"
+          ]
+        },
+        "http_status": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 599
+        }
+      },
+      "required": [
+        "role",
+        "phase",
+        "call_index",
+        "gui_steps_used",
+        "planner_calls_used",
+        "duration_ms",
+        "status"
+      ],
+      "additionalProperties": false,
+      "description": "Write started once before the actual attempt after charging its counter, then exactly one terminal record with the same session_id, role and call_index. Record uniqueness and cross-event counter continuity are runtime responsibilities. succeeded means the model request and output were accepted, not task success.",
+      "oneOf": [
+        {
+          "properties": {
+            "role": {
+              "const": "GUI"
+            },
+            "phase": {
+              "type": "string",
+              "enum": [
+                "ORIGINAL",
+                "VERIFY",
+                "CONFIRM",
+                "RECOVERY"
+              ]
+            },
+            "gui_steps_used": {
+              "minimum": 1
+            }
+          }
+        },
+        {
+          "properties": {
+            "role": {
+              "const": "PLANNER"
+            },
+            "phase": {
+              "const": "PLANNING"
+            },
+            "call_index": {
+              "enum": [
+                1,
+                2
+              ]
+            },
+            "planner_calls_used": {
+              "minimum": 1
+            }
+          },
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "call_index": {
+                    "const": 1
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "planner_calls_used": {
+                    "const": 1
+                  }
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "call_index": {
+                    "const": 2
+                  }
+                }
+              },
+              "then": {
+                "properties": {
+                  "planner_calls_used": {
+                    "const": 2
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "started"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "duration_ms": {
+                "const": 0
+              }
+            },
+            "not": {
+              "required": [
+                "http_status"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "phase": {
+          "type": "string",
+          "enum": [
+            "ORIGINAL",
+            "VERIFY",
+            "CONFIRM",
+            "RECOVERY"
+          ]
+        },
+        "gui_step": {
+          "$ref": "#/$defs/positiveInteger"
+        },
+        "action_type": {
+          "type": "string",
+          "enum": [
+            "tap",
+            "long_press",
+            "swipe",
+            "input_text",
+            "press_key",
+            "launch_app",
+            "wait",
+            "finish"
+          ]
+        },
+        "result": {
+          "type": "string",
+          "enum": [
+            "completed",
+            "rejected",
+            "cancelled",
+            "unknown",
+            "device_error"
+          ]
+        },
+        "declared_outcome": {
+          "type": "string",
+          "enum": [
+            "completed",
+            "unable"
+          ]
+        },
+        "execution_failure_reason": {
+          "$ref": "#/$defs/executionFailureReason"
+        }
+      },
+      "required": [
+        "phase",
+        "gui_step",
+        "action_type",
+        "result"
+      ],
+      "additionalProperties": false,
+      "description": "Contains no tool parameters, coordinates, text or package names. result records local execution outcome only; completed is not proof of business-state persistence or task success. For finish, declared_outcome records the model's phase declaration only.",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "action_type": {
+                "const": "finish"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "declared_outcome"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "declared_outcome"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "execution_failure_reason"
+            ]
+          },
+          "then": {
+            "properties": {
+              "result": {
+                "not": {
+                  "const": "completed"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "planner_decision": {
+      "type": "object",
+      "properties": {
+        "planner_call_index": {
+          "type": "integer",
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "completion_status": {
+          "type": "string",
+          "enum": [
+            "COMPLETE",
+            "INCOMPLETE",
+            "UNVERIFIABLE"
+          ]
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "EXECUTE",
+            "VERIFY",
+            "FALLBACK",
+            "FINISH"
+          ]
+        }
+      },
+      "required": [
+        "planner_call_index",
+        "completion_status",
+        "decision"
+      ],
+      "additionalProperties": false,
+      "description": "Only branch metadata. No objective, conditions, executor report or model reply. A COMPLETE assessment is not independently verified success.",
+      "oneOf": [
+        {
+          "properties": {
+            "planner_call_index": {
+              "const": 1
+            },
+            "decision": {
+              "const": "VERIFY"
+            }
+          }
+        },
+        {
+          "properties": {
+            "planner_call_index": {
+              "const": 1
+            },
+            "completion_status": {
+              "const": "INCOMPLETE"
+            },
+            "decision": {
+              "const": "EXECUTE"
+            }
+          }
+        },
+        {
+          "properties": {
+            "planner_call_index": {
+              "const": 1
+            },
+            "completion_status": {
+              "enum": [
+                "INCOMPLETE",
+                "UNVERIFIABLE"
+              ]
+            },
+            "decision": {
+              "const": "FALLBACK"
+            }
+          }
+        },
+        {
+          "properties": {
+            "planner_call_index": {
+              "const": 2
+            },
+            "completion_status": {
+              "const": "COMPLETE"
+            },
+            "decision": {
+              "const": "FINISH"
+            }
+          }
+        },
+        {
+          "properties": {
+            "planner_call_index": {
+              "const": 2
+            },
+            "completion_status": {
+              "const": "INCOMPLETE"
+            },
+            "decision": {
+              "const": "EXECUTE"
+            }
+          }
+        },
+        {
+          "properties": {
+            "planner_call_index": {
+              "const": 2
+            },
+            "completion_status": {
+              "enum": [
+                "INCOMPLETE",
+                "UNVERIFIABLE"
+              ]
+            },
+            "decision": {
+              "const": "FALLBACK"
+            }
+          }
+        }
+      ]
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "MODEL",
+            "DEVICE",
+            "COORDINATOR"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "enum": [
+            "TRANSPORT_ERROR",
+            "API_ERROR",
+            "INVALID_OUTPUT",
+            "AUTHORIZATION_UNAVAILABLE",
+            "SCREENSHOT_FAILED",
+            "INPUT_FAILED",
+            "INPUT_STATUS_UNKNOWN",
+            "SERVICE_DISCONNECTED",
+            "INVALID_STATE",
+            "PAUSE_UNCONFIRMED",
+            "STOP_ENTRY_UNAVAILABLE",
+            "OBSERVATION_UNAVAILABLE"
+          ]
+        },
+        "protocol_reason": {
+          "type": "string",
+          "enum": [
+            "RESPONSE_UTF8_INVALID",
+            "RESPONSE_BODY_MISSING",
+            "RESPONSE_TOO_LARGE",
+            "COORDINATOR_REPLY_REJECTED",
+            "COORDINATOR_PLANNER_REJECTED",
+            "RESPONSE_JSON_INVALID",
+            "RESPONSE_JSON_DUPLICATE_FIELD",
+            "RESPONSE_JSON_DEPTH",
+            "RESPONSE_ROOT",
+            "RESPONSE_ERROR",
+            "CHOICES_SHAPE",
+            "CHOICE_COUNT",
+            "CHOICE_SHAPE",
+            "FINISH_REASON",
+            "RESPONSE_TRUNCATED",
+            "GUI_STOP_WITHOUT_TOOL",
+            "CHOICE_INDEX",
+            "MESSAGE_SHAPE",
+            "MESSAGE_ROLE",
+            "REASONING_CONTENT",
+            "GUI_CONTENT",
+            "TOOL_CALLS_SHAPE",
+            "TOOL_CALL_COUNT",
+            "TOOL_CALL_SHAPE",
+            "TOOL_CALL_TYPE",
+            "TOOL_CALL_ID",
+            "FUNCTION_SHAPE",
+            "FUNCTION_FIELDS",
+            "TOOL_NAME_TYPE",
+            "TOOL_NOT_ALLOWED",
+            "ARGUMENTS_TYPE",
+            "ARGUMENTS_JSON_INVALID",
+            "ARGUMENTS_JSON_DUPLICATE_FIELD",
+            "ARGUMENTS_JSON_DEPTH",
+            "ARGUMENTS_SHAPE",
+            "ARGUMENTS_INTEGER_RANGE",
+            "SCHEMA_MISSING_REQUIRED_FIELD",
+            "SCHEMA_ADDITIONAL_FIELD",
+            "SCHEMA_WRONG_TYPE",
+            "SCHEMA_INTEGER_FORMAT",
+            "SCHEMA_VALUE_OUT_OF_RANGE",
+            "SCHEMA_STRING_TOO_SHORT",
+            "SCHEMA_ENUM_VALUE",
+            "SCHEMA_UNSUPPORTED",
+            "PLANNER_CALL_INDEX",
+            "PLANNER_TOOL_CALLS",
+            "PLANNER_CONTENT_TYPE",
+            "PLANNER_JSON_INVALID",
+            "PLANNER_JSON_DUPLICATE_FIELD",
+            "PLANNER_JSON_DEPTH",
+            "PLANNER_OUTPUT_SHAPE",
+            "PLANNER_FIELDS",
+            "PLANNER_VALUE_TYPE",
+            "PLANNER_CONDITIONS",
+            "PLANNER_BRANCH",
+            "PLANNER_FINISH_FIELDS",
+            "PLANNER_OBJECTIVE",
+            "VALIDATION_ERROR"
+          ],
+          "description": "Optional fixed classification for MODEL INVALID_OUTPUT only. No provider-controlled strings, reply text, JSON keys, arguments, lengths or exception details. VALID is never an error reason."
+        },
+        "execution_failure_reason": {
+          "$ref": "#/$defs/executionFailureReason"
+        },
+        "transport_reason": {
+          "type": "string",
+          "enum": [
+            "DNS_FAILURE",
+            "TLS_HANDSHAKE_FAILED",
+            "TLS_PEER_UNVERIFIED",
+            "TIMEOUT",
+            "CONNECT_FAILED",
+            "REQUEST_REPLAY_BLOCKED",
+            "NETWORK_IO"
+          ],
+          "description": "Fixed transport exception classification only; no exception message, URL, request body or credentials."
+        },
+        "http_status": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 599
+        }
+      },
+      "required": [
+        "category",
+        "code"
+      ],
+      "additionalProperties": false,
+      "description": "Fixed category-specific codes only. Never attach exception text, provider error bodies, stack traces, URLs or raw messages. Task incompletion is not a MODEL or DEVICE error.",
+      "oneOf": [
+        {
+          "properties": {
+            "category": {
+              "const": "MODEL"
+            },
+            "code": {
+              "type": "string",
+              "enum": [
+                "TRANSPORT_ERROR",
+                "API_ERROR",
+                "INVALID_OUTPUT"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "const": "DEVICE"
+            },
+            "code": {
+              "type": "string",
+              "enum": [
+                "AUTHORIZATION_UNAVAILABLE",
+                "SCREENSHOT_FAILED",
+                "INPUT_FAILED",
+                "INPUT_STATUS_UNKNOWN",
+                "SERVICE_DISCONNECTED"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "category": {
+              "const": "COORDINATOR"
+            },
+            "code": {
+              "type": "string",
+              "enum": [
+                "INVALID_STATE",
+                "PAUSE_UNCONFIRMED",
+                "STOP_ENTRY_UNAVAILABLE",
+                "OBSERVATION_UNAVAILABLE"
+              ]
+            }
+          }
+        }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "protocol_reason"
+            ]
+          },
+          "then": {
+            "properties": {
+              "category": {
+                "const": "MODEL"
+              },
+              "code": {
+                "const": "INVALID_OUTPUT"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "execution_failure_reason"
+            ]
+          },
+          "then": {
+            "properties": {
+              "category": {
+                "const": "DEVICE"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "transport_reason"
+            ]
+          },
+          "then": {
+            "properties": {
+              "category": {
+                "const": "MODEL"
+              },
+              "code": {
+                "const": "TRANSPORT_ERROR"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "http_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "category": {
+                "const": "MODEL"
+              },
+              "code": {
+                "const": "API_ERROR"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "session_ended": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string",
+          "enum": [
+            "model_declared_complete",
+            "model_unable",
+            "user_stop",
+            "budget_exhausted",
+            "interrupted",
+            "runtime_failure"
+          ]
+        },
+        "completion_source": {
+          "type": "string",
+          "enum": [
+            "none",
+            "gui",
+            "planner",
+            "confirmation"
+          ]
+        },
+        "gui_steps_used": {
+          "$ref": "#/$defs/nonnegativeInteger"
+        },
+        "planner_calls_used": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        }
+      },
+      "required": [
+        "reason",
+        "completion_source",
+        "gui_steps_used",
+        "planner_calls_used"
+      ],
+      "additionalProperties": false,
+      "description": "Ends the automated flow only. completion_source identifies the declaration behind the ending, not verified success. A missing task_assessment event means unknown; never infer a user judgment from this event.",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "model_declared_complete"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "completion_source": {
+                "enum": [
+                  "gui",
+                  "planner",
+                  "confirmation"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "reason": {
+                "const": "runtime_failure"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "completion_source": {
+                "const": "none"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "task_assessment": {
+      "type": "object",
+      "properties": {
+        "assessment": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "user_reported_complete",
+            "user_reported_incomplete"
+          ]
+        }
+      },
+      "required": [
+        "assessment"
+      ],
+      "additionalProperties": false,
+      "description": "Separate explicit user judgment, which may be recorded after session_ended or changed later. No event means unknown. This is not researcher verification or an automatic task-success label."
+    },
+    "executionFailureReason": {
+      "type": "string",
+      "enum": [
+        "NO_FOCUSED_INPUT",
+        "INPUT_NOT_FOCUSED",
+        "INPUT_NOT_EDITABLE",
+        "INPUT_DISABLED",
+        "INPUT_ACTION_UNSUPPORTED",
+        "SET_TEXT_REJECTED",
+        "IME_SUBMIT_UNSUPPORTED",
+        "GLOBAL_ACTION_REJECTED",
+        "GESTURE_NOT_DISPATCHED",
+        "GESTURE_CANCELLED",
+        "STALE_OBSERVATION",
+        "OVERLAY_TARGET_BLOCKED",
+        "PROTECTED_INPUT",
+        "INPUT_APP_NOT_AUTHORIZED",
+        "CONTROL_NOT_AVAILABLE",
+        "DEVICE_NOT_READY",
+        "SCREENSHOT_UNAVAILABLE",
+        "INPUT_RESULT_UNKNOWN"
+      ],
+      "description": "Fixed local execution classification only. No input values, coordinates, node properties, app names, exception messages or other user content."
+    },
+    "recovery": {
+      "type": "object",
+      "description": "One explicit bounded recovery schedule, start or cancellation. recovery_id identifies the schedule within this task. A scheduled or cancelled recovery is not an additional model call. Actual GUI attempts remain individually charged and recorded in model_call. No old input is replayed.",
+      "properties": {
+        "recovery_id": {
+          "$ref": "#/$defs/positiveInteger"
+        },
+        "target": {
+          "type": "string",
+          "enum": [
+            "GUI",
+            "OBSERVATION",
+            "PLANNER_OBSERVATION"
+          ]
+        },
+        "attempt": {
+          "type": "integer",
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "delay_ms": {
+          "type": "integer",
+          "enum": [
+            1000,
+            3000
+          ]
+        },
+        "trigger_code": {
+          "type": "string",
+          "enum": [
+            "TRANSPORT_ERROR",
+            "API_ERROR",
+            "INVALID_OUTPUT",
+            "AUTHORIZATION_UNAVAILABLE",
+            "SCREENSHOT_FAILED",
+            "INPUT_FAILED",
+            "INPUT_STATUS_UNKNOWN",
+            "SERVICE_DISCONNECTED",
+            "INVALID_STATE",
+            "PAUSE_UNCONFIRMED",
+            "STOP_ENTRY_UNAVAILABLE",
+            "OBSERVATION_UNAVAILABLE"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "scheduled",
+            "started",
+            "cancelled"
+          ]
+        }
+      },
+      "required": [
+        "recovery_id",
+        "target",
+        "attempt",
+        "delay_ms",
+        "trigger_code",
+        "status"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "attempt": {
+                "const": 1
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "delay_ms": {
+                "const": 1000
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "delay_ms": {
+                "const": 3000
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

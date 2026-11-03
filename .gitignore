@@ -1,0 +1,76 @@
+# Local machine and editor state (never required to install the APK)
+**/local.properties
+**/.gradle/
+**/.kotlin/
+**/.idea/
+**/.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Generated outputs; keep Gradle Wrapper JAR and all source/test directories
+**/build/
+**/out/
+**/.cxx/
+**/.externalNativeBuild/
+**/captures/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.apk
+*.aab
+*.apks
+*.xapk
+*.hprof
+*.heapdump
+*.trace
+*.perfetto-trace
+*.log
+*.zip
+
+# Signing material and credentials; public certificate publication is a separate review
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.key
+*.pem
+key.properties
+keystore.properties
+signing.properties
+signing.local.properties
+*keystore*.properties
+*signing*.properties
+.env
+.env.*
+!.env.example
+!.env.template
+local-secrets*
+/secrets/
+/private/
+
+# Local research evidence, screenshots, archives and assistant installations
+# Ignoring preserves the original files on disk; it does not delete or sanitize them.
+/baselines/
+/docs/acceptance/results/
+/docs/previews/
+/docs/local-archive/
+/.agents/
+/.codex/
+
+# User/device data and analysis exports accidentally copied into the workspace
+**/no_backup/
+/local-data/
+/exports/
+/screenshots/
+/local-analysis/
+/local-analysis-*/
+*.csv
+*.jsonl
+*.ndjson
+
+# Frozen prompt references and synthetic tests remain eligible; do not rewrite them
+# to remove machine-path references. Review files flagged in the upload inventory.

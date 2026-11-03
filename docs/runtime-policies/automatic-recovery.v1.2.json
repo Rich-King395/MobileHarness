@@ -1,0 +1,43 @@
+{
+  "execution_policy_version": "1.2.0",
+  "app_version": "0.8.0-dev",
+  "default_in_app": true,
+  "historical_acceptance_policy": "Explicit automaticRecovery=false retains policy 1.1.0; no user-facing legacy setting.",
+  "recovery": {
+    "maximum_consecutive_recoveries_per_failure_class": 2,
+    "delays_ms": [1000, 3000],
+    "gui_failure_streak_reset": "A valid parsed GUI decision.",
+    "observation_failure_streak_reset": "A successful current observation with valid geometry.",
+    "gui_requests": "Fresh observation and new counted GUI attempt; never replay a phone action or enable HTTP implicit retries.",
+    "observations": "Bounded independent retry allowance; no model step charged before a model attempt is started.",
+    "transient_gui_http_statuses": [408, 429, 500, 502, 503, 504],
+    "nonrecoverable_transport_reasons": ["TLS_PEER_UNVERIFIED", "REQUEST_REPLAY_BLOCKED"],
+    "tls_handshake_failure": "May be a transient connection interruption. Try a fresh counted request within the same finite limit, keeping platform certificate and hostname verification unchanged.",
+    "invalid_gui_output": "Discard the invalid reply and request a new decision; no tool, argument or coordinate correction.",
+    "temporary_observation": "SCREENSHOT_FAILED, or AUTHORIZATION_UNAVAILABLE with fixed SCREENSHOT_UNAVAILABLE reason; control, authorization, locked-device, protected-input and uncertain-input boundaries remain enforced."
+  },
+  "planner": {
+    "already_sent_failure": "Keep existing fallback rule; never repair or resend that ordinal.",
+    "not_yet_sent_observation_failure": "Bounded fresh observation before the same unsent ordinal, never charge or fabricate a call.",
+    "maximum_calls": 2,
+    "maximum_readonly_check_rounds": 1,
+    "second_planner_finish": "Ends directly, without another GUI request."
+  },
+  "control": {
+    "takeover_or_stop": "Invalidate and cancel recovery delay before further observation or dispatch.",
+    "manual": "No automatic capture, model request or input.",
+    "input_terminal_unknown": "End request must retain the native input barrier; never continue model execution past unknown input.",
+    "harness_off": "Same recovery policy, original task and own history; no Planner, stage-history switch or remaining-objective injection."
+  },
+  "termination": {
+    "persistent_or_hard_failure": "runtime_failure with completion_source=none and original categorized error; never task success or a fabricated model unable.",
+    "gui_budget_exhausted": "budget_exhausted, without a free repair/finish or extra Planner entry.",
+    "audit_failure": "Fail closed, end interrupted after genuine native input terminals; no unlogged continuation."
+  },
+  "data": {
+    "minimal_event_schema": "1.3.0 for new automatic-recovery sessions; historical sessions keep their schema.",
+    "recovery_metadata": ["recovery_id", "target", "attempt", "delay_ms", "trigger_code", "status"],
+    "screenshots": "Necessary frames in RAM only; no history, file, export or manual-period capture.",
+    "credentials": "Existing encrypted local profile store; no key in source, logs or exports."
+  }
+}

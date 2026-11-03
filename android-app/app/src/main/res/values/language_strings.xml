@@ -1,0 +1,9 @@
+<resources>
+    <string name="language_title">App language</string>
+    <string name="language_system">Follow system</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_english">English</string>
+    <string name="language_close">Close</string>
+    <string name="language_finish_task">Finish the current task to change language.</string>
+    <string name="language_change_failed">Could not change the language. Try again.</string>
+</resources>

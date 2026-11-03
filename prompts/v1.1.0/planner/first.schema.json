@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mobileharness:prompts:v1.0.0:planner:first",
+  "title": "Planner first-call output v1.0.0",
+  "description": "Exactly four fields. First-call COMPLETE requires one bounded read-only VERIFY. This schema checks branch structure; it does not establish task success or verify visible evidence.",
+  "type": "object",
+  "properties": {
+    "completion_status": {
+      "type": "string",
+      "enum": ["COMPLETE", "INCOMPLETE", "UNVERIFIABLE"]
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["EXECUTE", "VERIFY", "FALLBACK"]
+    },
+    "objective": {
+      "$ref": "#/$defs/nonemptyText"
+    },
+    "completion_conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonemptyText"
+      }
+    }
+  },
+  "required": [
+    "completion_status",
+    "decision",
+    "objective",
+    "completion_conditions"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "title": "Actionable remaining work",
+      "properties": {
+        "completion_status": {"const": "INCOMPLETE"},
+        "decision": {"const": "EXECUTE"},
+        "completion_conditions": {"minItems": 1}
+      }
+    },
+    {
+      "title": "One bounded read-only check or final confirmation",
+      "properties": {
+        "completion_status": {
+          "enum": ["COMPLETE", "INCOMPLETE", "UNVERIFIABLE"]
+        },
+        "decision": {"const": "VERIFY"},
+        "completion_conditions": {"minItems": 1}
+      }
+    },
+    {
+      "title": "Resume the original task from the current state",
+      "properties": {
+        "completion_status": {"enum": ["INCOMPLETE", "UNVERIFIABLE"]},
+        "decision": {"const": "FALLBACK"}
+      }
+    }
+  ],
+  "$defs": {
+    "nonemptyText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    }
+  }
+}

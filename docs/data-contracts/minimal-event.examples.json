@@ -1,0 +1,2163 @@
+{
+  "schema_version": "1.0.0",
+  "synthetic": true,
+  "fixture_scope": "isolated_records_not_a_session_log",
+  "description": "Synthetic structural fixtures only. UUIDs and manifest digest are placeholders, not device/account/content identifiers. Forbidden-content fixtures use empty values and contain no keys, screenshots, tasks or replies. These are not a runtime implementation or state-machine simulation.",
+  "cases": [
+    {
+      "id": "valid_session_started_harness_on",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "valid_session_started_harness_off",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 2,
+        "elapsed_ms": 300,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": false,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "valid_control_takeover_requested",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 3,
+        "elapsed_ms": 400,
+        "event": "control",
+        "data": {
+          "transition": "takeover_requested"
+        }
+      }
+    },
+    {
+      "id": "valid_control_manual_granted",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 4,
+        "elapsed_ms": 500,
+        "event": "control",
+        "data": {
+          "transition": "manual_granted"
+        }
+      }
+    },
+    {
+      "id": "valid_control_return_requested",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 5,
+        "elapsed_ms": 600,
+        "event": "control",
+        "data": {
+          "transition": "return_requested"
+        }
+      }
+    },
+    {
+      "id": "valid_control_return_committed",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 6,
+        "elapsed_ms": 700,
+        "event": "control",
+        "data": {
+          "transition": "return_committed"
+        }
+      }
+    },
+    {
+      "id": "valid_control_stop_requested",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 7,
+        "elapsed_ms": 800,
+        "event": "control",
+        "data": {
+          "transition": "stop_requested"
+        }
+      }
+    },
+    {
+      "id": "valid_control_pause_unconfirmed",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 8,
+        "elapsed_ms": 900,
+        "event": "control",
+        "data": {
+          "transition": "pause_unconfirmed"
+        }
+      }
+    },
+    {
+      "id": "valid_gui_call_started",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 9,
+        "elapsed_ms": 1000,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 0,
+          "status": "started"
+        }
+      }
+    },
+    {
+      "id": "valid_gui_call_succeeded",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 200
+        }
+      }
+    },
+    {
+      "id": "valid_gui_call_transport_error",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 11,
+        "elapsed_ms": 1200,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "transport_error"
+        }
+      }
+    },
+    {
+      "id": "valid_gui_call_api_error",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 12,
+        "elapsed_ms": 1300,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "api_error",
+          "http_status": 429
+        }
+      }
+    },
+    {
+      "id": "valid_gui_call_invalid_output",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 13,
+        "elapsed_ms": 1400,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "invalid_output",
+          "http_status": 200
+        }
+      }
+    },
+    {
+      "id": "valid_gui_call_cancelled",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 14,
+        "elapsed_ms": 1500,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "cancelled"
+        }
+      }
+    },
+    {
+      "id": "valid_gui_call_late_discarded",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 15,
+        "elapsed_ms": 1600,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "late_discarded"
+        }
+      }
+    },
+    {
+      "id": "valid_gui_phase_verify",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 16,
+        "elapsed_ms": 1700,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "VERIFY",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 1,
+          "duration_ms": 500,
+          "status": "succeeded"
+        }
+      }
+    },
+    {
+      "id": "valid_gui_phase_confirm",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 17,
+        "elapsed_ms": 1800,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "CONFIRM",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 1,
+          "duration_ms": 500,
+          "status": "succeeded"
+        }
+      }
+    },
+    {
+      "id": "valid_gui_phase_recovery",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 18,
+        "elapsed_ms": 1900,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "RECOVERY",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 1,
+          "duration_ms": 500,
+          "status": "succeeded"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_first_started",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 19,
+        "elapsed_ms": 2000,
+        "event": "model_call",
+        "data": {
+          "role": "PLANNER",
+          "phase": "PLANNING",
+          "call_index": 1,
+          "gui_steps_used": 7,
+          "planner_calls_used": 1,
+          "duration_ms": 0,
+          "status": "started"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_first_succeeded",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 20,
+        "elapsed_ms": 2100,
+        "event": "model_call",
+        "data": {
+          "role": "PLANNER",
+          "phase": "PLANNING",
+          "call_index": 1,
+          "gui_steps_used": 7,
+          "planner_calls_used": 1,
+          "duration_ms": 300,
+          "status": "succeeded",
+          "http_status": 200
+        }
+      }
+    },
+    {
+      "id": "valid_planner_second_started",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 21,
+        "elapsed_ms": 2200,
+        "event": "model_call",
+        "data": {
+          "role": "PLANNER",
+          "phase": "PLANNING",
+          "call_index": 2,
+          "gui_steps_used": 7,
+          "planner_calls_used": 2,
+          "duration_ms": 0,
+          "status": "started"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_second_succeeded",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 22,
+        "elapsed_ms": 2300,
+        "event": "model_call",
+        "data": {
+          "role": "PLANNER",
+          "phase": "PLANNING",
+          "call_index": 2,
+          "gui_steps_used": 7,
+          "planner_calls_used": 2,
+          "duration_ms": 450,
+          "status": "succeeded",
+          "http_status": 200
+        }
+      }
+    },
+    {
+      "id": "valid_action_tap",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 23,
+        "elapsed_ms": 2400,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "completed"
+        }
+      }
+    },
+    {
+      "id": "valid_action_long_press",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 24,
+        "elapsed_ms": 2500,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "long_press",
+          "result": "completed"
+        }
+      }
+    },
+    {
+      "id": "valid_action_swipe",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 25,
+        "elapsed_ms": 2600,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "swipe",
+          "result": "completed"
+        }
+      }
+    },
+    {
+      "id": "valid_action_input_text",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 26,
+        "elapsed_ms": 2700,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "input_text",
+          "result": "completed"
+        }
+      }
+    },
+    {
+      "id": "valid_action_press_key",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 27,
+        "elapsed_ms": 2800,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "press_key",
+          "result": "completed"
+        }
+      }
+    },
+    {
+      "id": "valid_action_launch_app",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 28,
+        "elapsed_ms": 2900,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "launch_app",
+          "result": "completed"
+        }
+      }
+    },
+    {
+      "id": "valid_action_wait",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 29,
+        "elapsed_ms": 3000,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "wait",
+          "result": "completed"
+        }
+      }
+    },
+    {
+      "id": "valid_action_finish",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 30,
+        "elapsed_ms": 3100,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "finish",
+          "result": "completed",
+          "declared_outcome": "completed"
+        }
+      }
+    },
+    {
+      "id": "valid_action_result_rejected",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 31,
+        "elapsed_ms": 3200,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "rejected"
+        }
+      }
+    },
+    {
+      "id": "valid_action_result_cancelled",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 32,
+        "elapsed_ms": 3300,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "cancelled"
+        }
+      }
+    },
+    {
+      "id": "valid_action_result_unknown",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 33,
+        "elapsed_ms": 3400,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "unknown"
+        }
+      }
+    },
+    {
+      "id": "valid_action_result_device_error",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 34,
+        "elapsed_ms": 3500,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "device_error"
+        }
+      }
+    },
+    {
+      "id": "valid_finish_unable_is_declaration_only",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 35,
+        "elapsed_ms": 3600,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "finish",
+          "result": "completed",
+          "declared_outcome": "unable"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_1_complete_verify",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 36,
+        "elapsed_ms": 3700,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "COMPLETE",
+          "decision": "VERIFY"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_1_incomplete_execute",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 37,
+        "elapsed_ms": 3800,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "INCOMPLETE",
+          "decision": "EXECUTE"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_1_incomplete_verify",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 38,
+        "elapsed_ms": 3900,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "INCOMPLETE",
+          "decision": "VERIFY"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_1_incomplete_fallback",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 39,
+        "elapsed_ms": 4000,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "INCOMPLETE",
+          "decision": "FALLBACK"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_1_unverifiable_verify",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 40,
+        "elapsed_ms": 4100,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "UNVERIFIABLE",
+          "decision": "VERIFY"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_1_unverifiable_fallback",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 41,
+        "elapsed_ms": 4200,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "UNVERIFIABLE",
+          "decision": "FALLBACK"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_2_complete_finish",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 42,
+        "elapsed_ms": 4300,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 2,
+          "completion_status": "COMPLETE",
+          "decision": "FINISH"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_2_incomplete_execute",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 43,
+        "elapsed_ms": 4400,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 2,
+          "completion_status": "INCOMPLETE",
+          "decision": "EXECUTE"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_2_incomplete_fallback",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 44,
+        "elapsed_ms": 4500,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 2,
+          "completion_status": "INCOMPLETE",
+          "decision": "FALLBACK"
+        }
+      }
+    },
+    {
+      "id": "valid_planner_2_unverifiable_fallback",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 45,
+        "elapsed_ms": 4600,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 2,
+          "completion_status": "UNVERIFIABLE",
+          "decision": "FALLBACK"
+        }
+      }
+    },
+    {
+      "id": "valid_error_model_transport_error",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 46,
+        "elapsed_ms": 4700,
+        "event": "error",
+        "data": {
+          "category": "MODEL",
+          "code": "TRANSPORT_ERROR"
+        }
+      }
+    },
+    {
+      "id": "valid_error_model_api_error",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 47,
+        "elapsed_ms": 4800,
+        "event": "error",
+        "data": {
+          "category": "MODEL",
+          "code": "API_ERROR"
+        }
+      }
+    },
+    {
+      "id": "valid_error_model_invalid_output",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 48,
+        "elapsed_ms": 4900,
+        "event": "error",
+        "data": {
+          "category": "MODEL",
+          "code": "INVALID_OUTPUT"
+        }
+      }
+    },
+    {
+      "id": "valid_error_device_authorization_unavailable",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 49,
+        "elapsed_ms": 5000,
+        "event": "error",
+        "data": {
+          "category": "DEVICE",
+          "code": "AUTHORIZATION_UNAVAILABLE"
+        }
+      }
+    },
+    {
+      "id": "valid_error_device_screenshot_failed",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 50,
+        "elapsed_ms": 5100,
+        "event": "error",
+        "data": {
+          "category": "DEVICE",
+          "code": "SCREENSHOT_FAILED"
+        }
+      }
+    },
+    {
+      "id": "valid_error_device_input_failed",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 51,
+        "elapsed_ms": 5200,
+        "event": "error",
+        "data": {
+          "category": "DEVICE",
+          "code": "INPUT_FAILED"
+        }
+      }
+    },
+    {
+      "id": "valid_error_device_input_status_unknown",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 52,
+        "elapsed_ms": 5300,
+        "event": "error",
+        "data": {
+          "category": "DEVICE",
+          "code": "INPUT_STATUS_UNKNOWN"
+        }
+      }
+    },
+    {
+      "id": "valid_error_device_service_disconnected",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 53,
+        "elapsed_ms": 5400,
+        "event": "error",
+        "data": {
+          "category": "DEVICE",
+          "code": "SERVICE_DISCONNECTED"
+        }
+      }
+    },
+    {
+      "id": "valid_error_coordinator_invalid_state",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 54,
+        "elapsed_ms": 5500,
+        "event": "error",
+        "data": {
+          "category": "COORDINATOR",
+          "code": "INVALID_STATE"
+        }
+      }
+    },
+    {
+      "id": "valid_error_coordinator_pause_unconfirmed",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 55,
+        "elapsed_ms": 5600,
+        "event": "error",
+        "data": {
+          "category": "COORDINATOR",
+          "code": "PAUSE_UNCONFIRMED"
+        }
+      }
+    },
+    {
+      "id": "valid_error_coordinator_stop_entry_unavailable",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 56,
+        "elapsed_ms": 5700,
+        "event": "error",
+        "data": {
+          "category": "COORDINATOR",
+          "code": "STOP_ENTRY_UNAVAILABLE"
+        }
+      }
+    },
+    {
+      "id": "valid_error_coordinator_observation_unavailable",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 57,
+        "elapsed_ms": 5800,
+        "event": "error",
+        "data": {
+          "category": "COORDINATOR",
+          "code": "OBSERVATION_UNAVAILABLE"
+        }
+      }
+    },
+    {
+      "id": "valid_session_end_model_declared_complete_gui",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 58,
+        "elapsed_ms": 5900,
+        "event": "session_ended",
+        "data": {
+          "reason": "model_declared_complete",
+          "completion_source": "gui",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2
+        }
+      }
+    },
+    {
+      "id": "valid_session_end_model_declared_complete_planner",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 59,
+        "elapsed_ms": 6000,
+        "event": "session_ended",
+        "data": {
+          "reason": "model_declared_complete",
+          "completion_source": "planner",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2
+        }
+      }
+    },
+    {
+      "id": "valid_session_end_model_declared_complete_confirmation",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 60,
+        "elapsed_ms": 6100,
+        "event": "session_ended",
+        "data": {
+          "reason": "model_declared_complete",
+          "completion_source": "confirmation",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2
+        }
+      }
+    },
+    {
+      "id": "valid_session_end_model_unable_gui",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 61,
+        "elapsed_ms": 6200,
+        "event": "session_ended",
+        "data": {
+          "reason": "model_unable",
+          "completion_source": "gui",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2
+        }
+      }
+    },
+    {
+      "id": "valid_session_end_user_stop_none",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 62,
+        "elapsed_ms": 6300,
+        "event": "session_ended",
+        "data": {
+          "reason": "user_stop",
+          "completion_source": "none",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2
+        }
+      }
+    },
+    {
+      "id": "valid_session_end_budget_exhausted_none",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 63,
+        "elapsed_ms": 6400,
+        "event": "session_ended",
+        "data": {
+          "reason": "budget_exhausted",
+          "completion_source": "none",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2
+        }
+      }
+    },
+    {
+      "id": "valid_session_end_interrupted_none",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 64,
+        "elapsed_ms": 6500,
+        "event": "session_ended",
+        "data": {
+          "reason": "interrupted",
+          "completion_source": "none",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2
+        }
+      }
+    },
+    {
+      "id": "valid_user_assessment_unknown",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 65,
+        "elapsed_ms": 6600,
+        "event": "task_assessment",
+        "data": {
+          "assessment": "unknown"
+        }
+      }
+    },
+    {
+      "id": "valid_user_assessment_user_reported_complete",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 66,
+        "elapsed_ms": 6700,
+        "event": "task_assessment",
+        "data": {
+          "assessment": "user_reported_complete"
+        }
+      }
+    },
+    {
+      "id": "valid_user_assessment_user_reported_incomplete",
+      "valid": true,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 67,
+        "elapsed_ms": 6800,
+        "event": "task_assessment",
+        "data": {
+          "assessment": "user_reported_incomplete"
+        }
+      }
+    },
+    {
+      "id": "invalid_top_level_key_field",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        },
+        "api_key": ""
+      }
+    },
+    {
+      "id": "invalid_data_key_field",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003",
+          "api_key": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_image_field",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 200,
+          "image": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_image_url_field",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 200,
+          "image_url": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_screenshot_hash",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 200,
+          "screenshot_hash": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    },
+    {
+      "id": "invalid_frame_identifier",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 200,
+          "frame_id": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_raw_task",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003",
+          "original_task": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_task_summary",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003",
+          "task_summary": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_coordinates",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 23,
+        "elapsed_ms": 2400,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "completed",
+          "coordinates": [
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "id": "invalid_action_parameters",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 23,
+        "elapsed_ms": 2400,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "completed",
+          "arguments": {}
+        }
+      }
+    },
+    {
+      "id": "invalid_action_text",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 23,
+        "elapsed_ms": 2400,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "completed",
+          "text": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_app_package",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 23,
+        "elapsed_ms": 2400,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "completed",
+          "package_name": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_raw_reply",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 200,
+          "raw_reply": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_request_body",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 200,
+          "request_body": {}
+        }
+      }
+    },
+    {
+      "id": "invalid_response_body",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 200,
+          "response_body": {}
+        }
+      }
+    },
+    {
+      "id": "invalid_service_url",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003",
+          "service_url": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_free_form_model_name",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003",
+          "model_name": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_absolute_timestamp",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        },
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "invalid_exception_message",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 46,
+        "elapsed_ms": 4700,
+        "event": "error",
+        "data": {
+          "category": "MODEL",
+          "code": "TRANSPORT_ERROR",
+          "exception": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_error_code_not_whitelisted",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 46,
+        "elapsed_ms": 4700,
+        "event": "error",
+        "data": {
+          "category": "MODEL",
+          "code": "NOT_A_DEFINED_CODE"
+        }
+      }
+    },
+    {
+      "id": "invalid_device_code_in_model_category",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 46,
+        "elapsed_ms": 4700,
+        "event": "error",
+        "data": {
+          "category": "MODEL",
+          "code": "INPUT_FAILED"
+        }
+      }
+    },
+    {
+      "id": "invalid_gui_planning_phase",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 9,
+        "elapsed_ms": 1000,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "PLANNING",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 0,
+          "status": "started"
+        }
+      }
+    },
+    {
+      "id": "invalid_planner_execution_phase",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 19,
+        "elapsed_ms": 2000,
+        "event": "model_call",
+        "data": {
+          "role": "PLANNER",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 7,
+          "planner_calls_used": 1,
+          "duration_ms": 0,
+          "status": "started"
+        }
+      }
+    },
+    {
+      "id": "invalid_planner_third_call",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 19,
+        "elapsed_ms": 2000,
+        "event": "model_call",
+        "data": {
+          "role": "PLANNER",
+          "phase": "PLANNING",
+          "call_index": 3,
+          "gui_steps_used": 7,
+          "planner_calls_used": 3,
+          "duration_ms": 0,
+          "status": "started"
+        }
+      }
+    },
+    {
+      "id": "invalid_planner_counter_mismatch",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 19,
+        "elapsed_ms": 2000,
+        "event": "model_call",
+        "data": {
+          "role": "PLANNER",
+          "phase": "PLANNING",
+          "call_index": 1,
+          "gui_steps_used": 7,
+          "planner_calls_used": 2,
+          "duration_ms": 0,
+          "status": "started"
+        }
+      }
+    },
+    {
+      "id": "invalid_started_http_status",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 9,
+        "elapsed_ms": 1000,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 0,
+          "status": "started",
+          "http_status": 200
+        }
+      }
+    },
+    {
+      "id": "invalid_started_duration",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 9,
+        "elapsed_ms": 1000,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1,
+          "status": "started"
+        }
+      }
+    },
+    {
+      "id": "invalid_http_status_range",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": 1250,
+          "status": "succeeded",
+          "http_status": 999
+        }
+      }
+    },
+    {
+      "id": "invalid_negative_duration",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 10,
+        "elapsed_ms": 1100,
+        "event": "model_call",
+        "data": {
+          "role": "GUI",
+          "phase": "ORIGINAL",
+          "call_index": 1,
+          "gui_steps_used": 1,
+          "planner_calls_used": 0,
+          "duration_ms": -1,
+          "status": "succeeded",
+          "http_status": 200
+        }
+      }
+    },
+    {
+      "id": "invalid_negative_elapsed",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": -1,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_zero_sequence",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 0,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_zero_budget",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 0,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_non_uuid_session_id",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_profile_identifier_type",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": 123,
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_manifest_digest_length",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_manifest_digest_type",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": 0,
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_schema_version",
+      "valid": false,
+      "record": {
+        "schema_version": "2.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_prompt_version_free_text",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_missing_required_data",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_missing_common_field",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "session_started",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    },
+    {
+      "id": "invalid_finish_without_declared_outcome",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 30,
+        "elapsed_ms": 3100,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "finish",
+          "result": "completed"
+        }
+      }
+    },
+    {
+      "id": "invalid_nonfinish_declared_outcome",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 23,
+        "elapsed_ms": 2400,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "tap",
+          "result": "completed",
+          "declared_outcome": "completed"
+        }
+      }
+    },
+    {
+      "id": "invalid_finish_declared_success_label",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 30,
+        "elapsed_ms": 3100,
+        "event": "action",
+        "data": {
+          "phase": "ORIGINAL",
+          "gui_step": 1,
+          "action_type": "finish",
+          "result": "completed",
+          "declared_outcome": "success"
+        }
+      }
+    },
+    {
+      "id": "invalid_second_planner_verify",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 36,
+        "elapsed_ms": 3700,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 2,
+          "completion_status": "COMPLETE",
+          "decision": "VERIFY"
+        }
+      }
+    },
+    {
+      "id": "invalid_first_planner_finish",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 36,
+        "elapsed_ms": 3700,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "COMPLETE",
+          "decision": "FINISH"
+        }
+      }
+    },
+    {
+      "id": "invalid_unknown_planner_execute",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 36,
+        "elapsed_ms": 3700,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 2,
+          "completion_status": "UNVERIFIABLE",
+          "decision": "EXECUTE"
+        }
+      }
+    },
+    {
+      "id": "invalid_planner_objective_content",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 36,
+        "elapsed_ms": 3700,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "COMPLETE",
+          "decision": "VERIFY",
+          "objective": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_planner_condition_content",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 36,
+        "elapsed_ms": 3700,
+        "event": "planner_decision",
+        "data": {
+          "planner_call_index": 1,
+          "completion_status": "COMPLETE",
+          "decision": "VERIFY",
+          "completion_conditions": []
+        }
+      }
+    },
+    {
+      "id": "invalid_end_inferred_success_field",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 58,
+        "elapsed_ms": 5900,
+        "event": "session_ended",
+        "data": {
+          "reason": "model_declared_complete",
+          "completion_source": "gui",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2,
+          "success": true
+        }
+      }
+    },
+    {
+      "id": "invalid_complete_without_declaration_source",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 58,
+        "elapsed_ms": 5900,
+        "event": "session_ended",
+        "data": {
+          "reason": "model_declared_complete",
+          "completion_source": "none",
+          "gui_steps_used": 9,
+          "planner_calls_used": 2
+        }
+      }
+    },
+    {
+      "id": "invalid_assessment_automatic_success",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 65,
+        "elapsed_ms": 6600,
+        "event": "task_assessment",
+        "data": {
+          "assessment": "verified_success"
+        }
+      }
+    },
+    {
+      "id": "invalid_assessment_arbitrary_note",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 65,
+        "elapsed_ms": 6600,
+        "event": "task_assessment",
+        "data": {
+          "assessment": "unknown",
+          "note": ""
+        }
+      }
+    },
+    {
+      "id": "invalid_unrecognized_event",
+      "valid": false,
+      "record": {
+        "schema_version": "1.0.0",
+        "session_id": "00000000-0000-4000-8000-000000000001",
+        "seq": 1,
+        "elapsed_ms": 200,
+        "event": "debug_message",
+        "data": {
+          "harness_enabled": true,
+          "gui_budget": 30,
+          "prompt_bundle_version": "1.1.0",
+          "adapter_version": "1.1.0",
+          "bundle_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "gui_profile_id": "00000000-0000-4000-8000-000000000002",
+          "planner_profile_id": "00000000-0000-4000-8000-000000000003"
+        }
+      }
+    }
+  ]
+}

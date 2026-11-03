@@ -1,0 +1,134 @@
+{
+  "bundle_version": "1.2.0",
+  "adapter_id": "qwen3.8-max-phone-tools",
+  "adapter_version": "1.2.0",
+  "created_date": "2026-10-31",
+  "start_mode": "HOME_AUTO",
+  "base_bundle": {
+    "path": "prompts/v1.1.0/manifest.json",
+    "sha256": "0434d82c2f01bc4bd39b93df1b65ef176c25031760ef86d9b6ec8988f4c294ad"
+  },
+  "inheritance_policy": "explicit_override_allowlist_no_missing_override_fallback",
+  "runtime_overrides": [
+    "gui/system.txt",
+    "gui/original.task.txt",
+    "gui/recovery.task.txt",
+    "gui/verify.task.txt",
+    "gui/confirm.task.txt",
+    "request-profiles.json"
+  ],
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1801,
+      "sha256": "071d85e2075e35f51166bc2863143f53dcb0856ae91439a411383943e0d61430"
+    },
+    {
+      "path": "gui/confirm.task.txt",
+      "bytes": 1947,
+      "sha256": "46dd01b373d2eaacc1b1029e4c2bae433a04a39a914c61efcb6a1316a9e08cb2"
+    },
+    {
+      "path": "gui/original.task.txt",
+      "bytes": 1176,
+      "sha256": "6fae29f020001e43f5d4673373e8a386a774bfcea50ccabfceb34d1e0356037b"
+    },
+    {
+      "path": "gui/recovery.task.txt",
+      "bytes": 1807,
+      "sha256": "3de0b8059c862794ac52890d74729cf639b8addf4b7e530ed804e52d5a401446"
+    },
+    {
+      "path": "gui/system.txt",
+      "bytes": 6710,
+      "sha256": "0ec9550b356730d06bb88bd7aadb9ce1fede3ea8aac49d4036fe4c0948b3af59"
+    },
+    {
+      "path": "gui/verify.task.txt",
+      "bytes": 1931,
+      "sha256": "853b8ab1a6e2467d515b65a0fe26f7b1d6de79b942949e26cd29dfbfee100029"
+    },
+    {
+      "path": "request-profiles.json",
+      "bytes": 4022,
+      "sha256": "d89d4f35956362a9cba30629ac09e37fb61da38e55b6aaa21036f4fe4a2ed653"
+    }
+  ],
+  "inherited_files": [
+    {
+      "path": "prompts/v1.1.0/CHANGELOG.md",
+      "sha256": "910749c105a0b0513106d0d861eb079e9a5bce432478ec6721eb77e3edf9aafa"
+    },
+    {
+      "path": "prompts/v1.1.0/examples/gui.outputs.json",
+      "sha256": "d70ab2afd234fd6510d2e2a49626f9fcde6b05bdab74b54e6a2e22c382e14192"
+    },
+    {
+      "path": "prompts/v1.1.0/examples/planner.first.input.json",
+      "sha256": "ad1d801af7ce9ca6c918a5e28d64f828f6d47f86e80940d61c9b9b8416b2a2b9"
+    },
+    {
+      "path": "prompts/v1.1.0/examples/planner.first.no-pre-handoff.input.json",
+      "sha256": "ae9ef3c00f16969884a6889203b90950c2ef68e4d4c984a043d8e72054add00a"
+    },
+    {
+      "path": "prompts/v1.1.0/examples/planner.outputs.json",
+      "sha256": "caab6bb5c532165cfb9e4d52abe6d90107f5290a272e9370dfd1e7cb02365b2f"
+    },
+    {
+      "path": "prompts/v1.1.0/examples/planner.second.input.json",
+      "sha256": "969e39eedb61034e9dcce7b06d932bec3be398802142f269005e737c8b9d5d57"
+    },
+    {
+      "path": "prompts/v1.1.0/gui/control.returned.txt",
+      "sha256": "a6055b736ecd07f7c8365fce69446984da104dfd092e00ff2a9f7b19e2721bfb"
+    },
+    {
+      "path": "prompts/v1.1.0/gui/tools.execution.json",
+      "sha256": "8b9d172b1cebaa3008d29191fadfbcd911d2573965a84a33c6a6b6396a1b5a9f"
+    },
+    {
+      "path": "prompts/v1.1.0/gui/tools.observation.json",
+      "sha256": "3e773a2a2f4576abd2041cd3874ede9e6b6c1b081a6ee28f8a67ed83043fbef9"
+    },
+    {
+      "path": "prompts/v1.1.0/gui-observation.template.txt",
+      "sha256": "08cc1e4cb24109f93c9e6a2bf65f53601b2a7e1a0bb6856209a0e6819c625d57"
+    },
+    {
+      "path": "prompts/v1.1.0/image.content-part.template.json",
+      "sha256": "cd6f389e165225af5fac5cb4362c229a77bc5ee8b5fa42be1fd745e9ce407b62"
+    },
+    {
+      "path": "prompts/v1.1.0/planner/first.schema.json",
+      "sha256": "c03b91eab0a5dabfc6136258580101ec52419f0a55ef6177e89caf309c14be1d"
+    },
+    {
+      "path": "prompts/v1.1.0/planner/first.system.txt",
+      "sha256": "d9521175377a78a5da17472c2ecd99c189a693cd9eb974b455c7576209b7dc5c"
+    },
+    {
+      "path": "prompts/v1.1.0/planner/second.schema.json",
+      "sha256": "02577387f7cd836d59b8866d364221a71af9d6b2d85d53b4caaed857c3767f5b"
+    },
+    {
+      "path": "prompts/v1.1.0/planner/second.system.txt",
+      "sha256": "8c14a891b00b8544aeab68016f66b4f7e101888d8d9b90b6a7bd3b5a312f4fbf"
+    },
+    {
+      "path": "prompts/v1.1.0/VALIDATION.md",
+      "sha256": "8bbdd0afada22b0727405d303b2df444e08cda193460a2135dd64485b805ce03"
+    }
+  ],
+  "unchanged_contracts": [
+    "native_phone_tools",
+    "full_frame_png_and_coordinates",
+    "shared_gui_budget",
+    "planner_max_two_calls",
+    "one_readonly_phase",
+    "phase_history_isolation",
+    "second_planner_direct_finish",
+    "no_manual_capture"
+  ],
+  "validation_report": "VALIDATION.md"
+}

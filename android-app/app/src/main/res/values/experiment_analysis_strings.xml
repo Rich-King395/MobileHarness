@@ -1,0 +1,61 @@
+<resources>
+    <string name="analysis_title">Analysis</string>
+    <string name="analysis_scope_all">Ended records in this filter</string>
+    <string name="analysis_scope_selected">Selected ended records</string>
+    <string name="analysis_empty">No ended records in this scope.</string>
+    <string name="analysis_total_runs">Ended runs</string>
+    <string name="analysis_user_completion">User-reported completion</string>
+    <string name="analysis_completion_denominator">%1$d of %2$d rated runs</string>
+    <string name="analysis_rated_counts">%1$d rated · %2$d unrated</string>
+    <string name="analysis_mean_steps">Mean GUI steps</string>
+    <string name="analysis_mean_duration">Mean duration</string>
+    <string name="analysis_samples">n = %1$d</string>
+    <string name="analysis_unknown">—</string>
+    <string name="analysis_compare">Compare Harness on / off</string>
+    <string name="analysis_hide_comparison">Hide comparison</string>
+    <string name="analysis_group_runs">%1$d runs</string>
+    <string name="analysis_group_completion">User complete · %1$s (%2$d/%3$d rated)</string>
+    <string name="analysis_group_steps">Mean GUI steps · %1$s (n=%2$d)</string>
+    <string name="analysis_group_duration">Mean duration · %1$s (n=%2$d)</string>
+    <string name="analysis_descriptive_note">Descriptive only. Tasks and configuration versions may differ.</string>
+    <string name="analysis_result">Your result · %1$s</string>
+    <string name="analysis_unrated">Unrated</string>
+    <string name="analysis_complete">Complete</string>
+    <string name="analysis_incomplete">Incomplete</string>
+    <string name="analysis_duration">Duration · %1$s</string>
+    <string name="analysis_recorded_duration">Recorded interval ≥ %1$s</string>
+    <string name="analysis_handoff_counts">Takeovers · %1$d   Returns · %2$d</string>
+    <string name="analysis_gui_requests">GUI requests · %1$d</string>
+    <string name="analysis_call_counts">%1$d accepted · %2$d failed · %3$d cancelled</string>
+    <string name="analysis_call_late">%1$d late replies discarded</string>
+    <string name="analysis_call_unfinished">%1$d in progress · %2$d results missing</string>
+    <string name="analysis_call_time">Sum of recorded durations · %1$s (n=%2$d)</string>
+    <string name="analysis_errors">Service and device events</string>
+    <string name="analysis_no_errors">No error events recorded</string>
+    <string name="analysis_error_model">Model service / protocol</string>
+    <string name="analysis_error_device">Device / execution</string>
+    <string name="analysis_error_coordinator">Coordinator</string>
+    <string name="analysis_error_line">%1$s · %2$s × %3$d</string>
+    <string name="analysis_versions">Protocol versions</string>
+    <string name="analysis_version_values">Prompt %1$s · Adapter %2$s · Policy %3$s</string>
+    <string name="analysis_configuration_ids">Configuration versions · GUI %1$s / Planner %2$s</string>
+    <string name="analysis_end_source">End source · %1$s</string>
+    <string name="analysis_source_confirmation">Read-only confirmation</string>
+    <string name="analysis_source_none">No model completion</string>
+    <string name="analysis_filter_all">All</string>
+    <string name="analysis_filter_on">Harness on</string>
+    <string name="analysis_filter_off">Harness off</string>
+    <string name="analysis_filter_unrated">Unrated</string>
+    <string name="analysis_filter_unknown">Harness unknown</string>
+    <string name="analysis_export_csv">Export analysis CSV</string>
+    <string name="analysis_export_events">Export event log</string>
+    <string name="analysis_show_more">Show more records</string>
+    <string name="analysis_previous_page">Previous</string>
+    <string name="analysis_next_page">Next</string>
+    <string name="analysis_page_count">%1$d / %2$d</string>
+    <string name="analysis_no_matching_records">No records match this filter.</string>
+    <string name="analysis_assessment_saved">Result saved</string>
+    <string name="analysis_assessment_failed">Could not save this result</string>
+    <string name="analysis_selection_all">Select ended records</string>
+    <string name="analysis_selection_clear">Clear selection</string>
+</resources>

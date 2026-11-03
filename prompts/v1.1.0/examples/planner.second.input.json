@@ -1,0 +1,51 @@
+{
+  "planner_call_index": 2,
+  "original_task_verbatim": "把这条便笺的标题改为“行程”并保存。",
+  "own_action_history": [
+    {
+      "action": "tap",
+      "target": "当前便笺的标题输入框",
+      "execution_status": "completed"
+    },
+    {
+      "action": "wait",
+      "target": "等待当前页面刷新 1000ms",
+      "execution_status": "completed"
+    }
+  ],
+  "images": [
+    {
+      "evidence_id": "pre_handoff",
+      "width": 1080,
+      "height": 2280,
+      "is_latest_observation": false,
+      "is_pre_handoff": true
+    },
+    {
+      "evidence_id": "after_check",
+      "width": 1080,
+      "height": 2280,
+      "is_latest_observation": true,
+      "is_pre_handoff": false
+    }
+  ],
+  "current_frame_id": "after_check",
+  "pre_handoff_frame_id": "pre_handoff",
+  "verification_update": {
+    "requested_objective": "等待当前页面刷新，观察标题及可见保存状态。",
+    "required_evidence": [
+      "当前可见标题",
+      "当前可见保存状态"
+    ],
+    "executor_report_unverified": "当前画面仍不足以确认保存结果。"
+  },
+  "verification_failed": true,
+  "verification_capabilities": {
+    "mode": "current_frame_only",
+    "allowed_operations": [
+      "observe_current_frame",
+      "wait_for_refresh"
+    ],
+    "navigation_allowed": false
+  }
+}

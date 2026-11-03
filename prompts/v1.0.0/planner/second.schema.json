@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:mobileharness:prompts:v1.0.0:planner:second",
+  "title": "Planner second-call output v1.0.0",
+  "description": "Exactly four fields. Applies after an ordinary check or a failed final confirmation. FINISH is a coordination-layer transport label, not a GUI action. VERIFY is forbidden; verification_failed does not mechanically prohibit COMPLETE.",
+  "type": "object",
+  "properties": {
+    "completion_status": {
+      "type": "string",
+      "enum": ["COMPLETE", "INCOMPLETE", "UNVERIFIABLE"]
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["FINISH", "EXECUTE", "FALLBACK"]
+    },
+    "objective": {
+      "type": "string"
+    },
+    "completion_conditions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonemptyText"
+      }
+    }
+  },
+  "required": [
+    "completion_status",
+    "decision",
+    "objective",
+    "completion_conditions"
+  ],
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "title": "End the automated flow directly",
+      "properties": {
+        "completion_status": {"const": "COMPLETE"},
+        "decision": {"const": "FINISH"},
+        "objective": {"const": ""},
+        "completion_conditions": {"const": []}
+      }
+    },
+    {
+      "title": "Execute all remaining original-task work",
+      "properties": {
+        "completion_status": {"const": "INCOMPLETE"},
+        "decision": {"const": "EXECUTE"},
+        "objective": {"$ref": "#/$defs/nonemptyText"},
+        "completion_conditions": {"minItems": 1}
+      }
+    },
+    {
+      "title": "Resume the original task from the current state",
+      "properties": {
+        "completion_status": {"enum": ["INCOMPLETE", "UNVERIFIABLE"]},
+        "decision": {"const": "FALLBACK"},
+        "objective": {"$ref": "#/$defs/nonemptyText"}
+      }
+    }
+  ],
+  "$defs": {
+    "nonemptyText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    }
+  }
+}

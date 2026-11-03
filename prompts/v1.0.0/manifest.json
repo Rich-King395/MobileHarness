@@ -1,0 +1,148 @@
+{
+  "bundle_version": "1.0.0",
+  "adapter_id": "qwen3.8-max-phone-tools",
+  "adapter_version": "1.0.0",
+  "created_date": "2026-10-30",
+  "status": "specified_and_offline_validated_not_live_validated",
+  "default_model": "qwen3.8-max",
+  "verification_policy": "current-frame-only-v1",
+  "planner_first_contract": "planner/first.schema.json",
+  "planner_second_contract": "planner/second.schema.json",
+  "request_profiles": "request-profiles.json",
+  "gui_execution_tools": "gui/tools.execution.json",
+  "gui_observation_tools": "gui/tools.observation.json",
+  "original_snapshots": [
+    {
+      "path": "HandoffHarness_APK_Handoff/HANDOFF_ANDROID_APK.md",
+      "sha256": "7c39aa900ff166caf736360afa6564a8b03f2e69cba6b151495d84ff6ecdce3e"
+    },
+    {
+      "path": "HandoffHarness_APK_Handoff/HANDOFF_ANDROID_APK_PROMPTS.md",
+      "sha256": "ff191ced2444459ed3e99ee6591e65c5c6ad280b87b695f50187e88c9dfb4598"
+    }
+  ],
+  "specification_document": {
+    "path": "docs/MODEL_ADAPTER_AND_PROMPT_VERSIONS.md",
+    "sha256": "b8ed7dd7c4d3dd86be2ede409f6e99caed195fb017e8e20056f5854e36115568"
+  },
+  "validation": {
+    "standard": "JSON Schema Draft 2020-12",
+    "planner_output_fixtures": 12,
+    "planner_branch_matrix_cases": 24,
+    "gui_protocol_fixtures": 13,
+    "parameter_boundary_cases": 26,
+    "readonly_phase_tool_cases": 16,
+    "behavior_and_boundary_cases_total": 91,
+    "rendered_text_templates": 5,
+    "live_model_requests": 0,
+    "phone_actions": 0,
+    "report": "VALIDATION.md"
+  },
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 3030,
+      "sha256": "331b1f91c0940f0980510715ed82275842d740acc35b612597cd08cfb151773a"
+    },
+    {
+      "path": "examples/gui.outputs.json",
+      "bytes": 4760,
+      "sha256": "d70ab2afd234fd6510d2e2a49626f9fcde6b05bdab74b54e6a2e22c382e14192"
+    },
+    {
+      "path": "examples/planner.first.input.json",
+      "bytes": 926,
+      "sha256": "ad1d801af7ce9ca6c918a5e28d64f828f6d47f86e80940d61c9b9b8416b2a2b9"
+    },
+    {
+      "path": "examples/planner.outputs.json",
+      "bytes": 3759,
+      "sha256": "caab6bb5c532165cfb9e4d52abe6d90107f5290a272e9370dfd1e7cb02365b2f"
+    },
+    {
+      "path": "examples/planner.second.input.json",
+      "bytes": 1464,
+      "sha256": "e1cc651c1b14b7bf40adcc206e11d227d796af2b2ae3304ccb39f2bc0b3cef1d"
+    },
+    {
+      "path": "gui/confirm.task.txt",
+      "bytes": 1667,
+      "sha256": "9adc4eefe4a2876226ecb7a86258fe43866e9596cb33d34373019341bf21fda2"
+    },
+    {
+      "path": "gui/control.returned.txt",
+      "bytes": 593,
+      "sha256": "4dfad18eeb1b4ca43dd7759af011ef07926134959a6eb6d3ba8a892e3c096562"
+    },
+    {
+      "path": "gui/original.task.txt",
+      "bytes": 909,
+      "sha256": "3c5c390039a79b726615efc0ede392a816924d3a7c6595f94a04b09bb54cc083"
+    },
+    {
+      "path": "gui/recovery.task.txt",
+      "bytes": 1545,
+      "sha256": "ef6ab3526e30efc1fb3b46a3d7d4f630bbe50ed7a2818ff3bc9dd228f7e26995"
+    },
+    {
+      "path": "gui/system.txt",
+      "bytes": 5741,
+      "sha256": "456615df39b3d58e7031190bddfce2a11bcafbb7c06798965150cf3f254d5654"
+    },
+    {
+      "path": "gui/tools.execution.json",
+      "bytes": 10278,
+      "sha256": "8b9d172b1cebaa3008d29191fadfbcd911d2573965a84a33c6a6b6396a1b5a9f"
+    },
+    {
+      "path": "gui/tools.observation.json",
+      "bytes": 2431,
+      "sha256": "3e773a2a2f4576abd2041cd3874ede9e6b6c1b081a6ee28f8a67ed83043fbef9"
+    },
+    {
+      "path": "gui/verify.task.txt",
+      "bytes": 1651,
+      "sha256": "3b54ccc63645cee29a6ea92f8432373351e6a4a9c53c73da84e7446214123671"
+    },
+    {
+      "path": "gui-observation.template.txt",
+      "bytes": 381,
+      "sha256": "02832c439913153c9f1ca9c2d4704bb8efc533500aaf6803e7d8d251d4c09ccb"
+    },
+    {
+      "path": "image.content-part.template.json",
+      "bytes": 103,
+      "sha256": "cd6f389e165225af5fac5cb4362c229a77bc5ee8b5fa42be1fd745e9ce407b62"
+    },
+    {
+      "path": "planner/first.schema.json",
+      "bytes": 1842,
+      "sha256": "c03b91eab0a5dabfc6136258580101ec52419f0a55ef6177e89caf309c14be1d"
+    },
+    {
+      "path": "planner/first.system.txt",
+      "bytes": 5837,
+      "sha256": "5bf0d433e61b248f912647bfaca175dd07a37439a1298beeeeebb74dfc34fd6d"
+    },
+    {
+      "path": "planner/second.schema.json",
+      "bytes": 1973,
+      "sha256": "02577387f7cd836d59b8866d364221a71af9d6b2d85d53b4caaed857c3767f5b"
+    },
+    {
+      "path": "planner/second.system.txt",
+      "bytes": 5491,
+      "sha256": "1f6e84d5a557b393198305a11f227f0e1975415145958e354d56db4a35e5542c"
+    },
+    {
+      "path": "request-profiles.json",
+      "bytes": 2719,
+      "sha256": "1e5436f4ae0c98d215496fd6b28502e1a0a3483f0be6fd448c2791cdd3906289"
+    },
+    {
+      "path": "VALIDATION.md",
+      "bytes": 1853,
+      "sha256": "cbbbd209272b2e8ec8314a6c3e8688477b33c8378d948e828c0265f1a4bb4052"
+    }
+  ]
+}

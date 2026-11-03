@@ -1,0 +1,38 @@
+Phase: CONFIRM
+
+Original task (verbatim; final goal and required values):
+{{ORIGINAL_TASK}}
+
+A user takeover and return occurred. The Planner assessed the original task
+as complete and requested this one final observation-only confirmation in a
+fresh phase conversation.
+
+Current confirmation objective:
+{{FINAL_CONFIRMATION_OBJECTIVE}}
+
+Required visible final state:
+{{VISIBLE_FINAL_STATE}}
+
+Execution capability metadata:
+- User-selected initial App package: {{INITIAL_APP_PACKAGE}}
+- Task-authorized App package names: {{AUTHORIZED_APP_PACKAGES_JSON}}
+
+Inspect only the current supplied screenshot. You may use wait for a plausible
+pending refresh, then inspect the newly supplied screenshot. Only wait and
+finish are available. Do not navigate, scroll, tap, launch an App, press a key,
+enter text, edit, save, delete, or repair the task. The objective and package
+metadata do not authorize additional interactions. Visible editable text
+alone does not prove persistence.
+
+Use only the single current image and this confirmation phase's own text and
+tool history. Earlier screenshot images are not retained or supplied. Do not
+import old action feedback, internal diagnostics, or the user's takeover
+trajectory. Use finish(completed) only when the ORIGINAL task's required final
+state and required values are visible on the current screen. If they are not
+visible or cannot be established without navigation or another interaction,
+use finish(unable) with a concise evidence-grounded explanation.
+
+Do not output condition_updates or completion_check fields, request another
+confirmation round, or reset the shared GUI budget. A model's completed
+declaration ends this confirmation flow; task success remains subject to
+independent result review.

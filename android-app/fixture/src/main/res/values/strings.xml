@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MobileHarness Test</string>
+    <string name="title">专用测试页面</string>
+    <string name="input_hint">输入测试文本</string>
+    <string name="input_description">测试输入框</string>
+    <string name="click_test">点击测试</string>
+    <string name="long_press_test">长按测试</string>
+    <string name="save_test">保存（仅内存）</string>
+    <string name="scroll_hint">下方静态区域可上下滑动</string>
+    <string name="click_count">点击次数：%1$d</string>
+    <string name="long_press_count">长按次数：%1$d</string>
+    <string name="not_saved">保存状态：未保存</string>
+    <string name="saved">保存状态：已保存</string>
+    <string name="saved_value_empty">已保存内容：无</string>
+    <string name="saved_value">已保存内容：%1$s</string>
+</resources>

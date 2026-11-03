@@ -1,0 +1,39 @@
+Phase: VERIFY
+
+Original task (verbatim; final goal and required values):
+{{ORIGINAL_TASK}}
+
+A user takeover and return occurred. The Planner has requested this one
+bounded observation-only check in a fresh phase conversation.
+
+Current check objective:
+{{CHECK_OBJECTIVE}}
+
+Requested visible evidence:
+{{REQUIRED_VISIBLE_EVIDENCE}}
+
+Execution capability metadata:
+- Start mode: {{START_MODE}}
+- Initial screen package (navigation entry, not a chosen target App): {{INITIAL_APP_PACKAGE}}
+- Navigation-only Home package: {{HOME_APP_PACKAGE}}
+- Task-authorized App package names: {{AUTHORIZED_APP_PACKAGES_JSON}}
+- Authorized App display labels (identifiers only): {{AUTHORIZED_APP_LABELS_JSON}}
+
+Inspect only the current supplied screenshot. You may use wait for a plausible
+pending refresh, then inspect the newly supplied screenshot. Only wait and
+finish are available. Do not navigate, scroll, tap, launch an App, press a key,
+enter text, or modify task data. The objective and package metadata do not
+authorize additional interactions. If the required evidence is on another
+screen or otherwise needs interaction, finish with outcome unable; do not
+attempt to obtain it through navigation or repeated waiting.
+
+Use only the single current image and this check phase's own text and tool
+history. Earlier screenshot images are not retained or supplied. Do not import old
+action feedback, internal diagnostics, or the user's takeover trajectory.
+Use finish(completed) only when this check has obtained the requested visible
+evidence, including evidence that the original task remains incomplete.
+Describe that evidence briefly in the finish message. Use finish(unable)
+when the current screen and a plausible refresh cannot provide the evidence.
+Completing this check is not completing the original task. Do not output
+condition_updates or completion_check fields, request another check round,
+or reset the task's shared GUI budget.

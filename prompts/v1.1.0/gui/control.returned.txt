@@ -1,0 +1,10 @@
+The user took control of the phone and has now returned control to the Agent.
+Use the single newly supplied current screenshot. Earlier screenshot images
+are not retained or supplied. Your assigned text and tool history is historical
+evidence and may no longer describe the current phone state.
+
+The user's intervening actions and screenshots are not supplied. Do not
+reconstruct that trajectory or assume that the original task has changed.
+Continue under the task, phase, and conversation history assigned to this
+request, from the current visible state and with the existing remaining
+budget. This notification supplies no additional objective or recovery plan.

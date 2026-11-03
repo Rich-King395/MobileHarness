@@ -1,0 +1,82 @@
+{
+  "bundle_version": "1.0.0",
+  "adapter_id": "qwen3.8-max-phone-tools",
+  "adapter_version": "1.0.0",
+  "validation_status": "specified_and_offline_checked_not_live_validated",
+  "transport": {
+    "protocol": "chat_completions",
+    "default_base_url": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+    "request_path": "/chat/completions",
+    "credential_source": "independent_encrypted_phone_configuration_per_role",
+    "automatic_retries": 0,
+    "follow_redirects": false,
+    "connect_timeout_ms": 15000,
+    "call_timeout_ms": 120000
+  },
+  "common_request_body": {
+    "model": "qwen3.8-max",
+    "enable_thinking": false,
+    "preserve_thinking": false,
+    "temperature": 0,
+    "top_p": 1,
+    "max_completion_tokens": 4096,
+    "stream": false,
+    "n": 1,
+    "vl_high_resolution_images": false
+  },
+  "gui_body_overrides": {
+    "tool_choice": "auto",
+    "parallel_tool_calls": false
+  },
+  "planner_body_overrides": {
+    "response_format": {
+      "type": "json_object"
+    }
+  },
+  "image_policy": {
+    "version": "full-frame-png-v1",
+    "mime_type": "image/png",
+    "transport": "base64_data_uri",
+    "client_resize": false,
+    "client_crop": false,
+    "client_padding": false,
+    "max_pixels_per_image_content_part": 2621440,
+    "max_source_image_bytes_exclusive": 20000000,
+    "max_data_uri_utf8_bytes_exclusive": 20000000,
+    "max_request_body_utf8_bytes_exclusive": 64000000,
+    "oversize_behavior": "explicit_preflight_error_no_silent_resize_or_history_truncation"
+  },
+  "coordinates": {
+    "value_type": "integer",
+    "minimum": 0,
+    "maximum": 999,
+    "denominator": 1000,
+    "pixel_mapping": "floor(normalized_coordinate * current_full_frame_dimension / 1000)",
+    "rounding": "floor",
+    "stale_geometry_behavior": "reject_without_execution"
+  },
+  "history_policy": {
+    "original": "retain_original_task_conversation",
+    "verification": "new_phase_conversation",
+    "confirmation": "new_phase_conversation",
+    "recovery_execution": "new_phase_conversation",
+    "fallback": "resume_original_task_conversation",
+    "harness_off": "resume_original_task_conversation",
+    "automatic_summarization": false,
+    "automatic_history_truncation": false
+  },
+  "verification_policy": {
+    "id": "current-frame-only-v1",
+    "allowed_tool_names": ["wait", "finish"],
+    "navigation_allowed": false,
+    "maximum_phases_per_return": 1
+  },
+  "budget_policy": {
+    "default_gui_request_limit": 30,
+    "maximum_planner_requests_per_return": 2,
+    "charge_gui_step_at": "before_each_actual_http_attempt",
+    "cancelled_or_late_gui_attempt_refund": false,
+    "human_actions_charge_steps": false,
+    "phase_change_resets_budget": false
+  }
+}

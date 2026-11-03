@@ -1,0 +1,46 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "wait",
+      "description": "Wait without sending input or navigating, then obtain a fresh observation of the current full screen. The executor must validate current control ownership and phase authorization. In VERIFY and CONFIRM, waiting may only allow the current screen to refresh; it must not navigate or modify task data. Waiting is one GUI decision and does not reset or replenish the shared task budget.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "duration_ms": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 2000,
+            "description": "Time to wait in milliseconds, from 100 through 2000 inclusive."
+          }
+        },
+        "required": ["duration_ms"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "finish",
+      "description": "End the active GUI phase without sending phone input. In ORIGINAL or RECOVERY, completed means the model judges the original task complete and unable means it cannot continue. In VERIFY, completed means only that the requested check evidence is visible, not that the original task is complete; unable means that evidence cannot be obtained within the current-screen-only check. In CONFIRM, completed means the original task's required final state is visible in the current observation; unable means it cannot be confirmed. This declaration is not independent task-success verification and consumes one GUI decision. It does not call the Planner or authorize any further phone action.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "outcome": {
+            "type": "string",
+            "enum": ["completed", "unable"],
+            "description": "The active phase's result, interpreted only according to the stage-specific meaning in the tool description and current task prompt."
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A nonempty, concise report grounded in the currently supplied visible evidence, or a concrete explanation of why this phase cannot be completed. Do not infer hidden state or reconstruct user actions."
+          }
+        },
+        "required": ["outcome", "message"],
+        "additionalProperties": false
+      }
+    }
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mobileharness.local/contracts/local-task-record.v1.schema.json",
+  "title": "Local encrypted task attachment, decrypted payload v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "session_id", "task"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "session_id": { "type": "string", "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$" },
+    "task": { "type": "string", "minLength": 1, "pattern": "\\S" }
+  },
+  "description": "The payload is stored only inside an authenticated AES/GCM attachment under noBackupFilesDir. It is never a plaintext file, event row, executable recovery state or metadata export."
+}

@@ -1,0 +1,7 @@
+{
+  "type": "image_url",
+  "image_url": {
+    "url": "{{PNG_DATA_URI}}"
+  },
+  "max_pixels": 2621440
+}

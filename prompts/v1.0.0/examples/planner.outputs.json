@@ -1,0 +1,138 @@
+{
+  "description": "Synthetic schema fixtures. These are not results from a real model or phone.",
+  "cases": [
+    {
+      "id": "first_complete_requires_verification",
+      "call": 1,
+      "valid": true,
+      "output": {
+        "completion_status": "COMPLETE",
+        "decision": "VERIFY",
+        "objective": "在当前画面只读确认标题“行程”及可见保存状态。",
+        "completion_conditions": ["当前画面能确认原任务要求的标题和已保存状态。"]
+      }
+    },
+    {
+      "id": "first_incomplete_execute",
+      "call": 1,
+      "valid": true,
+      "output": {
+        "completion_status": "INCOMPLETE",
+        "decision": "EXECUTE",
+        "objective": "将便笺标题改为“行程”并保存，保留其余内容。",
+        "completion_conditions": ["标题为“行程”。", "修改已保存，原有正文保留。"]
+      }
+    },
+    {
+      "id": "first_unknown_fallback",
+      "call": 1,
+      "valid": true,
+      "output": {
+        "completion_status": "UNVERIFIABLE",
+        "decision": "FALLBACK",
+        "objective": "从当前可见画面继续原任务。",
+        "completion_conditions": []
+      }
+    },
+    {
+      "id": "first_finish_forbidden",
+      "call": 1,
+      "valid": false,
+      "output": {
+        "completion_status": "COMPLETE",
+        "decision": "FINISH",
+        "objective": "",
+        "completion_conditions": []
+      }
+    },
+    {
+      "id": "first_complete_execute_forbidden",
+      "call": 1,
+      "valid": false,
+      "output": {
+        "completion_status": "COMPLETE",
+        "decision": "EXECUTE",
+        "objective": "确认完成并结束。",
+        "completion_conditions": ["任务完成。"]
+      }
+    },
+    {
+      "id": "second_complete_ends_directly",
+      "call": 2,
+      "valid": true,
+      "output": {
+        "completion_status": "COMPLETE",
+        "decision": "FINISH",
+        "objective": "",
+        "completion_conditions": []
+      }
+    },
+    {
+      "id": "second_unknown_fallback",
+      "call": 2,
+      "valid": true,
+      "output": {
+        "completion_status": "UNVERIFIABLE",
+        "decision": "FALLBACK",
+        "objective": "从当前可见画面继续原任务。",
+        "completion_conditions": []
+      }
+    },
+    {
+      "id": "second_verify_forbidden",
+      "call": 2,
+      "valid": false,
+      "output": {
+        "completion_status": "COMPLETE",
+        "decision": "VERIFY",
+        "objective": "再查证一次。",
+        "completion_conditions": ["再观察一次保存状态。"]
+      }
+    },
+    {
+      "id": "second_unknown_execute_forbidden",
+      "call": 2,
+      "valid": false,
+      "output": {
+        "completion_status": "UNVERIFIABLE",
+        "decision": "EXECUTE",
+        "objective": "继续修改便笺。",
+        "completion_conditions": ["标题保存。"]
+      }
+    },
+    {
+      "id": "second_finish_cannot_inject_goal",
+      "call": 2,
+      "valid": false,
+      "output": {
+        "completion_status": "COMPLETE",
+        "decision": "FINISH",
+        "objective": "再让GUI Agent返回done。",
+        "completion_conditions": []
+      }
+    },
+    {
+      "id": "second_finish_no_condition_gate",
+      "call": 2,
+      "valid": false,
+      "output": {
+        "completion_status": "COMPLETE",
+        "decision": "FINISH",
+        "objective": "",
+        "completion_conditions": ["等待逐项条件更新。"]
+      }
+    },
+    {
+      "id": "extra_diagnostic_field_forbidden",
+      "call": 2,
+      "valid": false,
+      "output": {
+        "completion_status": "COMPLETE",
+        "decision": "FINISH",
+        "objective": "",
+        "completion_conditions": [],
+        "reasoning": "多余字段。"
+      }
+    }
+  ]
+}

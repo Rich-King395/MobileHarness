@@ -1,0 +1,204 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "tap",
+      "description": "Tap one point in the current full-screen screenshot. This is a project-defined phone tool, not a provider-defined GUI action. The screenshot must be uncropped and match the current display orientation and dimensions. The executor must validate control ownership, task authorization, screenshot freshness and coordinate mapping before dispatch; it must reject reuse after a rotation or display-size change. A dispatched gesture does not prove a business-state change.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Normalized horizontal coordinate in [0, 999]. Map to the actual full-screen width W as floor(x * W / 1000), then validate the resulting point."
+          },
+          "y": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Normalized vertical coordinate in [0, 999]. Map to the actual full-screen height H as floor(y * H / 1000), then validate the resulting point."
+          }
+        },
+        "required": ["x", "y"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "long_press",
+      "description": "Long-press one point in the current full-screen screenshot for the requested duration. The screenshot must be uncropped and match the current display orientation and dimensions. The executor must validate control ownership, task authorization, screenshot freshness and coordinate mapping before dispatch; it must reject reuse after a rotation or display-size change. Gesture completion does not prove a business-state change.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "x": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Normalized horizontal coordinate in [0, 999]. Map to the actual full-screen width W as floor(x * W / 1000), then validate the resulting point."
+          },
+          "y": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Normalized vertical coordinate in [0, 999]. Map to the actual full-screen height H as floor(y * H / 1000), then validate the resulting point."
+          },
+          "duration_ms": {
+            "type": "integer",
+            "minimum": 300,
+            "maximum": 2000,
+            "description": "Long-press duration in milliseconds, from 300 through 2000 inclusive."
+          }
+        },
+        "required": ["x", "y", "duration_ms"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "swipe",
+      "description": "Perform one swipe from the start point to the end point in the current full-screen screenshot. The screenshot must be uncropped and match the current display orientation and dimensions. The executor must validate control ownership, task authorization, screenshot freshness and coordinate mapping before dispatch; it must reject reuse after a rotation or display-size change. A swipe may modify application data and is not a read-only tool.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "from_x": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Normalized start horizontal coordinate in [0, 999]. Map to the actual full-screen width W as floor(from_x * W / 1000), then validate the resulting point."
+          },
+          "from_y": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Normalized start vertical coordinate in [0, 999]. Map to the actual full-screen height H as floor(from_y * H / 1000), then validate the resulting point."
+          },
+          "to_x": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Normalized end horizontal coordinate in [0, 999]. Map to the actual full-screen width W as floor(to_x * W / 1000), then validate the resulting point."
+          },
+          "to_y": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999,
+            "description": "Normalized end vertical coordinate in [0, 999]. Map to the actual full-screen height H as floor(to_y * H / 1000), then validate the resulting point."
+          },
+          "duration_ms": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 2000,
+            "description": "Swipe duration in milliseconds, from 100 through 2000 inclusive."
+          }
+        },
+        "required": ["from_x", "from_y", "to_x", "to_y", "duration_ms"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "input_text",
+      "description": "Replace the entire text of the currently focused, visible, editable field with text. This is full replacement, not append or simulated typing. The executor must verify that exactly the intended focused field is visible, editable and authorized before changing it; otherwise reject the action. An empty string clears the field. This tool does not invoke a separate submit or save action; application-side effects such as autosave may still occur, and execution does not prove persistence.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The complete replacement value for the currently focused, visible, editable field. The empty string is allowed and clears that field."
+          }
+        },
+        "required": ["text"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "press_key",
+      "description": "Request one supported navigation or IME action. The executor must validate current control ownership and task authorization. For enter, the executor must verify that a supported IME submit action is available for the intended currently focused field; otherwise reject it. Do not synthesize a generic Enter key or silently substitute another action. Navigation can change visible state or commit application data and is unavailable in observation-only phases.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "enum": ["back", "home", "enter"],
+            "description": "back requests system Back; home requests system Home; enter requests the executor-verified IME submit action for the intended focused field."
+          }
+        },
+        "required": ["key"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "launch_app",
+      "description": "Launch an installed app by package name. The host must allow only apps authorized for the current task and must verify current control ownership before dispatch. The user's chosen initial app and authorized package names are execution-capability metadata, not a fixed benchmark task or scripted takeover entry point. Reject unauthorized, unavailable or unlaunchable packages without substituting another app.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "package_name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Nonempty Android package name explicitly authorized for the current task."
+          }
+        },
+        "required": ["package_name"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "wait",
+      "description": "Wait without sending input or navigating, then obtain a fresh observation of the current full screen. The executor must validate current control ownership and phase authorization. In VERIFY and CONFIRM, waiting may only allow the current screen to refresh; it must not navigate or modify task data. Waiting is one GUI decision and does not reset or replenish the shared task budget.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "duration_ms": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 2000,
+            "description": "Time to wait in milliseconds, from 100 through 2000 inclusive."
+          }
+        },
+        "required": ["duration_ms"],
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "finish",
+      "description": "End the active GUI phase without sending phone input. In ORIGINAL or RECOVERY, completed means the model judges the original task complete and unable means it cannot continue. In VERIFY, completed means only that the requested check evidence is visible, not that the original task is complete; unable means that evidence cannot be obtained within the current-screen-only check. In CONFIRM, completed means the original task's required final state is visible in the current observation; unable means it cannot be confirmed. This declaration is not independent task-success verification and consumes one GUI decision. It does not call the Planner or authorize any further phone action.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "outcome": {
+            "type": "string",
+            "enum": ["completed", "unable"],
+            "description": "The active phase's result, interpreted only according to the stage-specific meaning in the tool description and current task prompt."
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A nonempty, concise report grounded in the currently supplied visible evidence, or a concrete explanation of why this phase cannot be completed. Do not infer hidden state or reconstruct user actions."
+          }
+        },
+        "required": ["outcome", "message"],
+        "additionalProperties": false
+      }
+    }
+  }
+]
