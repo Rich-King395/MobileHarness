@@ -8,15 +8,15 @@
   "ignored_probe_count": 26,
   "kept_probe_count": 16,
   "frozen_reference_checks": 59,
-  "candidate_file_count": 332,
-  "review_file_count": 76,
+  "candidate_file_count": 335,
+  "review_file_count": 77,
   "categories": {
     "android_source_tests_and_project": 164,
     "data_and_runtime_contracts": 9,
     "generated_upload_inventory": 3,
     "handoff_material_review_required": 2,
-    "maintenance_or_analysis_tool": 45,
-    "method_or_historical_documentation": 46,
+    "maintenance_or_analysis_tool": 47,
+    "method_or_historical_documentation": 47,
     "publishing_preparation": 2,
     "repository_configuration": 3,
     "unclassified_review_required": 1,
@@ -1446,6 +1446,12 @@
       "bytes": null
     },
     {
+      "path": "docs/releases/v0.10.0-beta.1.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "4ed371f4138d726d12a8e3f090b40432098998f172136045912ea4bdef7f958c",
+      "bytes": 5912
+    },
+    {
       "path": "docs/runtime-policies/automatic-recovery.v1.2.json",
       "category": "data_and_runtime_contracts",
       "sha256": "4797c58832f5caad7e2ab88bf1a86a72d5d73a71c302795c7c0927d0b2543955",
@@ -1926,6 +1932,12 @@
       "bytes": 12467
     },
     {
+      "path": "tools/prepare_release_assets.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "495b8b9590a44d93d5287e4a3f4fa7bcdceb401b7007e20e018f5470b7713aa7",
+      "bytes": 9741
+    },
+    {
       "path": "tools/run_stability_acceptance.py",
       "category": "maintenance_or_analysis_tool",
       "sha256": "b7e86cbec97866498e9b06f41bce532c0635d83517b8548afae8b105b962c504",
@@ -1990,6 +2002,12 @@
       "category": "maintenance_or_analysis_tool",
       "sha256": "143732ed3230ee0814af62ab3005a9585e4581da9165bed17d008f695d2cfef4",
       "bytes": 10241
+    },
+    {
+      "path": "tools/tests/test_prepare_release_assets.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "2de8f9e60263da4ab2516a2fefd40d9ec2f2c49167dccb3bf638792d6e131837",
+      "bytes": 11324
     },
     {
       "path": "tools/tests/test_verify_release_channels.py",
@@ -2355,6 +2373,12 @@
       "path": "docs/publishing/SIGNING_AND_CHANNELS.md",
       "reasons": [
         "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "docs/releases/v0.10.0-beta.1.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
       ]
     },
     {

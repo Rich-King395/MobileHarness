@@ -230,6 +230,7 @@ docs/publishing/SIGNING_AND_CHANNELS.md
 docs/publishing/UPLOAD_FILES.txt
 docs/publishing/UPLOAD_SCOPE.md
 docs/publishing/upload-inventory.json
+docs/releases/v0.10.0-beta.1.md
 docs/runtime-policies/automatic-recovery.v1.2.json
 prompts/v1.0.0/CHANGELOG.md
 prompts/v1.0.0/VALIDATION.md
@@ -310,6 +311,7 @@ tools/ci/check_sensitive_files.py
 tools/collect_experiment_analysis090.py
 tools/freeze_baseline081.py
 tools/prepare_github_inventory.py
+tools/prepare_release_assets.py
 tools/run_stability_acceptance.py
 tools/summarize_argb_localization035.py
 tools/summarize_calculator_fidelity034.py
@@ -321,6 +323,7 @@ tools/tests/Test-ReleaseSigningTools.ps1
 tools/tests/test_analyze_experiment_csv.py
 tools/tests/test_ci_prompt_integrity.py
 tools/tests/test_ci_sensitive_files.py
+tools/tests/test_prepare_release_assets.py
 tools/tests/test_verify_release_channels.py
 tools/verify_automatic_recovery080.py
 tools/verify_baseline.py
