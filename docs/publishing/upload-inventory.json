@@ -8,15 +8,15 @@
   "ignored_probe_count": 26,
   "kept_probe_count": 16,
   "frozen_reference_checks": 59,
-  "candidate_file_count": 335,
-  "review_file_count": 77,
+  "candidate_file_count": 336,
+  "review_file_count": 78,
   "categories": {
     "android_source_tests_and_project": 164,
     "data_and_runtime_contracts": 9,
     "generated_upload_inventory": 3,
     "handoff_material_review_required": 2,
     "maintenance_or_analysis_tool": 47,
-    "method_or_historical_documentation": 47,
+    "method_or_historical_documentation": 48,
     "publishing_preparation": 2,
     "repository_configuration": 3,
     "unclassified_review_required": 1,
@@ -92,14 +92,14 @@
     {
       "path": "README.en.md",
       "category": "user_documentation",
-      "sha256": "dd3ea6490dff6e562d0f0194091ff5775bc8b6d5ede2386ad421fd4c8dd681d1",
-      "bytes": 4745
+      "sha256": "852cd9beefa882fa725a1ec2f25e14cd34b1e344d021d2d1375f2e5efb48bc82",
+      "bytes": 4992
     },
     {
       "path": "README.md",
       "category": "user_documentation",
-      "sha256": "d37863fee210ee09653e206f20d4698e2ec49a2886c920f4e54f966ea6b4e4c5",
-      "bytes": 4148
+      "sha256": "acc6ab31c8ca63af07cb1d922685131be2ab1c9a16c7c6b6c617fdbbd6908359",
+      "bytes": 4398
     },
     {
       "path": "android-app/.gitignore",
@@ -1118,8 +1118,8 @@
     {
       "path": "docs/DEVELOPMENT_STATUS.md",
       "category": "method_or_historical_documentation",
-      "sha256": "95f3effc46e7851fe728d64241af39aec78db6afd27cfefe7a6a204bfcbe6f9c",
-      "bytes": 26572
+      "sha256": "0e3d63111c2425688c3f3e721093308bb7dd70da78c67f94dd6207d3608cb6a0",
+      "bytes": 27123
     },
     {
       "path": "docs/EXECUTION_FEEDBACK_0.5.0.md",
@@ -1138,6 +1138,12 @@
       "category": "method_or_historical_documentation",
       "sha256": "4424dc8241e62347258838414ef6e2197244e6addb9fef157b43af89326a030e",
       "bytes": 4342
+    },
+    {
+      "path": "docs/FIRST_RELEASE_0.10.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "350fe570dfcf475178593193a810b86262b8db78a4760bfc5dff1574ecebb045",
+      "bytes": 3293
     },
     {
       "path": "docs/INTERACTION_AND_RUNTIME_STATES.md",
@@ -1424,8 +1430,8 @@
     {
       "path": "docs/publishing/SIGNING_AND_CHANNELS.md",
       "category": "publishing_preparation",
-      "sha256": "ddea0394181cc3b2045124a8399585a45554fca715d57ae1ed91eb46feb5fb92",
-      "bytes": 11412
+      "sha256": "1e00a550d20cae5da5ab45cf6e895b8bf2dac093f2b06839847c26383d5b6770",
+      "bytes": 11679
     },
     {
       "path": "docs/publishing/UPLOAD_FILES.txt",
@@ -2134,6 +2140,12 @@
     },
     {
       "path": "docs/EXPERIMENT_RECORDS_0.7.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/FIRST_RELEASE_0.10.0.md",
       "reasons": [
         "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
       ]

@@ -6,7 +6,7 @@
 
 让 GUI Agent 在 Android 手机上执行任务，并在需要时由你接管、操作和归还控制权。
 
-当前正式渠道：`0.10.0-beta.1`；开发版：`0.10.0-dev`。首个公开安装包尚未发布；发布后从本仓库 [Releases](https://github.com/Rich-King395/MobileHarness/releases) 下载。项目许可证：[Apache-2.0](LICENSE)。
+首个公开测试版：`0.10.0-beta.1` · [下载正式签名 APK](https://github.com/Rich-King395/MobileHarness/releases/download/v0.10.0-beta.1/MobileHarness-0.10.0-beta.1-release.apk) · [发布说明与校验文件](https://github.com/Rich-King395/MobileHarness/releases/tag/v0.10.0-beta.1)。开发版：`0.10.0-dev`。许可证：[Apache-2.0](LICENSE)。
 
 ## ✨ 主要功能
 
@@ -20,7 +20,7 @@
 
 ## 🚀 开始使用
 
-1. **安装与授权**：从 Releases 获取安装包后安装，按 App 提示手动开启 MobileHarness 无障碍服务，并允许通知以使用备用入口。
+1. **安装与授权**：下载 APK，按 Android 提示允许当前安装来源；打开 App 后手动开启 MobileHarness 无障碍服务，并允许通知。若系统提示“受限设置”，参考[发布说明](https://github.com/Rich-King395/MobileHarness/releases/tag/v0.10.0-beta.1)。
 2. **配置模型**：在“模型”页添加名称、HTTPS 服务地址、模型名称和你自己的 API Key，分别选择 GUI Agent 与 Planner 的配置。
 3. **选择授权范围**：首次在任务页选择允许 Agent 操作的 App；后续任务复用该范围，需要时再调整。
 4. **下达任务**：输入目标，选择是否开启 Harness 和步数额度，确认必要截图将发送至所配置的远端服务后开始。默认 GUI 额度为 30 步。

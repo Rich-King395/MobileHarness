@@ -6,7 +6,7 @@ English · [简体中文](README.md)
 
 Let a GUI Agent perform tasks on your Android phone, with control you can take over and return when needed.
 
-Release channel: `0.10.0-beta.1`; development: `0.10.0-dev`. The first public APK has not been released. Once available, download it from [Releases](https://github.com/Rich-King395/MobileHarness/releases). License: [Apache-2.0](LICENSE).
+First public beta: `0.10.0-beta.1` · [Download signed APK](https://github.com/Rich-King395/MobileHarness/releases/download/v0.10.0-beta.1/MobileHarness-0.10.0-beta.1-release.apk) · [Release notes and checksums](https://github.com/Rich-King395/MobileHarness/releases/tag/v0.10.0-beta.1). Development: `0.10.0-dev`. License: [Apache-2.0](LICENSE).
 
 ## ✨ Features
 
@@ -20,7 +20,7 @@ Release channel: `0.10.0-beta.1`; development: `0.10.0-dev`. The first public AP
 
 ## 🚀 Get started
 
-1. **Install and grant permissions**: once an APK is available in Releases, install it, manually enable the MobileHarness accessibility service as prompted, and allow notifications for the backup entry.
+1. **Install and grant permissions**: download the APK and follow Android's prompts to allow the installation source. Open the app, manually enable its accessibility service, and allow notifications. If Android blocks a restricted setting, see the [release notes](https://github.com/Rich-King395/MobileHarness/releases/tag/v0.10.0-beta.1).
 2. **Configure models**: on the Models page, add a name, HTTPS endpoint, model name, and your own API Key. Select a profile for the GUI Agent and for the Planner.
 3. **Choose authorized Apps**: select which Apps the Agent may operate on the task page. This scope is reused for later tasks and can be adjusted when needed.
 4. **Give a task**: enter your goal, choose Harness on or off and a step budget, then acknowledge that necessary screenshots will be sent to the configured remote services before starting. The default GUI budget is 30 steps.

@@ -2,9 +2,11 @@
 
 更新日期：2026-11-03。当前构建：**0.10.0-dev／22** 与 **0.10.0-beta.1／22**。正式版 `org.mobileharness.app.release` 已安装并启动；手机原开发版 `org.mobileharness.app` 保持 **0.9.0-dev／21** 及其数据未变。工程：[android-app](../android-app/README.md)。冻结比较基线仍为 [0.8.1](CURRENT_BASELINE.md)及其[归档](../baselines/2026-11-03-mobileharness-0.8.1/README.md)，没有被本轮增量替换。
 
-本轮完成[正式签名与渠道并存](RELEASE_CHANNELS_0.10.0.md)：正式密钥仓库外保存，缺凭据构建明确拒绝；独立应用身份、双语渠道名称、通知入口和配置页面保护已接入。242 项 JVM、13 项 APK 核验工具测试、16 项隔离签名工具检查通过，两个 APK 完成独立核验。手机双包独立 UID，原 18 条记录及附件、配置、授权和旧 APK 哈希全部不变；零远端调用。真实正式密钥的便携备份、正式版服务和真实任务、覆盖升级与其他手机测试尚待完成，尚未发布 GitHub Release。
+渠道阶段完成[正式签名与渠道并存](RELEASE_CHANNELS_0.10.0.md)：正式密钥仓库外保存，缺凭据构建明确拒绝；独立应用身份、双语渠道名称、通知入口和配置页面保护已接入。242 项 JVM、13 项 APK 核验工具测试、16 项隔离签名工具检查通过，两个 APK 完成独立核验。该阶段手机双包独立 UID，原 18 条记录及附件、配置、授权和旧 APK 哈希全部不变；零远端调用。真实正式密钥备份的完成情况尚未确认，正式版完整模型流程、覆盖升级与其他手机测试仍待完成。
 
-已接入[无密钥 GitHub 自动检查](CI.md)：开发版构建、现有 JVM／Python 测试、59 份冻结提示词引用和 Git 跟踪文件的敏感边界。工作流使用固定的官方 Action 提交、只读仓库权限和 7 天合成测试报告；正式签名仍在本机完成。本地 Wrapper 构建、242 项 JVM 报告、55 项 Python 测试和 actionlint 通过；远端每次提交的状态见 [Actions](https://github.com/Rich-King395/MobileHarness/actions/workflows/android-ci.yml)，不代替实机和模型效果验证。
+已完成[首个公开 Beta 发布](FIRST_RELEASE_0.10.0.md)：[v0.10.0-beta.1](https://github.com/Rich-King395/MobileHarness/releases/tag/v0.10.0-beta.1) 提供正式 APK、校验清单和公开元数据。源码 tag 固定到 `4d65eaaf114c5f42752ce7dd97e2486ec610b06d`；从干净提交重新构建并核验正式签名，三个公开附件匿名回下载通过。保留 Pre-release 标记；本轮未更新手机、迁移数据或调用模型。
+
+已接入[无密钥 GitHub 自动检查](CI.md)：开发版构建、现有 JVM／Python 测试、59 份冻结提示词引用和 Git 跟踪文件的敏感边界。工作流使用固定的官方 Action 提交、只读仓库权限和 7 天合成测试报告；正式签名仍在本机完成。首发本地干净 Wrapper 构建、242 项 JVM 和 70 项 Python 测试通过，[发布源码 CI](https://github.com/Rich-King395/MobileHarness/actions/runs/41624564648)两项任务通过；当前每次提交状态见 [Actions](https://github.com/Rich-King395/MobileHarness/actions/workflows/android-ci.yml)，不代替实机和模型效果验证。
 
 0.9.0 阶段的[实验记录与分析](EXPERIMENT_ANALYSIS_0.9.0.md)新增历史记录逐条补评、筛选和十条分页、单任务耗时／控制／错误详情、ON／OFF 描述性汇总与 45 列无内容 CSV；附本地多 CSV 去重分析工具。该阶段 236 项 JVM、43 项手机隔离存储标志、8 个恢复场景、10 个双语合成交互标志与 10 项本机 CSV 测试通过。该阶段 79 份核心／模型／执行接口及合同文件未变，原有 18 条记录、附件、配置和授权保留，零远端请求。用户评价不等于研究独立核验，均值样本与未知值按[汇总](acceptance/results/experiment-analysis-0.9.0/summary.json)和说明记录。
 
