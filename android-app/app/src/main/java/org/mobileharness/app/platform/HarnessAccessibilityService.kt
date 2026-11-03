@@ -2,6 +2,7 @@ package org.mobileharness.app.platform
 
 import android.Manifest
 import android.accessibilityservice.AccessibilityService
+import android.accessibilityservice.AccessibilityServiceInfo
 import android.accessibilityservice.GestureDescription
 import android.app.KeyguardManager
 import android.app.Notification
@@ -29,6 +30,7 @@ import android.view.Choreographer
 import android.view.Display
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
 import android.view.accessibility.AccessibilityNodeInfo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.TimeoutCancellationException
@@ -41,6 +43,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
 import org.mobileharness.app.HarnessApplication
+import org.mobileharness.app.MainActivity
 import org.mobileharness.app.BuildConfig
 import org.mobileharness.app.R
 import org.mobileharness.app.core.ActionResult
@@ -71,6 +74,7 @@ data class PlatformReadiness(
     val overlayStopAvailable: Boolean = false,
     val notificationControlAvailable: Boolean = false,
     val sensitivePageVisible: Boolean = false,
+    val competingServiceEnabled: Boolean = false,
 )
 
 /** All pixels and action data stay in process memory. No event contents or screenshots are logged. */
@@ -112,6 +116,7 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
     private var consumedReturnToken: String? = null
     private val notificationTokens = mutableListOf<PendingIntent>()
     private var entryLossStopRequested = false
+    private var channelConflictStopRequested = false
     private val controlMonitor = object : Runnable {
         override fun run() {
             if (!connected) return
@@ -146,11 +151,22 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
     val captureEnabled: Boolean get() = captureGate.get()
     val overlayStopAvailable: Boolean get() = overlay?.available == true && controls != null
     val notificationControlAvailable: Boolean get() = notificationsAllowed() && controls != null
-    val platformReady: Boolean get() = connected && deviceUnlocked() && !sensitivePageVisible && overlayStopAvailable
+    val competingServiceEnabled: Boolean get() = try {
+        // Enabled component metadata only. Never inspect the companion process, windows or data.
+        getSystemService(AccessibilityManager::class.java)
+            .getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK)
+            .any { service ->
+                val component = service.resolveInfo.serviceInfo
+                AppChannels.isCompanionService(packageName, component.packageName, component.name)
+            }
+    } catch (_: Exception) { true } // Fail closed if exclusivity cannot be verified.
+    val platformReady: Boolean get() = connected && deviceUnlocked() && !sensitivePageVisible &&
+        overlayStopAvailable && !competingServiceEnabled
 
     /** Pre-session launch handshake only. No text, pixels, or window history is retained. */
     fun isInitialAppForeground(expectedPackage: String): Boolean {
-        if (!connected || sensitivePageVisible || !deviceUnlocked() || expectedPackage == packageName) return false
+        if (!connected || sensitivePageVisible || !deviceUnlocked() || competingServiceEnabled ||
+            AppChannels.isHarnessPackage(expectedPackage)) return false
         val root = rootInActiveWindow ?: return false
         return try { root.packageName?.toString() == expectedPackage } finally { root.recycle() }
     }
@@ -234,10 +250,10 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
         lastFrame = null
         if (options == null) return
         val home = if (options.startMode == StartMode.HOME_AUTO) {
-            options.homePackage.takeIf { it.isNotBlank() && it == options.initialPackage && it != packageName }
+            options.homePackage.takeIf { it.isNotBlank() && it == options.initialPackage && !AppChannels.isHarnessPackage(it) }
                 ?: throw deviceFailure("AUTHORIZATION_UNAVAILABLE")
         } else null
-        sessionScope = SessionScope(options.authorizedPackages.toSet(), home)
+        sessionScope = SessionScope(options.authorizedPackages.filterNot(AppChannels::isHarnessPackage).toSet(), home)
     }
 
     private fun sensitivePageChanged() {
@@ -252,9 +268,19 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
             val readiness = PlatformReadiness(
                 connected, deviceUnlocked(), overlayStopAvailable,
                 notificationControlAvailable, sensitivePageVisible,
+                competingServiceEnabled,
             )
             mutableReadiness.value = readiness
             val state = controls?.snapshot?.value?.state
+            if (state == RunState.IDLE || state == RunState.ENDED || !readiness.competingServiceEnabled) {
+                channelConflictStopRequested = false
+            }
+            if (connected && readiness.competingServiceEnabled && !channelConflictStopRequested &&
+                state in setOf(RunState.AUTO, RunState.PREPARING, RunState.CHECKING)) {
+                channelConflictStopRequested = true
+                setCaptureEnabled(false)
+                controls?.environmentUnavailable("AUTHORIZATION_UNAVAILABLE")
+            }
             if (state == RunState.IDLE || state == RunState.ENDED || readiness.overlayStopAvailable ||
                 readiness.notificationControlAvailable) entryLossStopRequested = false
             // Temporarily hiding a still-attached overlay to capture pixels is a closed input
@@ -293,11 +319,12 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
             !keyguard.isDeviceLocked && !keyguard.isKeyguardLocked
     } catch (_: Exception) { false }
 
-    private fun captureAllowed(): Boolean = connected && captureGate.get() && sessionScope != null && !sensitivePageVisible && deviceUnlocked()
+    private fun captureAllowed(): Boolean = connected && captureGate.get() && sessionScope != null &&
+        !sensitivePageVisible && deviceUnlocked() && !competingServiceEnabled
 
     /** Called only at observation boundaries; the capture gate wins before any target access. */
     private fun requireCaptureAllowed() {
-        if (!connected || !captureGate.get() || sessionScope == null || sensitivePageVisible) {
+        if (!connected || !captureGate.get() || sessionScope == null || sensitivePageVisible || competingServiceEnabled) {
             throw deviceFailure("AUTHORIZATION_UNAVAILABLE", ExecutionFailureReason.CONTROL_NOT_AVAILABLE)
         }
         if (!deviceUnlocked()) throw deviceFailure("AUTHORIZATION_UNAVAILABLE", ExecutionFailureReason.DEVICE_NOT_READY)
@@ -310,7 +337,7 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
         val root = rootInActiveWindow ?: return null
         val currentPackage = try { root.packageName?.toString() } finally { root.recycle() }
         if (currentPackage == null) return null
-        if (currentPackage == packageName ||
+        if (AppChannels.isHarnessPackage(currentPackage) ||
             (currentPackage !in scope.allowed && currentPackage != scope.home)) {
             throw deviceFailure("AUTHORIZATION_UNAVAILABLE", ExecutionFailureReason.INPUT_APP_NOT_AUTHORIZED)
         }
@@ -540,7 +567,7 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
             }
             "launch_app" -> {
                 val target = action.arguments.getValue("package_name") as String
-                if (target !in allowedPackages || target !in scope.allowed) {
+                if (AppChannels.isHarnessPackage(target) || target !in allowedPackages || target !in scope.allowed) {
                     throw deviceFailure("AUTHORIZATION_UNAVAILABLE", ExecutionFailureReason.INPUT_APP_NOT_AUTHORIZED)
                 }
                 val launch = packageManager.getLaunchIntentForPackage(target) ?: throw deviceFailure("INPUT_FAILED")
@@ -595,7 +622,7 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
         val root = rootInActiveWindow ?: throw deviceFailure("AUTHORIZATION_UNAVAILABLE")
         try {
             val current = root.packageName?.toString()
-            if (current !in allowed || current !in sessionScope?.allowed.orEmpty()) {
+            if (AppChannels.isHarnessPackage(current) || current !in allowed || current !in sessionScope?.allowed.orEmpty()) {
                 throw deviceFailure("AUTHORIZATION_UNAVAILABLE", ExecutionFailureReason.INPUT_APP_NOT_AUTHORIZED)
             }
         } finally { root.recycle() }
@@ -680,7 +707,7 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
             // would also fail. Only a known editable-input failure may return to model observation.
             if (node.isPassword) throw deviceFailure("INPUT_FAILED", ExecutionFailureReason.PROTECTED_INPUT)
             val inputPackage = node.packageName?.toString()
-            if (inputPackage !in allowed || inputPackage !in sessionScope?.allowed.orEmpty()) {
+            if (AppChannels.isHarnessPackage(inputPackage) || inputPackage !in allowed || inputPackage !in sessionScope?.allowed.orEmpty()) {
                 throw deviceFailure("INPUT_FAILED", ExecutionFailureReason.INPUT_APP_NOT_AUTHORIZED)
             }
             if (!node.isVisibleToUser || !node.isFocused) {
@@ -807,9 +834,10 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
                 ControlCommand.TAKEOVER -> controls?.takeover()
                 ControlCommand.STOP -> controls?.stop()
                 ControlCommand.RECHECK -> controls?.recheck()
-                ControlCommand.RETRY -> if (deviceUnlocked() && !sensitivePageVisible) controls?.retry()
+                ControlCommand.RETRY -> if (deviceUnlocked() && !sensitivePageVisible && !competingServiceEnabled) controls?.retry()
                 ControlCommand.RETURN -> {
-                    if (!deviceUnlocked() || sensitivePageVisible || current.handoffUsed || consumedReturnToken == token) return@onMain
+                    if (!deviceUnlocked() || sensitivePageVisible || competingServiceEnabled ||
+                        current.handoffUsed || consumedReturnToken == token) return@onMain
                     consumedReturnToken = token
                     controls?.giveBack()
                 }
@@ -846,13 +874,13 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
         }
         notificationTokens.forEach { it.cancel() }
         notificationTokens.clear()
-        val open = Intent().setClassName(packageName, "$packageName.MainActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        val open = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         val openPending = PendingIntent.getActivity(this, 1700, open, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val strings = AppLanguage.context(this)
         val stateLabel = AppStrings.stateLabel(strings, snapshot.state)
         val builder = Notification.Builder(this, CHANNEL)
             .setSmallIcon(android.R.drawable.ic_media_pause)
-            .setContentTitle("MobileHarness")
+            .setContentTitle(strings.getString(R.string.channel_app_name))
             .setContentText(strings.getString(R.string.platform_notification_counts, stateLabel, snapshot.guiUsed, snapshot.budget, snapshot.plannerUsed))
             .setContentIntent(openPending)
             .setOnlyAlertOnce(true)
@@ -877,7 +905,7 @@ class HarnessAccessibilityService : AccessibilityService(), PhonePort {
     }
 
     private fun openApplication() {
-        val intent = Intent().setClassName(packageName, "$packageName.MainActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        val intent = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         try { startActivity(intent) } catch (_: Exception) { }
     }
 

@@ -1,0 +1,4 @@
+<resources>
+    <string name="channel_app_name">MobileHarness (Dev)</string>
+    <string name="channel_competing_service">Turn off the other MobileHarness accessibility service before continuing.</string>
+</resources>

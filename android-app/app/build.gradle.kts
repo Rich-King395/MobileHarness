@@ -8,6 +8,32 @@ plugins {
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
+// Passwords are supplied only for a short-lived local signing invocation.
+// Never serialize them into Gradle's configuration cache or a project file.
+val signingVariables = listOf(
+    "MOBILEHARNESS_RELEASE_STORE_FILE", "MOBILEHARNESS_RELEASE_STORE_PASSWORD",
+    "MOBILEHARNESS_RELEASE_KEY_ALIAS", "MOBILEHARNESS_RELEASE_KEY_PASSWORD",
+)
+val releaseCredentials = signingVariables.map { providers.environmentVariable(it).orNull }
+val releaseSigningReady = releaseCredentials.all { !it.isNullOrBlank() }
+check(releaseCredentials.all { it == null } || releaseSigningReady) {
+    "Incomplete release signing environment. Use tools/Invoke-ReleaseBuild.ps1."
+}
+val releasePackagingTasks = setOf("packageRelease", "signReleaseBundle", "bundleRelease", "assembleRelease")
+check(releaseSigningReady || gradle.startParameter.taskNames.none { it.substringAfterLast(':') in releasePackagingTasks }) {
+    "Release signing is unavailable. Use tools/Invoke-ReleaseBuild.ps1; no debug-key fallback is allowed."
+}
+if (releaseSigningReady) {
+    check(!gradle.startParameter.isConfigurationCacheRequested) {
+        "Signed builds require --no-configuration-cache. Use tools/Invoke-ReleaseBuild.ps1."
+    }
+    val store = file(releaseCredentials[0]!!).canonicalFile
+    val repository = rootProject.projectDir.parentFile.canonicalFile.toPath()
+    check(store.isFile && !store.toPath().startsWith(repository)) {
+        "The release keystore must exist outside the repository."
+    }
+}
+
 android {
     namespace = "org.mobileharness.app"
     compileSdk = 36
@@ -15,8 +41,8 @@ android {
         applicationId = "org.mobileharness.app"
         minSdk = 30
         targetSdk = 36
-        versionCode = 21
-        versionName = "0.9.0-dev"
+        versionCode = 22
+        versionName = "0.10.0"
         testInstrumentationRunner = "org.mobileharness.app.LiveServiceTestRunner"
     }
     compileOptions {
@@ -24,10 +50,38 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures { compose = true; buildConfig = true }
+    signingConfigs {
+        if (releaseSigningReady) create("localRelease") {
+            storeFile = file(releaseCredentials[0]!!)
+            storePassword = releaseCredentials[1]
+            keyAlias = releaseCredentials[2]
+            keyPassword = releaseCredentials[3]
+            storeType = "PKCS12"
+        }
+    }
     buildTypes {
-        release { isMinifyEnabled = false }
+        debug { versionNameSuffix = "-dev" }
+        release {
+            applicationIdSuffix = ".release"
+            versionNameSuffix = "-beta.1"
+            isMinifyEnabled = false
+            isDebuggable = false
+            if (releaseSigningReady) signingConfig = signingConfigs.getByName("localRelease")
+        }
     }
     packaging.resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
+}
+
+// Public checkouts can sync and build debug without private credentials. A
+// release packaging request must fail closed instead of creating an unsigned APK.
+tasks.configureEach {
+    if (name in releasePackagingTasks) {
+        doFirst {
+            check(releaseSigningReady) {
+                "Release signing is unavailable. Use tools/Invoke-ReleaseBuild.ps1; no debug-key fallback is allowed."
+            }
+        }
+    }
 }
 kotlin { compilerOptions { jvmTarget.set(JvmTarget.JVM_17) } }
 

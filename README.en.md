@@ -2,9 +2,11 @@
 
 English · [简体中文](README.md)
 
+[![Android CI](https://github.com/Rich-King395/MobileHarness/actions/workflows/android-ci.yml/badge.svg)](https://github.com/Rich-King395/MobileHarness/actions/workflows/android-ci.yml)
+
 Let a GUI Agent perform tasks on your Android phone, with control you can take over and return when needed.
 
-Current version: `0.9.0-dev`. The first public APK has not been released. Once available, download it from [Releases](https://github.com/Rich-King395/MobileHarness/releases). License: [Apache-2.0](LICENSE).
+Release channel: `0.10.0-beta.1`; development: `0.10.0-dev`. The first public APK has not been released. Once available, download it from [Releases](https://github.com/Rich-King395/MobileHarness/releases). License: [Apache-2.0](LICENSE).
 
 ## ✨ Features
 
@@ -25,6 +27,8 @@ Current version: `0.9.0-dev`. The first public APK has not been released. Once a
 5. **Take over and return**: expand the floating control and request takeover. Wait for “Pausing” to change to “Manual” before operating the phone, then return control when ready. Use Stop to end the task.
 
 The current version supports **one effective takeover and return per task**. Manual actions do not consume or reset the GUI budget; Planner calls are recorded separately.
+
+Release and development versions can be installed together, with separate profiles and records. Enable only one version’s accessibility service at a time. Set up the release version separately on first use.
 
 ## 📱 Devices and models
 

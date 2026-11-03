@@ -1,0 +1,94 @@
+name: Android CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  repository-checks:
+    name: Repository checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+
+      - name: Check tracked sensitive files and recognizable secrets
+        run: python -B tools/ci/check_sensitive_files.py
+
+      - name: Verify frozen prompts
+        run: python -B tools/ci/check_prompt_integrity.py
+
+      - name: Run offline Python tests
+        run: python -B -m unittest discover -s tools/tests -p 'test_*.py' -v
+
+  android-debug:
+    name: Android debug build and tests
+    needs: repository-checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+        working-directory: android-app
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Set up JDK
+        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle and validate wrapper
+        uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5
+        with:
+          validate-wrappers: true
+          cache-read-only: ${{ github.event_name == 'pull_request' || github.ref != 'refs/heads/main' }}
+
+      - name: Install pinned Android SDK components
+        run: |
+          sdk_root="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          sdkmanager="$sdk_root/cmdline-tools/latest/bin/sdkmanager"
+          if [[ -z "$sdk_root" || ! -x "$sdkmanager" ]]; then
+            echo '::error::Android SDK command-line tools are unavailable.'
+            exit 1
+          fi
+          "$sdkmanager" --licenses > /dev/null < <(yes)
+          "$sdkmanager" --install 'platforms;android-36' 'build-tools;36.0.0' --channel=0
+
+      - name: Build debug APK and run JVM tests
+        run: ./gradlew --console=plain --no-daemon --no-configuration-cache :app:testDebugUnitTest :app:assembleDebug
+
+      - name: Save synthetic unit test reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: debug-unit-test-reports
+          path: |
+            android-app/app/build/test-results/testDebugUnitTest/*.xml
+            android-app/app/build/reports/tests/testDebugUnitTest/**
+          if-no-files-found: ignore
+          retention-days: 7

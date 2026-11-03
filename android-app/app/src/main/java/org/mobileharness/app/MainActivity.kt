@@ -55,6 +55,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.withContext
 import org.mobileharness.app.core.*
 import org.mobileharness.app.platform.HarnessAccessibilityService
+import org.mobileharness.app.platform.AppChannels
 import org.mobileharness.app.platform.ForegroundStabilityGate
 import org.mobileharness.app.platform.PlatformReadiness
 import org.mobileharness.app.model.QwenGateway
@@ -123,6 +124,10 @@ class MainActivity : ComponentActivity() {
     private fun begin(request: TaskLaunchRequest, onStarted: () -> Unit) {
         if (starting.value) return
         val service = HarnessAccessibilityService.instance
+        if (service?.competingServiceEnabled == true) {
+            startupNote.value = uiText(R.string.channel_competing_service)
+            return
+        }
         if (service?.connected != true || service.controls !== app.runtime || service.inputInFlight ||
             app.runtime.snapshot.value.state !in setOf(RunState.IDLE, RunState.ENDED)) {
             startupNote.value = uiText(R.string.ui_startup_unavailable)
@@ -157,7 +162,7 @@ class MainActivity : ComponentActivity() {
                     while (true) {
                         // Only inspect the resolved Home package during this pre-session launch.
                         // Never turn this into a background/manual-period window monitor.
-                        if (!service.connected || service.controls !== app.runtime ||
+                        if (!service.connected || service.competingServiceEnabled || service.controls !== app.runtime ||
                             app.runtime.snapshot.value.state !in setOf(RunState.IDLE, RunState.ENDED)) return@withTimeoutOrNull false
                         if (foregroundStability.sample(!visible && service.isInitialAppForeground(options.initialPackage),
                                 SystemClock.uptimeMillis())) return@withTimeoutOrNull true
@@ -182,6 +187,10 @@ class MainActivity : ComponentActivity() {
         }
     }
     private fun returnToPhone() {
+        if (HarnessAccessibilityService.instance?.competingServiceEnabled == true) {
+            startupNote.value = uiText(R.string.channel_competing_service)
+            return
+        }
         moveTaskToBack(true)
         app.scope.launch { delay(400); if (!visible) app.runtime.giveBack() }
     }
@@ -293,7 +302,7 @@ class MainActivity : ComponentActivity() {
         Scaffold { padding ->
             Column(Modifier.fillMaxSize().padding(padding).consumeWindowInsets(padding).imePadding()) {
                 Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text("MobileHarness", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold,
+                    Text(context.getString(R.string.channel_app_name), style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold,
                         maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.weight(1f))
                     IconButton(onClick = { showLanguage = true }) {
                         Icon(painterResource(R.drawable.ic_language), contentDescription = context.getString(R.string.language_title))
@@ -322,12 +331,13 @@ class MainActivity : ComponentActivity() {
                     }
                     when (tab) {
                         0 -> {
+                            if (platform.competingServiceEnabled) Text(context.getString(R.string.channel_competing_service), color = MaterialTheme.colorScheme.error)
                             if (connected && !platform.overlayStopAvailable) Text(context.getString(R.string.ui_overlay_unavailable), color = MaterialTheme.colorScheme.error)
                             val ownsControls = HarnessAccessibilityService.instance?.controls === app.runtime
                             if (connected && !ownsControls) Text(context.getString(R.string.ui_verification_controls_unavailable), color = MaterialTheme.colorScheme.error)
                             if (inactive) {
                                 if (state.state == RunState.ENDED) Text(AppStrings.runtimeMessage(context, state.message), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                                TaskForm(draft, ready && inactive && !isStarting && !profileBusy && !recordBusy && pendingExportSessions == null, connected && platform.overlayStopAvailable && ownsControls,
+                                TaskForm(draft, ready && inactive && !isStarting && !profileBusy && !recordBusy && pendingExportSessions == null, connected && platform.overlayStopAvailable && ownsControls && !platform.competingServiceEnabled,
                                     guiReady, plannerReady, gui, planner,
                                     configurations.firstOrNull { it.slotId == guiSlot }?.name.orEmpty(),
                                     configurations.firstOrNull { it.slotId == plannerSlot }?.name.orEmpty(), { tab = 1 }) { options, onStarted -> begin(options, onStarted) }
@@ -446,7 +456,7 @@ class MainActivity : ComponentActivity() {
         val apps = remember {
             packageManager.queryIntentActivities(Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER), 0)
                 .map { it.activityInfo.packageName to it.loadLabel(packageManager).toString() }
-                .distinctBy { it.first }.filter { it.first != packageName }.sortedBy { it.second }
+                .distinctBy { it.first }.filterNot { AppChannels.isHarnessPackage(it.first) }.sortedBy { it.second }
         }
         val scope = rememberCoroutineScope()
         var scopeRevision by remember { mutableIntStateOf(0) }

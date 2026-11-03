@@ -1,8 +1,12 @@
 # Android 开发版本与验收进度
 
-更新日期：2026-11-03。当前版本：**0.9.0-dev／21**，已安装。工程：[android-app](../android-app/README.md)。包名：`org.mobileharness.app`。冻结比较基线仍为 [0.8.1](CURRENT_BASELINE.md)及其[归档](../baselines/2026-11-03-mobileharness-0.8.1/README.md)，没有被本轮增量替换。
+更新日期：2026-11-03。当前构建：**0.10.0-dev／22** 与 **0.10.0-beta.1／22**。正式版 `org.mobileharness.app.release` 已安装并启动；手机原开发版 `org.mobileharness.app` 保持 **0.9.0-dev／21** 及其数据未变。工程：[android-app](../android-app/README.md)。冻结比较基线仍为 [0.8.1](CURRENT_BASELINE.md)及其[归档](../baselines/2026-11-03-mobileharness-0.8.1/README.md)，没有被本轮增量替换。
 
-本轮[实验记录与分析](EXPERIMENT_ANALYSIS_0.9.0.md)新增历史记录逐条补评、筛选和十条分页、单任务耗时／控制／错误详情、ON／OFF 描述性汇总与 45 列无内容 CSV；附本地多 CSV 去重分析工具。236 项 JVM、43 项手机隔离存储标志、8 个恢复场景、10 个双语合成交互标志与 10 项本机 CSV 测试通过。79 份核心／模型／执行接口及合同文件未变，原有 18 条记录、附件、配置和授权保留，零远端请求。用户评价不等于研究独立核验，均值样本与未知值按[汇总](acceptance/results/experiment-analysis-0.9.0/summary.json)和说明记录。
+本轮完成[正式签名与渠道并存](RELEASE_CHANNELS_0.10.0.md)：正式密钥仓库外保存，缺凭据构建明确拒绝；独立应用身份、双语渠道名称、通知入口和配置页面保护已接入。242 项 JVM、13 项 APK 核验工具测试、16 项隔离签名工具检查通过，两个 APK 完成独立核验。手机双包独立 UID，原 18 条记录及附件、配置、授权和旧 APK 哈希全部不变；零远端调用。真实正式密钥的便携备份、正式版服务和真实任务、覆盖升级与其他手机测试尚待完成，尚未发布 GitHub Release。
+
+已接入[无密钥 GitHub 自动检查](CI.md)：开发版构建、现有 JVM／Python 测试、59 份冻结提示词引用和 Git 跟踪文件的敏感边界。工作流使用固定的官方 Action 提交、只读仓库权限和 7 天合成测试报告；正式签名仍在本机完成。本地 Wrapper 构建、242 项 JVM 报告、55 项 Python 测试和 actionlint 通过；远端每次提交的状态见 [Actions](https://github.com/Rich-King395/MobileHarness/actions/workflows/android-ci.yml)，不代替实机和模型效果验证。
+
+0.9.0 阶段的[实验记录与分析](EXPERIMENT_ANALYSIS_0.9.0.md)新增历史记录逐条补评、筛选和十条分页、单任务耗时／控制／错误详情、ON／OFF 描述性汇总与 45 列无内容 CSV；附本地多 CSV 去重分析工具。该阶段 236 项 JVM、43 项手机隔离存储标志、8 个恢复场景、10 个双语合成交互标志与 10 项本机 CSV 测试通过。该阶段 79 份核心／模型／执行接口及合同文件未变，原有 18 条记录、附件、配置和授权保留，零远端请求。用户评价不等于研究独立核验，均值样本与未知值按[汇总](acceptance/results/experiment-analysis-0.9.0/summary.json)和说明记录。
 
 此前 [0.8.2 稳定性验收](acceptance/STABILITY_0.8.2.md)规定范围通过：220 项 JVM、81 个手机 Harness 变体、R1–R8 连续三轮、通知 ON／OFF 和 32 项隔离存储标志。该阶段修复两处 debug 诊断问题（跨线程断言、固定中文通知标题），当时生产运行代码／提示词／数据合同／策略与冻结基线一致。18 条原有记录及附件摘要全部不变，配置与授权仍可读，零远程请求。原始失败、不同候选包与未测的实际系统中断／跨天长跑分开记录，见[该阶段汇总](acceptance/results/stability-0.8.2/summary.json)。
 
@@ -10,7 +14,7 @@
 
 当前普通任务运行组合为提示词 1.2.0／响应适配器 1.4.0／执行策略 1.2.0，新自动恢复会话事件 Schema 1.3.0，任务附件载荷 schema_version 为整数 1。0.8.0 引入有限自动恢复：暂时请求／观察失败后重新观察并请求新的计账决策，不修模型落点或重放旧输入；持续或硬故障安全结束为 runtime_failure。0.8.1 允许普通页面投屏，密钥编辑弹层仍防截屏，Agent 自身 App 的采集禁令不变。对应证据分别见 [0.8.0 摘要](acceptance/results/automatic-recovery-0.8.0/summary.json)与 [0.8.1 摘要](acceptance/results/capture-policy-0.8.1/summary.json)。
 
-用户最新实机报告：Qwen 3.8 MAX 同时担任 GUI Agent 和 Planner，任务执行、主动接管及归还后继续均可完成。具体任务、分支和用量未提供，按用户报告记录，不补作独立成功核验。此前固定基线阶段仅保存现有 APK、白名单源码和证据，未重编、重装或调用模型；既有 203 项 JVM 等结果保留各自版本范围。0.8.2 与 0.9.0 的构建、安装和验收按各自证据记录，现有 APK 仍为调试签名开发包，尚非 User Study 发布版。
+用户最新实机报告：Qwen 3.8 MAX 同时担任 GUI Agent 和 Planner，任务执行、主动接管及归还后继续均可完成。具体任务、分支和用量未提供，按用户报告记录，不补作独立成功核验。此前固定基线阶段仅保存现有 APK、白名单源码和证据，未重编、重装或调用模型；既有 203 项 JVM 等结果保留各自版本范围。0.8.2 与 0.9.0 阶段的构建、安装和验收按各自证据记录，均使用调试签名开发包。本轮新增正式签名渠道，仍待 User Study 发布验收。
 
 ## 历史开发记录
 

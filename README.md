@@ -2,9 +2,11 @@
 
 [English](README.en.md) · 简体中文
 
+[![Android CI](https://github.com/Rich-King395/MobileHarness/actions/workflows/android-ci.yml/badge.svg)](https://github.com/Rich-King395/MobileHarness/actions/workflows/android-ci.yml)
+
 让 GUI Agent 在 Android 手机上执行任务，并在需要时由你接管、操作和归还控制权。
 
-当前版本：`0.9.0-dev`。首个公开安装包尚未发布；发布后从本仓库 [Releases](https://github.com/Rich-King395/MobileHarness/releases) 下载。项目许可证：[Apache-2.0](LICENSE)。
+当前正式渠道：`0.10.0-beta.1`；开发版：`0.10.0-dev`。首个公开安装包尚未发布；发布后从本仓库 [Releases](https://github.com/Rich-King395/MobileHarness/releases) 下载。项目许可证：[Apache-2.0](LICENSE)。
 
 ## ✨ 主要功能
 
@@ -25,6 +27,8 @@
 5. **接管与归还**：展开悬浮入口并点击接管，等待状态从“暂停中”变为“人工”后操作手机；完成后点击归还。需要结束时点击中止。
 
 首期每个任务支持 **一次有效接管与归还**。人工操作不消耗或重置 GUI 额度；Planner 调用单独记录。
+
+正式版与开发版可以同时安装，配置和记录分别保存。使用时只开启其中一个版本的无障碍服务；首次使用正式版需单独配置。
 
 ## 📱 设备与模型
 

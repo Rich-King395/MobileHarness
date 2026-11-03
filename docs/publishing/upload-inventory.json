@@ -5,20 +5,21 @@
   "project_git_initialized_by_tool": false,
   "phone_accessed": false,
   "apk_or_signing_changed": false,
-  "ignored_probe_count": 23,
+  "ignored_probe_count": 26,
   "kept_probe_count": 16,
   "frozen_reference_checks": 59,
-  "candidate_file_count": 310,
-  "review_file_count": 64,
+  "candidate_file_count": 332,
+  "review_file_count": 76,
   "categories": {
-    "android_source_tests_and_project": 158,
+    "android_source_tests_and_project": 164,
     "data_and_runtime_contracts": 9,
     "generated_upload_inventory": 3,
     "handoff_material_review_required": 2,
-    "maintenance_or_analysis_tool": 32,
-    "method_or_historical_documentation": 44,
+    "maintenance_or_analysis_tool": 45,
+    "method_or_historical_documentation": 46,
     "publishing_preparation": 2,
     "repository_configuration": 3,
+    "unclassified_review_required": 1,
     "user_documentation": 3,
     "versioned_prompts": 54
   },
@@ -59,10 +60,16 @@
       "bytes": 145
     },
     {
+      "path": ".github/workflows/android-ci.yml",
+      "category": "unclassified_review_required",
+      "sha256": "7e3b16f7aed769c95453b75cf35fd53717d194ce88e71cfaaa1e75ad012c98f1",
+      "bytes": 3048
+    },
+    {
       "path": ".gitignore",
       "category": "repository_configuration",
-      "sha256": "adea5bed3f475c6ed9b7cdeb98d7f06dd42f06bfaf918b2508ac5d3887cb5101",
-      "bytes": 1393
+      "sha256": "08b898daa36414c1ad722d7c40acd74e6513603d31f2e79d0b05e2bf5c9da0bf",
+      "bytes": 1436
     },
     {
       "path": "HandoffHarness_APK_Handoff/HANDOFF_ANDROID_APK.md",
@@ -85,14 +92,14 @@
     {
       "path": "README.en.md",
       "category": "user_documentation",
-      "sha256": "809b3adddbe0f849b754f951589c989465979dafffd764b64af2e17d542c5a4f",
-      "bytes": 4317
+      "sha256": "dd3ea6490dff6e562d0f0194091ff5775bc8b6d5ede2386ad421fd4c8dd681d1",
+      "bytes": 4745
     },
     {
       "path": "README.md",
       "category": "user_documentation",
-      "sha256": "e4bc6034d8632cc5ed78da52fd93ee816eb894112d2b14ea08bbf5e09093a10c",
-      "bytes": 3754
+      "sha256": "d37863fee210ee09653e206f20d4698e2ec49a2886c920f4e54f966ea6b4e4c5",
+      "bytes": 4148
     },
     {
       "path": "android-app/.gitignore",
@@ -115,8 +122,8 @@
     {
       "path": "android-app/app/build.gradle.kts",
       "category": "android_source_tests_and_project",
-      "sha256": "10e1285cfbef1745132999f9151938aa701cc4f406a1d7a81e240b4964c21f9d",
-      "bytes": 3057
+      "sha256": "e3c07841ab7a92b87886a8e4d6b61c3e2976e5a0ce33f48718ec3462f8b7722e",
+      "bytes": 5566
     },
     {
       "path": "android-app/app/src/androidTest/java/org/mobileharness/app/LivePhonePortTest.kt",
@@ -427,8 +434,8 @@
     {
       "path": "android-app/app/src/main/AndroidManifest.xml",
       "category": "android_source_tests_and_project",
-      "sha256": "4cdf2a49f41767cab1da236dceb19860e94dbecab258af3515b9819537d059a3",
-      "bytes": 2153
+      "sha256": "ec27e0dd014033bf9beb311f2518c127a43cc1d6052e1a9a190b60084a0ee5ac",
+      "bytes": 2245
     },
     {
       "path": "android-app/app/src/main/java/org/mobileharness/app/HarnessApplication.kt",
@@ -439,8 +446,8 @@
     {
       "path": "android-app/app/src/main/java/org/mobileharness/app/MainActivity.kt",
       "category": "android_source_tests_and_project",
-      "sha256": "357c6ed965e4c40959496308fba0fe0bf2dd658b9faa5f666ccc98ea9ca3bf17",
-      "bytes": 72425
+      "sha256": "7444bfbf49f6060864bb16834e3a119bdc8f1ee8912c6c4ab728b1818c8059c9",
+      "bytes": 73120
     },
     {
       "path": "android-app/app/src/main/java/org/mobileharness/app/core/Contracts.kt",
@@ -497,6 +504,12 @@
       "bytes": 18448
     },
     {
+      "path": "android-app/app/src/main/java/org/mobileharness/app/platform/AppChannels.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "86cbbf330ce9413db875a7e49487baca194f24ea451bb3d0a779e6ed42d36b72",
+      "bytes": 868
+    },
+    {
       "path": "android-app/app/src/main/java/org/mobileharness/app/platform/ControlReceiver.kt",
       "category": "android_source_tests_and_project",
       "sha256": "9382369c5a361b0e24fdd6f142b66be7909092825f617f3ee873bffc679f75f5",
@@ -511,8 +524,8 @@
     {
       "path": "android-app/app/src/main/java/org/mobileharness/app/platform/HarnessAccessibilityService.kt",
       "category": "android_source_tests_and_project",
-      "sha256": "25810f05b3c4613d8b5f282aa45300c58c876678d6765090aea9ccd541481a82",
-      "bytes": 47499
+      "sha256": "775aed06ee0d49fd3a7d2f5ecccb386df16621be180199ea1a0ff1c0d42d87a3",
+      "bytes": 49354
     },
     {
       "path": "android-app/app/src/main/java/org/mobileharness/app/platform/OverlayControlIcon.kt",
@@ -713,6 +726,12 @@
       "bytes": 7778
     },
     {
+      "path": "android-app/app/src/main/res/values-zh/channel_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "5f887156b8c2ec00dc01edb31b0b33bd7100dd8266d1cb7225418a7ad0079a46",
+      "bytes": 229
+    },
+    {
       "path": "android-app/app/src/main/res/values-zh/experiment_analysis_strings.xml",
       "category": "android_source_tests_and_project",
       "sha256": "280bd40ad92718c23e91d19d68a4152147b8175752bda3cf946424aa2a44b984",
@@ -747,6 +766,12 @@
       "category": "android_source_tests_and_project",
       "sha256": "1454f0db941d39a626887ea36c04727c44bd5cb8c9d441bd0ab67f87538b3005",
       "bytes": 4744
+    },
+    {
+      "path": "android-app/app/src/main/res/values/channel_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "6ae3e2b9b312a989c8c5708e267e0f75c88eb83ba771dfa5f6b22a1e442adf95",
+      "bytes": 218
     },
     {
       "path": "android-app/app/src/main/res/values/experiment_analysis_strings.xml",
@@ -819,6 +844,18 @@
       "category": "android_source_tests_and_project",
       "sha256": "aa9e2bc336bd530564213e291b84869dad7c76ca5497bb8e038406460d7e240d",
       "bytes": 202
+    },
+    {
+      "path": "android-app/app/src/release/res/values-zh/channel_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "e5ea15979b7d0c854c43c9aa733bb3fe01409b2cd1c2122398fabfc4f1c2b865",
+      "bytes": 99
+    },
+    {
+      "path": "android-app/app/src/release/res/values/channel_strings.xml",
+      "category": "android_source_tests_and_project",
+      "sha256": "d4a7e73a842c993c46352f7f8d201ffc6ceb493231484e3b350f0b02b3b16b31",
+      "bytes": 94
     },
     {
       "path": "android-app/app/src/test/java/org/mobileharness/app/core/CoordinatorActionRecoveryTest.kt",
@@ -927,6 +964,12 @@
       "category": "android_source_tests_and_project",
       "sha256": "505fffb3d726c494e7dec774be882a359f71c19e45d3b299aa0ff1d884978a99",
       "bytes": 2576
+    },
+    {
+      "path": "android-app/app/src/test/java/org/mobileharness/app/platform/AppChannelsTest.kt",
+      "category": "android_source_tests_and_project",
+      "sha256": "4983d49ddb1c786cbf4bb946f2473c783e91327249f758c544c9a376f37496ce",
+      "bytes": 2465
     },
     {
       "path": "android-app/app/src/test/java/org/mobileharness/app/platform/ForegroundStabilityGateTest.kt",
@@ -1055,6 +1098,12 @@
       "bytes": 4501
     },
     {
+      "path": "docs/CI.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "8b1c1c8d325c157952e8613769d862f0dd7c310c9f886a14d127489025ec01c9",
+      "bytes": 3526
+    },
+    {
       "path": "docs/CURRENT_BASELINE.md",
       "category": "method_or_historical_documentation",
       "sha256": "b186af0bd4353f99055aeb9c3772de7e9062725ca014eef5a83d8592e1a1f520",
@@ -1069,8 +1118,8 @@
     {
       "path": "docs/DEVELOPMENT_STATUS.md",
       "category": "method_or_historical_documentation",
-      "sha256": "bb8180879be291ddf11b136bf018007ea19a030114f778d15b9fb561c1a38bae",
-      "bytes": 25225
+      "sha256": "95f3effc46e7851fe728d64241af39aec78db6afd27cfefe7a6a204bfcbe6f9c",
+      "bytes": 26572
     },
     {
       "path": "docs/EXECUTION_FEEDBACK_0.5.0.md",
@@ -1113,6 +1162,12 @@
       "category": "method_or_historical_documentation",
       "sha256": "53b2ba6e05c5955e4c6278875a101cf3ffcd30a33f46b77e1fe2f50d439696b3",
       "bytes": 4780
+    },
+    {
+      "path": "docs/RELEASE_CHANNELS_0.10.0.md",
+      "category": "method_or_historical_documentation",
+      "sha256": "114310d81e8f2d934376f6570b87595b072dc4da780d42bf55eb9515b8e74841",
+      "bytes": 3994
     },
     {
       "path": "docs/TECHNICAL_BASELINE.md",
@@ -1369,8 +1424,8 @@
     {
       "path": "docs/publishing/SIGNING_AND_CHANNELS.md",
       "category": "publishing_preparation",
-      "sha256": "d2216d30b56252ee1b97c3d281c0fcefec0c7440ea511c60ca6ee6561da70dc9",
-      "bytes": 9512
+      "sha256": "ddea0394181cc3b2045124a8399585a45554fca715d57ae1ed91eb46feb5fb92",
+      "bytes": 11412
     },
     {
       "path": "docs/publishing/UPLOAD_FILES.txt",
@@ -1721,6 +1776,18 @@
       "bytes": 4022
     },
     {
+      "path": "tools/Export-ReleaseSigningRecovery.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "7028b80a431adc5de27c3c259a14d00f1c7e9fe41783c9604c3271981a6d6742",
+      "bytes": 4901
+    },
+    {
+      "path": "tools/Initialize-ReleaseSigning.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "ec8f08a08219c407ebf028e9cddd7420f12e5a51ca80431c328c3c0d4fc25e77",
+      "bytes": 3527
+    },
+    {
       "path": "tools/Invoke-FinalState050.ps1",
       "category": "maintenance_or_analysis_tool",
       "sha256": "4dfe639ad3cd6dfa85901ee96de2993b70c51006ec99327792f921d4582ba53c",
@@ -1781,6 +1848,12 @@
       "bytes": 6479
     },
     {
+      "path": "tools/Invoke-ReleaseBuild.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "cbedcc68da670b3a67c56da72b8c4d40c0ea40a6ac6282b95fb27219f504636b",
+      "bytes": 2823
+    },
+    {
       "path": "tools/Invoke-ThreeAppSmoke034.ps1",
       "category": "maintenance_or_analysis_tool",
       "sha256": "990eaf62d5b1d9d022e7bed7e2d2cc51fcee9cec8161849d01a1cea9ba0c2d39",
@@ -1799,10 +1872,40 @@
       "bytes": 6873
     },
     {
+      "path": "tools/ReleaseSigning.Common.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "3d07902da49d596deb9520e6f84f233110a4c7a6ff278ecf9da737f9bbfd2252",
+      "bytes": 7755
+    },
+    {
+      "path": "tools/Restore-ReleaseSigningRecovery.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "9bb420c6fabbe0bfb217fe4a58402376b971b3f97c42b535338eceb73811e958",
+      "bytes": 5151
+    },
+    {
+      "path": "tools/Test-ReleaseSigningPlaintext.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "d713111e8e84eb4a6cd0d8ad48f2218514831b6e1a4dfcdc2d5b2e9d77ff4849",
+      "bytes": 7819
+    },
+    {
       "path": "tools/analyze_experiment_csv.py",
       "category": "maintenance_or_analysis_tool",
       "sha256": "b95ad0b4909abf00d20502ea87fa6d9db7997f402c5b33253601f33f680b3aa3",
       "bytes": 11322
+    },
+    {
+      "path": "tools/ci/check_prompt_integrity.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "324c492b9ba13d82e0a044390611bf895c93ea5211f90aa36318907a367ba209",
+      "bytes": 5012
+    },
+    {
+      "path": "tools/ci/check_sensitive_files.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "1fe37274f2a62299c7640a086b795dfc97f2ff792a20244b06abb16c303e0ec9",
+      "bytes": 11104
     },
     {
       "path": "tools/collect_experiment_analysis090.py",
@@ -1819,8 +1922,8 @@
     {
       "path": "tools/prepare_github_inventory.py",
       "category": "maintenance_or_analysis_tool",
-      "sha256": "e699c7a9eb15f71df7c742093ce42c2f869c51115cb8507a8046380bf7e4722b",
-      "bytes": 12338
+      "sha256": "785395960ba3d29e3864903b24147b78e8a53fb3d6464ce760309de274b0b939",
+      "bytes": 12467
     },
     {
       "path": "tools/run_stability_acceptance.py",
@@ -1865,10 +1968,34 @@
       "bytes": 4887
     },
     {
+      "path": "tools/tests/Test-ReleaseSigningTools.ps1",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "52cb647d0573bc93efc907dd480a29d964d66b52f3430922a6422919c5600335",
+      "bytes": 9334
+    },
+    {
       "path": "tools/tests/test_analyze_experiment_csv.py",
       "category": "maintenance_or_analysis_tool",
       "sha256": "61a239c846222e9deb18f6eff8a312b5d6f5db970dad416a5675eb2145f8c314",
       "bytes": 7658
+    },
+    {
+      "path": "tools/tests/test_ci_prompt_integrity.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "20f6f3158ec10242b0e97e315f198a8e9055dbbe8e24cf767bb75d6ae3977a7b",
+      "bytes": 6673
+    },
+    {
+      "path": "tools/tests/test_ci_sensitive_files.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "143732ed3230ee0814af62ab3005a9585e4581da9165bed17d008f695d2cfef4",
+      "bytes": 10241
+    },
+    {
+      "path": "tools/tests/test_verify_release_channels.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "0bbc022be6a6a3f62280c1c79ac2eca3d9d1ce16c03933562d92ff5db4142f81",
+      "bytes": 9798
     },
     {
       "path": "tools/verify_automatic_recovery080.py",
@@ -1907,6 +2034,12 @@
       "bytes": 6894
     },
     {
+      "path": "tools/verify_release_channels.py",
+      "category": "maintenance_or_analysis_tool",
+      "sha256": "e8fc2ac7f7e0e10947f3d2ce946c029d36c9e2fad3a54c7264da972e7d16a7fe",
+      "bytes": 17275
+    },
+    {
       "path": "tools/verify_task_records070.py",
       "category": "maintenance_or_analysis_tool",
       "sha256": "5710620c1c2088c40435772ef88be9267317df3f8609a0cb750b9a0ef867d4ae",
@@ -1914,6 +2047,12 @@
     }
   ],
   "review": [
+    {
+      "path": ".github/workflows/android-ci.yml",
+      "reasons": [
+        "UNCLASSIFIED_FILE"
+      ]
+    },
     {
       "path": "HandoffHarness_APK_Handoff/HANDOFF_ANDROID_APK.md",
       "reasons": [
@@ -1934,6 +2073,12 @@
     },
     {
       "path": "docs/AUTOMATIC_START_AND_PROFILE_LIBRARY_0.3.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/CI.md",
       "reasons": [
         "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
       ]
@@ -1995,6 +2140,12 @@
     },
     {
       "path": "docs/MODEL_ADAPTER_AND_PROMPT_VERSIONS_v1.1.0.md",
+      "reasons": [
+        "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
+      ]
+    },
+    {
+      "path": "docs/RELEASE_CHANNELS_0.10.0.md",
       "reasons": [
         "HISTORICAL_OR_METHOD_DOCUMENT_LINKS_REVIEW"
       ]
@@ -2201,6 +2352,12 @@
       ]
     },
     {
+      "path": "docs/publishing/SIGNING_AND_CHANNELS.md",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
       "path": "prompts/v1.0.0/VALIDATION.md",
       "reasons": [
         "MACHINE_PATH_REFERENCE"
@@ -2208,6 +2365,18 @@
     },
     {
       "path": "prompts/v1.1.0/VALIDATION.md",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Export-ReleaseSigningRecovery.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Initialize-ReleaseSigning.ps1",
       "reasons": [
         "MACHINE_PATH_REFERENCE"
       ]
@@ -2273,6 +2442,12 @@
       ]
     },
     {
+      "path": "tools/Invoke-ReleaseBuild.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
       "path": "tools/Invoke-ThreeAppSmoke034.ps1",
       "reasons": [
         "MACHINE_PATH_REFERENCE"
@@ -2291,7 +2466,37 @@
       ]
     },
     {
+      "path": "tools/Restore-ReleaseSigningRecovery.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/Test-ReleaseSigningPlaintext.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
       "path": "tools/run_stability_acceptance.py",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/tests/Test-ReleaseSigningTools.ps1",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/tests/test_ci_prompt_integrity.py",
+      "reasons": [
+        "MACHINE_PATH_REFERENCE"
+      ]
+    },
+    {
+      "path": "tools/tests/test_ci_sensitive_files.py",
       "reasons": [
         "MACHINE_PATH_REFERENCE"
       ]

@@ -114,7 +114,8 @@ def main():
                         "baselines/archive.zip", "docs/acceptance/results/log.json", "docs/previews/screen.png",
                         "docs/local-archive/original.md", ".agents/skills/example/SKILL.md", ".codex/config.toml",
                         "tools/__pycache__/example.pyc", "exports/analysis.csv", "run.jsonl", "raw.ndjson", "backup/no_backup/profiles/catalog.enc",
-                        "device.log", "source-snapshot.zip", "release-signing.properties"]
+                        "device.log", "source-snapshot.zip", "release-signing.properties", "signing.dpapi.json",
+                        "backup/mobileharness-release.signing-recovery.json", "mobileharness-release.p12"]
     expected_kept = ["README.md", "README.en.md", ".gitignore", ".gitattributes", "LICENSE", "android-app/gradle/wrapper/gradle-wrapper.jar",
                      "android-app/gradlew", "android-app/app/src/debug/AndroidManifest.xml",
                      "android-app/app/src/test/java/org/mobileharness/app/storage/ExperimentAnalysisTest.kt",

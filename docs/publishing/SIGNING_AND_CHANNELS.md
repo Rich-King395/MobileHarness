@@ -1,90 +1,150 @@
-# 正式签名与开发版并存方案
+# 正式签名与开发版并存
 
-状态：**待实施的技术方案**。源码托管按用户授权另行进行；本页方案尚未改动应用身份、生成签名密钥、构建或安装正式包。
+本页面向维护者，记录渠道身份、本地签名和恢复方法。普通用户的安装与使用说明见 [README](../../README.md)。
 
-## 1. 已核实的现状
+**本轮进度（2026-11-03）：**正式身份已生成，两个渠道已构建并通过 APK 核验，正式版已与原开发版并存安装并启动。原开发版及其数据未变。便携恢复备份尚未创建；正式版模型配置、服务授权及真实任务仍待单独验证。详见 [0.10.0 验收范围](../RELEASE_CHANNELS_0.10.0.md)。
 
-| 项目 | 当前状态 |
-| --- | --- |
-| 应用身份 | `applicationId`、源码 `namespace` 均为 `org.mobileharness.app` |
-| 当前版本 | `0.9.0-dev`，`versionCode = 21` |
-| 签名 | 当前实验安装使用 debug 签名；尚未配置正式 `signingConfigs` |
-| 开发证书 SHA-256 | `bd86ce1e682b3901b2198f65615cabfa90ddfa7bec250fe6b656154e7f60de80`，仅用于核对现有安装身份 |
-| 数据 | 上次实机复核保留 18 组事件记录和加密任务附件；本次未访问或更改手机数据 |
-| 私有存储 | 模型配置、授权范围、任务附件使用应用私有目录与 Android Keystore；记录位于 `noBackupFilesDir` |
-| 备份 | `allowBackup=false`；备份规则同时排除云备份与设备迁移 |
-| 调试入口 | 诊断 Activity/Receiver 定义在 `src/debug`，正式 APK 尚待产物级核验 |
+## 1. 渠道身份
 
-依据：[构建配置](../../android-app/app/build.gradle.kts)、[主 Manifest](../../android-app/app/src/main/AndroidManifest.xml)、[调试 Manifest](../../android-app/app/src/debug/AndroidManifest.xml)、[存储实现](../../android-app/app/src/main/java/org/mobileharness/app/storage)。
-
-Android 应用需要签名。常规原地升级需保持应用身份与签名兼容；更换为另一把不兼容的签名密钥，不能当作普通覆盖更新。正式分发不沿用 debug 签名。[Android 官方签名说明](https://developer.android.com/studio/publish/app-signing)
-
-## 2. 推荐的渠道分工
-
-| 渠道 | 应用 ID | 显示名称 | 数据与更新策略 |
-| --- | --- | --- | --- |
-| 现有开发安装 | **保留** `org.mobileharness.app` | 未来可标为 `MobileHarness（开发版）` | 保留现有 debug 签名、记录、配置与授权；后续兼容更新递增版本号 |
-| 新正式安装 | **候选** `org.mobileharness.app.release` | 建议 `MobileHarness（发布版）` | 使用独立长期正式密钥；从全新私有数据空间开始 |
-
-正式版应用 ID 和名称仍需用户最终确认；表中候选尚未写入代码。源码 `namespace` 可继续保持原值，**它与安装用的 `applicationId` 不等同**。
-
-后续可为新开发渠道设计规范的后缀，但不要直接给现有安装添加 `.debug` 后缀：那会产生另一个应用，无法延续当前安装的数据空间。也不通过卸载旧包、清空数据或修改其授权来腾出身份。
-
-两种应用 ID 可以安装并存；这不代表可以同时执行任务。两个无障碍服务都启用时可能出现双悬浮入口或控制冲突。首期使用规则为：**同一时间只启用并使用一个渠道的自动化服务，不同时运行任务**。跨包自动互锁尚未实现，不能视作已有保障。
-
-## 3. 实验记录与新机使用
-
-- 此前核验的 18 组实验记录及后续新增记录继续保留在原开发安装中；本次不访问手机、不迁移、不删改、不重新加密，也不承诺通过系统备份恢复。
-- 新正式版具有独立 UID、Keystore 和应用数据，首次使用需自行配置模型与 API Key，并完成其无障碍及授权 App 范围设置。已有开发版的授权不重置，也不自动复制给正式版。
-- 现有 CSV 是不含任务原文的分析导出，**不是**完整数据备份，不能恢复加密任务附件或密钥。不能把复制私有加密文件当作可行迁移方案。
-- 如以后需要迁移，应另行定义用户主动发起的加密导出、导入与删除边界；本阶段不实现迁移工具。
-- 其他手机从空数据安装开始。截图、API Key、个人任务记录和本机授权配置不随 APK 或源码分发。
-
-## 4. 正式密钥管理
-
-正式发布前再创建专用长期签名密钥，与现有开发密钥分开管理：
-
-1. 密钥库及密码存放于仓库之外；密码无源码默认值，不写入普通日志、命令示例或发布附件。
-2. 为密钥库制作加密离线备份，分别保存密码及恢复说明；核对证书指纹并确认维护人能够恢复使用。现有开发签名身份也应妥善保留，避免实验机后续兼容更新失效。
-3. 首期在受控本地环境签名，发布资料只记录证书公开指纹、APK 校验值和版本。密钥库、密码文件、签名属性文件不进入 Git 历史。
-4. CI 首期只做无密钥的检查和测试。以后如引入自动正式发布，单独设置受保护的可信发布任务，通过 GitHub Secrets / Environment 提供密钥材料，仅授权维护人触发；不对普通 PR、外部分支或任意脚本开放签名凭据。
-5. 同一正式应用身份持续使用兼容签名，递增 `versionCode`。密钥轮换、丢失处理和 Google Play 签名托管如有需要，另行制定，不能默认已有恢复能力。
-
-参考：[Android 签名与密钥管理](https://developer.android.com/studio/publish/app-signing)、[GitHub Actions Secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets)。
-
-## 5. 渠道实施前必须处理的兼容点
-
-以下为静态源码审查结果，**本次未修改代码**：
-
-| 检查点 | 已发现情况 | 后续要求 |
+| 项目 | 开发版 `debug` | 正式渠道 `release` |
 | --- | --- | --- |
-| 返回主界面 | `HarnessAccessibilityService` 两处通过 `"$packageName.MainActivity"` 拼接类名 | appId 与 namespace 分离后会指向错误类名；改为对真实 `MainActivity` 类的显式引用，再核验通知和悬浮入口 |
-| Manifest 组件 | 主 Manifest 使用 `.MainActivity` 等相对组件名 | 检查正式版合并后的 Manifest、类路径和启动组件，不能只修改 Gradle appId 就认定兼容 |
-| 自身 App 排除 | App 列表与采集检查使用运行时 `packageName` | 核对双渠道下两个 MobileHarness 是否会出现在彼此可操作范围；发布前明确阻止操作配套渠道的敏感页面，保持密钥页保护 |
-| 控制广播 | `ControlReceiver` 为非导出组件；通知使用显式接收器，并带任务与状态 token | 核验两个渠道的通知各自只控制本包任务，过期 token 不生效；当前硬编码 action 不单独构成跨包授权 |
-| 广播 action / URI | 现有 action 为 `org.mobileharness.app.INTERNAL_CONTROL`，控制 URI 使用 `mobileharness://control/...` | 若改为按 appId 派生，需同步发送、接收及测试；保留显式组件、不可变 PendingIntent 和 token 检查 |
-| Provider authority | 主 Manifest 当前未定义 Provider | 后续如新增 FileProvider 等，使用应用身份派生 authority 并检查冲突，不复用两个渠道的固定 authority |
-| 调试工具 | 诊断、ADB 脚本和 fixture 存在开发包名引用 | 仅按用途适配，正式包不引入诊断入口；不全局替换源码包名、提示词或历史记录 |
-| 名称与通知 | 应用资源和通知标题当前尚未区分渠道 | 渠道配置时明确中英名称、图标或标识，避免操作者混淆 |
+| 应用 ID | `org.mobileharness.app`，保留现有身份 | `org.mobileharness.app.release` |
+| 版本 | `0.10.0-dev` | `0.10.0-beta.1` |
+| `versionCode` | `22` | `22` |
+| 英文名称 | `MobileHarness (Dev)` | `MobileHarness (Release)` |
+| 中文名称 | `MobileHarness（开发版）` | `MobileHarness（正式版）` |
+| 签名 | 保留原开发签名 | 专用长期正式密钥 |
+| 配置与记录 | 延续原开发安装的私有数据 | 独立 UID、Keystore 和全新私有数据 |
 
-关键源码：[服务与通知](../../android-app/app/src/main/java/org/mobileharness/app/platform/HarnessAccessibilityService.kt)、[控制接收器](../../android-app/app/src/main/java/org/mobileharness/app/platform/ControlReceiver.kt)、[任务入口](../../android-app/app/src/main/java/org/mobileharness/app/MainActivity.kt)。
+源码 `namespace` 继续使用 `org.mobileharness.app`。安装身份由 `applicationId` 决定，不能把两个概念一起全局替换。首个正式渠道版本带有 `beta.1`，表示仍需完成发布验收，并非已通过所有设备测试。
 
-## 6. 首个正式 APK 的验收条件（待执行）
+原开发证书 SHA-256：
 
-- **身份与签名：**核对 appId、版本、正式证书 SHA-256；`debuggable=false`，不使用 debug 签名。
-- **产物边界：**检查合并 Manifest 和 APK 内容，无 `src/debug` 诊断组件、fixture、实机测试数据、截图、API Key 或签名私钥；保留运行所需提示词与资源。
-- **共存：**在保留原开发包的设备上安装正式版，原记录、配置和授权不变；两个启动图标、通知及悬浮入口可以辨认，通知不会控制另一个包。分别验证单服务启用下的运行；不把双服务同时控制手机列为支持场景。
-- **升级：**以同一正式证书和递增版本号覆盖正式版，验证其配置、加密记录、Keystore 读取及授权状态；不以“安装成功”替代数据保留检查。
-- **新机：**验证首次安装、模型配置、无障碍开通、授权范围、真实任务、一次接管与归还，以及中英界面。Android 13 及以上的侧载限制按系统提示处理，不静默代替用户开启权限。
-- **研究一致性：**Harness 状态机、共享预算、Planner 上限、人工期间不采集、截图临时保留、模型结束与任务成功的区分均不因渠道配置变化。
-- **发布附件：**仅准备正式 APK、SHA-256 校验值、版本说明与已验证设备范围。源码归档不混入签名材料和本地实验档案；实际上传另行执行。
+```text
+bd86ce1e682b3901b2198f65615cabfa90ddfa7bec250fe6b656154e7f60de80
+```
 
-## 7. 决策与执行顺序
+正式证书 SHA-256（公开身份，后续正式 APK 应继续匹配）：
 
-| 状态 | 事项 |
+```text
+f06391df26dc56a209ffa93a77280c2237c0eb7c3caa27d923771da197e385c6
+```
+
+维护开发安装时保持该签名兼容，并递增版本号。不得卸载旧开发包、清空数据、改用正式密钥覆盖开发包，或给开发包新增后缀来代替原地升级。常规更新需要兼容的应用身份和签名。[Android 官方签名说明](https://developer.android.com/studio/publish/app-signing)
+
+## 2. 并存和数据边界
+
+- 两个应用 ID 可以安装并存；同一时间只启用一个渠道的无障碍服务。新代码检查另一渠道的已启用服务，在冲突时阻止开始、归还和自动操作。手机上原开发版尚未覆盖升级，不具备新保护；两渠道不支持同时运行任务。
+- 新正式版首次使用需自行配置模型与 API Key，并完成本包的无障碍、截图知情确认和授权 App 范围设置。开发版已有授权保持原状，不自动复制到正式版。
+- 两个渠道不能把彼此的 MobileHarness 页面作为目标 App 操作或采集。通知和悬浮入口只控制所属应用的会话。
+- 原开发包中的实验记录、加密任务附件和模型配置继续留在原包；本阶段不迁移、不重新加密、不复制其私有文件。
+- 应用保持 `allowBackup=false` 和现有备份排除规则。分析 CSV 不能恢复加密任务附件或密钥；不能把它当作完整数据备份。
+- 模型 API Key、任务记录、截图和本机授权设置不随 APK 或源码分发。Harness 状态机、共享预算、Planner 上限、人工期间不采集和截图临时保留规则保持不变。
+
+本轮安装前后已复核原开发包：18 条实验记录及其加密任务附件、模型配置目录与授权文件的哈希和计数全部一致，原 APK 字节与版本未变。签名工具自身不访问手机或实验数据。
+
+## 3. 本地正式签名
+
+工具要求 **Windows、PowerShell 7.4 或更新版本、JDK 17**。默认本地路径：
+
+| 文件 | 用途 | 是否可上传 |
+| --- | --- | --- |
+| `D:\Android\Signing\MobileHarness\mobileharness-release.p12` | PKCS12 正式私钥库 | 否 |
+| `D:\Android\Signing\MobileHarness\signing.dpapi.json` | Windows DPAPI 保护的密码与本地路径 | 否 |
+| `D:\Android\Signing\MobileHarness\certificate.public.json` | 公开证书指纹等元数据 | 可引用公开字段；不直接发布整套目录 |
+| 单独指定的 `*.signing-recovery.json` | 带口令加密的便携恢复包 | 否 |
+
+目录和私密文件限制为当前 Windows 用户与 SYSTEM 访问。工具拒绝仓库内路径、路径中的符号链接/目录联接、盘符根目录和已有签名工件的覆盖；不在项目中生成临时明文密码文件。
+
+`signing.dpapi.json` 绑定当前 Windows 用户的 DPAPI 保护环境。单独复制此文件和 PKCS12 到另一台电脑，不能视为已经具备恢复能力。维护者需要另做便携恢复备份。
+
+### 创建一次正式身份
+
+在项目根目录的本地 PowerShell 终端运行：
+
+```powershell
+pwsh -NoProfile -File .\tools\Initialize-ReleaseSigning.ps1
+```
+
+默认生成别名 `mobileharness-release`、RSA-4096、`SHA256withRSA`、有效期 100 年的自签名证书，主体为 `CN=MobileHarness Release`。该主体不表示经过第三方出版者身份认证。PKCS12 使用随机密码，密码经 DPAPI 保存；初始化只打印文件位置与公开证书 SHA-256。
+
+可用 `-SigningDirectory` 和 `-JdkHome` 覆盖本地路径。初始化先持久化受保护凭据，再生成密钥；如中断，保留所有工件用于检查。遇到已有文件或部分失败时，先查明状态，**不要删除后重建一把新密钥**。
+
+### 本地构建正式 APK
+
+```powershell
+pwsh -NoProfile -File .\tools\Invoke-ReleaseBuild.ps1
+```
+
+工具临时提供以下进程环境变量；不要将密码值填入源码、命令行示例、Gradle 属性文件或 GitHub 公开配置：
+
+```text
+MOBILEHARNESS_RELEASE_STORE_FILE
+MOBILEHARNESS_RELEASE_STORE_PASSWORD
+MOBILEHARNESS_RELEASE_KEY_ALIAS
+MOBILEHARNESS_RELEASE_KEY_PASSWORD
+```
+
+构建通过 Gradle Wrapper 运行 `:app:assembleRelease`，强制 `--no-configuration-cache --no-daemon`，结束后恢复进程环境。可设置 `-SigningConfig`、`-JdkHome`、`-GradleUserHome`；依赖已经缓存时可加 `-Offline`。工具不安装 APK、不上传，也不接触开发签名或实验记录。
+
+不要在签名构建中启用转录、调试级日志或构建扫描。发布资料只记录版本、APK SHA-256 和证书公开指纹。首次正式分发前，核实 APK 使用正式证书，不能仅以“Gradle 构建成功”作为证明。
+
+## 4. 便携恢复与离线保管
+
+在本机交互终端执行导出。目标目录需支持 Windows 私有 ACL（例如 NTFS）；先导出到仓库外的专用空目录，再将加密文件复制到独立离线介质。以下路径可替换：
+
+```powershell
+pwsh -NoProfile -File .\tools\Export-ReleaseSigningRecovery.ps1 -OutputFile 'D:\Android\SigningBackups\MobileHarness\mobileharness-release.signing-recovery.json'
+```
+
+工具在安全输入提示中要求输入两遍至少 16 个字符的恢复口令。恢复口令不通过脚本参数或聊天提供。恢复包包含 PKCS12、签名密码、别名与证书指纹，整体使用 **PBKDF2-SHA256（600,000 次）与 AES-256-GCM** 加密；密码与私钥不以明文导出。
+
+应将恢复包复制到独立离线介质，并将恢复口令单独保管。离线介质可用 FAT/exFAT，直接由导出工具创建私有目录则需 ACL 支持。只在开发磁盘创建另一份文件，不算完成离线备份。初始化生成的公开元数据中的 `backup_status` 是创建时快照，不会自动证明后来已完成导出、转存或恢复验证。
+
+在另一台电脑或新的隔离目录中恢复：
+
+```powershell
+pwsh -NoProfile -File .\tools\Restore-ReleaseSigningRecovery.ps1 -InputFile 'E:\MobileHarness-Signing-Recovery\mobileharness-release.signing-recovery.json' -SigningDirectory 'D:\Android\Signing\MobileHarness-Restored'
+```
+
+恢复工具交互读取口令，检查加密认证与证书指纹，使用新 Windows 用户的 DPAPI 重新保护签名密码，拒绝覆盖任何现有签名身份。恢复后的构建通过 `-SigningConfig` 指向恢复目录中的 `signing.dpapi.json`。
+
+首次分发前应在隔离目录验证一次恢复和签名：恢复证书 SHA-256 必须与原证书一致。不要把原正式目录当作恢复试验的覆盖目标，也不要为了试验更换已经发布的正式密钥。
+
+## 5. 渠道兼容检查
+
+| 检查点 | 本轮要求 |
 | --- | --- |
-| 已核实 | 当前开发身份、版本、debug 签名指纹、存储隔离及两处主界面类名拼接问题 |
-| 待最终选择 | 正式应用 ID、渠道显示名称、首个正式版本号、签名密钥维护人与备份位置 |
-| 待配置 | 渠道与签名配置、组件身份适配、双渠道页面排除与标识；不改现有实验逻辑 |
-| 待验收 | 正式产物核验、原包保留、共存、升级、新机与接管归还实测 |
-| 当前不执行 | 生成密钥、修改手机安装、迁移记录、创建仓库、提交或上传 GitHub |
+| 主界面入口 | 使用实际 `MainActivity` 类的显式引用，适配 appId 与 namespace 分离 |
+| 自身与配套渠道页面 | 两个 MobileHarness 包均排除在可操作范围，采集与执行入口维持同样保护 |
+| 通知与控制广播 | 保持显式接收器、非导出组件、不可变 PendingIntent 和会话/状态 token，拒绝迟到控制 |
+| 合并 Manifest | 核对真实 Activity/Service 类名、安装身份与中英名称 |
+| 诊断入口 | `src/debug` 组件只进入开发 APK；正式 APK 不含调试诊断入口或 fixture |
+| 密钥页保护 | 渠道变化不放开密钥输入弹层保护，不采集或导出密钥 |
+| 两个服务 | 明确只支持一次使用一个渠道，不宣称已提供跨包自动互锁 |
+
+相关源码：[构建配置](../../android-app/app/build.gradle.kts)、[主 Manifest](../../android-app/app/src/main/AndroidManifest.xml)、[服务](../../android-app/app/src/main/java/org/mobileharness/app/platform/HarnessAccessibilityService.kt)、[控制接收器](../../android-app/app/src/main/java/org/mobileharness/app/platform/ControlReceiver.kt)。
+
+## 6. 验证与发布状态
+
+截至本页更新时：
+
+| 项目 | 状态 |
+| --- | --- |
+| 五个签名工具语法解析 | 已通过 |
+| 隔离签名工具集成测试 | 16 项通过；临时测试身份完成真实生成、备份、恢复及拒绝覆盖、篡改检查，测试密钥已清理 |
+| 正式签名目录创建与真实密钥初始化 | 已完成，DPAPI 与私有 ACL 保护 |
+| 两个 APK 的证书、Manifest、双语名称、内容核验 | 通过；正式包无调试入口，开发证书保持一致，59 份冻结引用保真 |
+| 缺少正式凭据的构建 | 明确拒绝，不回退开发签名 |
+| 签名密码原文残留核验 | 源码、项目缓存、构建产物目录、构建日志及近期 daemon 日志均未发现；仅在内存匹配 |
+| 真实正式身份的便携恢复包与离线转存 | 待用户在本机交互导出并单独保存；隔离工具测试不能代替这份备份 |
+| 原开发安装与正式版安装并存 | Pixel 4 / Android 13 已验证，UID 独立、正式版能启动，原安装与文件哈希不变 |
+| 正式版服务授权、真实任务与接管归还 | 待单独验证；本轮未复制 API Key 或改变任何服务开关 |
+| 正式版兼容覆盖升级、全新手机使用 | 待验收 |
+| GitHub Release 与 APK 上传 | 未执行 |
+
+实机验收需保留原开发包的数据，分别核对两个渠道的图标、通知、配置、记录和授权状态；用正式版完成真实任务、一次接管与归还，并核对中英界面。后续版本以同一正式证书、递增 `versionCode` 覆盖正式包，验证加密配置与记录仍可读取。
+
+发布附件只包含正式 APK、SHA-256 校验值、版本说明和已验证设备范围。签名私钥、受保护密码文件、恢复包和本地实验档案不得上传。
+
+CI 首期只执行无密钥的检查与测试。若以后引入自动签名发布，应另建受保护的可信发布任务，按最小权限提供密钥，不能对普通 PR 或任意分支开放签名环境。[GitHub Actions Secrets](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets)

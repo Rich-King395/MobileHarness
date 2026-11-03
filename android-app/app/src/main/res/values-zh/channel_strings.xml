@@ -1,0 +1,4 @@
+<resources>
+    <string name="channel_app_name">MobileHarness（开发版）</string>
+    <string name="channel_competing_service">请先关闭另一个 MobileHarness 版本的无障碍服务，再继续。</string>
+</resources>

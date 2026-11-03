@@ -74,3 +74,5 @@ local-secrets*
 
 # Frozen prompt references and synthetic tests remain eligible; do not rewrite them
 # to remove machine-path references. Review files flagged in the upload inventory.
+signing.dpapi.json
+*.signing-recovery.json
